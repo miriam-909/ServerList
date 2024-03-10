@@ -3,7 +3,7 @@ local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {},{}
+local Servers,Players = {Active = {}},{}
 local JOB_ID = Services.https:GenerateGUID(false)
 
 --// Functions
@@ -47,7 +47,12 @@ XThread.new(function()
 			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
 			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end			
 		until #rr ~= 200
-		Servers = serverCache
+		
+		table.sort(serverCache,function(a,b)
+			return #a.Value > #b.Value
+		end)
+		Servers.Active = serverCache
+		if Servers.Callback then task.spawn(Servers.Callback) end
 		if PlayersChanged then UploadPlayers() PlayersChanged = false end
 	end
 end,function()
