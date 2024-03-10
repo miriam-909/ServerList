@@ -391,6 +391,20 @@ local Util= {
 	table = ExtendGlobal(table,_table)::typeof(table)&typeof(_table),
 	string = ExtendGlobal(string,_string)::typeof(string)&typeof(string),
 	Vector3 = ExtendGlobal(Vector3,_vector3)::typeof(Vector3)&typeof(Vector3),
+	attempt = function(func:()->(),iters,...)
+		iters = iters or 10
+		local i,err = 0,nil
+		while i<=iters do
+			if i ~=0 then task.wait(1*i) end
+			i+=1
+			local t: {any} = {pcall(func,...)}
+			if not t[1] then warn(err,...) err = t[2] continue end
+			table.remove(t,1)
+			return true,unpack(t)
+		end
+		warn(err,debug.info(2,"s"))
+		return false,err
+	end,
 	print = _print,
 	typeof = _typeof,
 }

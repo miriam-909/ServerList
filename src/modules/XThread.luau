@@ -19,7 +19,7 @@ local Construct,Destruct,default,andThen,await,status,cancel,resume,pause
 
 default = function(f,meta,traceback,...)
     local ret = {pcall(f,...)}
-    if not ret[1] then task.spawn(error,`\n{traceback}{table.concat(ret,"\n",2)}`) end
+    if not ret[1] then task.spawn(error,`\n{traceback}{table.concat(ret,"\n",2)}`) if meta.OnCancel then task.spawn(meta.OnCancel) end end
     table.remove(ret,1)
     for i,_ in meta.Listeners do
         local t = typeof(i)
@@ -138,7 +138,6 @@ __Thread = {
     end,
 }
 
----@diagnostic disable-next-line: unused-local
 __ThreadMeta = {
     __newindex = function(meta,index,value)
         meta.__data.__private[index] = value
@@ -153,21 +152,3 @@ return {
     wrap = wrap,
     delay = delay,
 }
-
--- function _task.attempt<ret...,args...>(func:(args...)->ret...,iters: number?,...:args...):(boolean,ret...)
--- 	iters = iters or 5
--- 	local i = 0
--- 	local err
--- 	while i<=iters::number do
--- 		if i ~=0 then
--- 			task.wait(1*i)
--- 		end
--- 		i+=1
--- 		local t: {any} = {pcall(func,...)}
--- 		if not t[1] then err = t[2] continue end
--- 		table.remove(t,1)
--- 		return true,unpack(t)
--- 	end
--- 	warn(err,debug.info(2,"s"))
--- 	return false,err
--- end
