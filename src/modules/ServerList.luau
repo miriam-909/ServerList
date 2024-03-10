@@ -40,16 +40,19 @@ UploadPlayers()
 2500 of 5e4 rpm
 ]]
 
+print(JOB_ID)
+
 XThread.new(function()
 	while task.wait(1) do
 		local serverCache
 		repeat
 			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
-			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end			
+			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+			print(_,rr)
 		until #rr ~= 200
 		
 		table.sort(serverCache,function(a,b)
-			return #a.Value > #b.Value
+			return #a.value > #b.value
 		end)
 		Servers.Active = serverCache
 		if Servers.Callback then task.spawn(Servers.Callback) end
@@ -60,5 +63,6 @@ end,function()
 		v:Kick("Error fetching server data, closing server...")
 	end
 end)
+
 
 return Servers
