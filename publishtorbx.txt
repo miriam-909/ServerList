@@ -1,1 +1,0 @@
-rbxcloud experience publish --filename SLIFE.rbxlx --place-id 16699666988 --universe-id 5741381059 --version-type published --api-key OCD2U1+j3kCrquNAK58MfgcHKVGF35QC6v2OPuu7Ecwk0qu9  
