@@ -3,7 +3,7 @@ local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {Active = {}},{}
+local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
 local JOB_ID = Services.https:GenerateGUID(false)
 
 --// Functions
