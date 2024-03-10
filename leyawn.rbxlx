@@ -1,0 +1,5087 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Workspace" referent="10">
+		<Properties>
+			<float name="AirDensity">0.00120000006</float>
+			<bool name="AllowThirdPartySales">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<token name="AvatarUnificationMode">0</token>
+			<token name="CSGAsyncDynamicCollision">0</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<token name="ClientAnimatorThrottling">0</token>
+			<BinaryString name="CollisionGroupData">AQEABP////8HRGVmYXVsdA==</BinaryString>
+			<Ref name="CurrentCamera">RBXBC996B89BA314E3A9409AFF5D0F8DD83</Ref>
+			<bool name="DefinesCapabilities">false</bool>
+			<double name="DistributedGameTime">0</double>
+			<token name="EditorLiveScripting">0</token>
+			<bool name="ExplicitAutoJoints">true</bool>
+			<float name="FallenPartsDestroyHeight">-500</float>
+			<token name="FluidForces">0</token>
+			<Vector3 name="GlobalWind">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<float name="Gravity">196.199997</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<token name="IKControlConstraintSupport">0</token>
+			<token name="InterpolationThrottling">0</token>
+			<token name="LevelOfDetail">0</token>
+			<token name="MeshPartHeadsAndAccessories">0</token>
+			<CoordinateFrame name="ModelMeshCFrame">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<SharedString name="ModelMeshData">yuZpQdnvvUBOTYh1jqZ2cA==</SharedString>
+			<Vector3 name="ModelMeshSize">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+			</Vector3>
+			<token name="ModelStreamingBehavior">0</token>
+			<token name="ModelStreamingMode">0</token>
+			<string name="Name">Workspace</string>
+			<bool name="NeedsPivotMigration">false</bool>
+			<token name="PhysicsSteppingMethod">0</token>
+			<token name="PlayerCharacterDestroyBehavior">0</token>
+			<token name="PrimalPhysicsSolver">0</token>
+			<Ref name="PrimaryPart">null</Ref>
+			<token name="RejectCharacterDeletions">0</token>
+			<token name="ReplicateInstanceDestroySetting">0</token>
+			<token name="Retargeting">0</token>
+			<float name="ScaleFactor">1</float>
+			<token name="SignalBehavior2">0</token>
+			<int64 name="SourceAssetId">-1</int64>
+			<token name="StreamOutBehavior">0</token>
+			<bool name="StreamingEnabled">false</bool>
+			<token name="StreamingIntegrityMode">0</token>
+			<int name="StreamingMinRadius">64</int>
+			<int name="StreamingTargetRadius">1024</int>
+			<BinaryString name="Tags"></BinaryString>
+			<bool name="TerrainWeldsFixed">true</bool>
+			<bool name="TouchesUseCollisionGroups">false</bool>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000002</UniqueId>
+			<OptionalCoordinateFrame name="WorldPivotData"></OptionalCoordinateFrame>
+		</Properties>
+		<Item class="Camera" referent="RBXBC996B89BA314E3A9409AFF5D0F8DD83">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<CoordinateFrame name="CFrame">
+					<X>6.82532501</X>
+					<Y>72.9558868</Y>
+					<Z>74.5427475</Z>
+					<R00>0.45126906</R00>
+					<R01>0.622210145</R01>
+					<R02>-0.639695823</R02>
+					<R10>1.49011612e-08</R10>
+					<R11>0.716835976</R11>
+					<R12>0.697241783</R12>
+					<R20>0.892387927</R20>
+					<R21>-0.314643651</R21>
+					<R22>0.323485911</R22>
+				</CoordinateFrame>
+				<Ref name="CameraSubject">null</Ref>
+				<token name="CameraType">0</token>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<float name="FieldOfView">70</float>
+				<token name="FieldOfViewMode">0</token>
+				<CoordinateFrame name="Focus">
+					<X>27.3056507</X>
+					<Y>50.6331863</Y>
+					<Z>64.1861115</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="HeadLocked">true</bool>
+				<float name="HeadScale">1</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">Camera</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000003</UniqueId>
+				<bool name="VRTiltAndRollEnabled">false</bool>
+			</Properties>
+		</Item>
+		<Item class="Part" referent="11">
+			<Properties>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>-10</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4284636770</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="EnableFluidForces">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Baseplate</string>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c36</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>512</X>
+					<Y>20</Y>
+					<Z>512</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="Terrain" referent="RBX872F3771976B41A69669A87087AAB98C">
+			<Properties>
+				<token name="AcquisitionMethod">0</token>
+				<bool name="Anchored">true</bool>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">4</token>
+				<token name="BottomSurfaceInput">0</token>
+				<CoordinateFrame name="CFrame">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">true</bool>
+				<bool name="CanQuery">true</bool>
+				<bool name="CanTouch">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="CastShadow">true</bool>
+				<string name="CollisionGroup">Default</string>
+				<int name="CollisionGroupId">0</int>
+				<Color3uint8 name="Color3uint8">4288914085</Color3uint8>
+				<PhysicalProperties name="CustomPhysicalProperties">
+					<CustomPhysics>false</CustomPhysics>
+				</PhysicalProperties>
+				<bool name="Decoration">false</bool>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="EnableFluidForces">true</bool>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="GrassLength">0.699999988</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<bool name="Massless">false</bool>
+				<token name="Material">256</token>
+				<BinaryString name="MaterialColors"><![CDATA[AAAAAAAAan8/P39rf2Y/ilY+j35fi21PZmxvZbDqw8faiVpHOi4kHh4lZlw76JxKc3trhHta
+gcLgc4RKxr21zq2UlJSM]]></BinaryString>
+				<string name="MaterialVariantSerialized"></string>
+				<string name="Name">Terrain</string>
+				<BinaryString name="PhysicsGrid">AgMAAAAAAAAAAAAAAAA=</BinaryString>
+				<CoordinateFrame name="PivotOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<int name="RootPriority">0</int>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<bool name="ShorelinesUpgraded">false</bool>
+				<BinaryString name="SmoothGrid">AQU=</BinaryString>
+				<bool name="SmoothVoxelsUpgraded">false</bool>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">3</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c37</UniqueId>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<Color3 name="WaterColor">
+					<R>0.0500000007</R>
+					<G>0.330000013</G>
+					<B>0.360000014</B>
+				</Color3>
+				<float name="WaterReflectance">1</float>
+				<float name="WaterTransparency">0.300000012</float>
+				<float name="WaterWaveSize">0.150000006</float>
+				<float name="WaterWaveSpeed">10</float>
+				<Vector3 name="size">
+					<X>2044</X>
+					<Y>252</Y>
+					<Z>2044</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="ModuleScript" referent="RBX709814E417554CAEA7272FA1E20A37A1">
+			<Properties>
+				<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjM=</BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">MainModule</string>
+				<string name="ScriptGuid">{FB5E1731-F78C-46E1-AF69-6A288A05A3CF}</string>
+				<ProtectedString name="Source"><![CDATA[-- Variables
+local Proxy = require(script.Proxy)
+local Signal = require(script.Signal)
+local SynchronousTaskManager = require(script.SynchronousTaskManager)
+local dataStoreService, memoryStoreService, httpService = game:GetService("DataStoreService"), game:GetService("MemoryStoreService"), game:GetService("HttpService")
+local Constructor, DataStore = {}, {}
+local OpenTask, ReadTask, LockTask, SaveTask, CloseTask, DestroyTask, Lock, Unlock, Load, Save, StartSaveTimer, StopSaveTimer, SaveTimerEnded, StartLockTimer, StopLockTimer, LockTimerEnded, ProcessQueue, SignalConnected, Clone, Reconcile, Compress, Decompress, Encode, Decode, BindToClose
+local dataStores, bindToClose, active = {}, {}, true
+local characters = {[0] = "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","$","%","&","'",",",".","/",":",";","=","?","@","[","]","^","_","`","{","}","~"}
+local bytes = {} for i = (0), #characters do bytes[string.byte(characters[i])] = i end
+local base = #characters + 1
+
+
+
+
+-- Types
+export type Constructor = {
+	new: (name: string, scope: string, key: string?) -> DataStore,
+	hidden: (name: string, scope: string, key: string?) -> DataStore,
+	find: (name: string, scope: string, key: string?) -> DataStore?,
+	Response: {Success: string, Saved: string, Locked: string, State: string, Error: string},
+}
+
+export type DataStore = {
+	[any]: any,
+	Value: any,
+	Metadata: {[string]: any},
+	UserIds: {any},
+	SaveInterval: number,
+	SaveDelay: number,
+	LockInterval: number,
+	LockAttempts: number,
+	SaveOnClose: boolean,
+	Id: string,
+	UniqueId: string,
+	Key: string,
+	State: boolean?,
+	Hidden: boolean,
+	AttemptsRemaining: number,
+	CreatedTime: number,
+	UpdatedTime: number,
+	Version: string,
+	CompressedValue: string,
+	StateChanged: Signal.Signal,
+	Saving: Signal.Signal,
+	Saved: Signal.Signal,
+	AttemptsChanged: Signal.Signal,
+	ProcessQueue: Signal.Signal,
+	Open: (self: DataStore, template: any?) -> (string, any),
+	Read: (self: DataStore, template: any?) -> (string, any),
+	Save: (self: DataStore) -> (string, any),
+	Close: (self: DataStore) -> (string, any),
+	Destroy: (self: DataStore) -> (string, any),
+	Queue: (self: DataStore, value: any, expiration: number?, priority: number?) -> (string, any),
+	Remove: (self: DataStore, id: string) -> (string, any),
+	Clone: (self: DataStore) -> any,
+	Reconcile: (self: DataStore, template: any) -> (),
+	Usage: (self: DataStore) -> (number, number),
+}
+
+
+
+
+-- Constructor
+Constructor.new = function(name, scope, key)
+	if key == nil then key, scope = scope, "global" end
+	local id = name .. "/" .. scope .. "/" .. key
+	if dataStores[id] ~= nil then return dataStores[id] end
+	local proxy, dataStore = Proxy.new(DataStore, {
+		Metadata = {},
+		UserIds = {},
+		SaveInterval = 30,
+		SaveDelay = 0,
+		LockInterval = 60,
+		LockAttempts = 5,
+		SaveOnClose = true,
+		Id = id,
+		UniqueId = httpService:GenerateGUID(false),
+		Key = key,
+		State = false,
+		Hidden = false,
+		AttemptsRemaining = 0,
+		CreatedTime = 0,
+		UpdatedTime = 0,
+		Version = "",
+		CompressedValue = "",
+		StateChanged = Signal.new(),
+		Saving = Signal.new(),
+		Saved = Signal.new(),
+		AttemptsChanged = Signal.new(),
+		ProcessQueue = Signal.new(),
+	})
+	dataStore.TaskManager = SynchronousTaskManager.new()
+	dataStore.LockTime = -math.huge
+	dataStore.SaveTime = -math.huge
+	dataStore.ActiveLockInterval = 0
+	dataStore.ProcessingQueue = false
+	dataStore.DataStore = dataStoreService:GetDataStore(name, scope)
+	dataStore.MemoryStore = memoryStoreService:GetSortedMap(id)
+	dataStore.Queue = memoryStoreService:GetQueue(id)
+	dataStore.Options = Instance.new("DataStoreSetOptions")
+	dataStore.__public.ProcessQueue.DataStore = proxy
+	dataStore.__public.ProcessQueue.Connected = SignalConnected
+	dataStores[id] = proxy
+	if active == true then bindToClose[dataStore.__public.UniqueId] = proxy end
+	return proxy
+end
+
+Constructor.hidden = function(name, scope, key)
+	if key == nil then key, scope = scope, "global" end
+	local id = name .. "/" .. scope .. "/" .. key
+	local proxy, dataStore = Proxy.new(DataStore, {
+		Metadata = {},
+		UserIds = {},
+		SaveInterval = 30,
+		SaveDelay = 0,
+		LockInterval = 60,
+		LockAttempts = 5,
+		SaveOnClose = true,
+		Id = id,
+		UniqueId = httpService:GenerateGUID(false),
+		Key = key,
+		State = false,
+		Hidden = true,
+		AttemptsRemaining = 0,
+		CreatedTime = 0,
+		UpdatedTime = 0,
+		Version = "",
+		CompressedValue = "",
+		StateChanged = Signal.new(),
+		Saving = Signal.new(),
+		Saved = Signal.new(),
+		AttemptsChanged = Signal.new(),
+		ProcessQueue = Signal.new(),
+	})
+	dataStore.TaskManager = SynchronousTaskManager.new()
+	dataStore.LockTime = -math.huge
+	dataStore.SaveTime = -math.huge
+	dataStore.ActiveLockInterval = 0
+	dataStore.ProcessingQueue = false
+	dataStore.DataStore = dataStoreService:GetDataStore(name, scope)
+	dataStore.MemoryStore = memoryStoreService:GetSortedMap(id)
+	dataStore.Queue = memoryStoreService:GetQueue(id)
+	dataStore.Options = Instance.new("DataStoreSetOptions")
+	dataStore.__public.ProcessQueue.DataStore = proxy
+	dataStore.__public.ProcessQueue.Connected = SignalConnected
+	if active == true then bindToClose[dataStore.__public.UniqueId] = proxy end
+	return proxy
+end
+
+Constructor.find = function(name, scope, key)
+	if key == nil then key, scope = scope, "global" end
+	local id = name .. "/" .. scope .. "/" .. key
+	return dataStores[id]
+end
+
+Constructor.Response = {Success = "Success", Saved = "Saved", Locked = "Locked", State = "State", Error = "Error"}
+
+
+
+
+-- DataStore
+DataStore.__tostring = function(proxy)
+	return "DataStore"
+end
+
+DataStore.__shared = {
+	Open = function(proxy, template)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Open failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.State == nil then return "State", "Destroyed" end
+		local synchronousTask = dataStore.TaskManager:FindFirst(OpenTask)
+		if synchronousTask ~= nil then return synchronousTask:Wait(template) end
+		if dataStore.TaskManager:FindLast(DestroyTask) ~= nil then return "State", "Destroying" end
+		if dataStore.__public.State == true and dataStore.TaskManager:FindLast(CloseTask) == nil then
+			if dataStore.__public.Value == nil then
+				dataStore.__public.Value = Clone(template)
+			elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
+				Reconcile(dataStore.__public.Value, template)
+			end
+			return "Success"
+		end
+		return dataStore.TaskManager:InsertBack(OpenTask, proxy):Wait(template)
+	end,
+	Read = function(proxy, template)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Read failed: Passed value is not a DataStore", 3) end
+		local synchronousTask = dataStore.TaskManager:FindFirst(ReadTask)
+		if synchronousTask ~= nil then return synchronousTask:Wait(template) end
+		if dataStore.__public.State == true and dataStore.TaskManager:FindLast(CloseTask) == nil then return "State", "Open" end
+		return dataStore.TaskManager:InsertBack(ReadTask, proxy):Wait(template)
+	end,
+	Save = function(proxy)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Save failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.State == false then return "State", "Closed" end
+		if dataStore.__public.State == nil then return "State", "Destroyed" end
+		local synchronousTask = dataStore.TaskManager:FindFirst(SaveTask)
+		if synchronousTask ~= nil then return synchronousTask:Wait() end
+		if dataStore.TaskManager:FindLast(CloseTask) ~= nil then return "State", "Closing" end
+		if dataStore.TaskManager:FindLast(DestroyTask) ~= nil then return "State", "Destroying" end
+		return dataStore.TaskManager:InsertBack(SaveTask, proxy):Wait()
+	end,
+	Close = function(proxy)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Close failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.State == nil then return "Success" end
+		local synchronousTask = dataStore.TaskManager:FindFirst(CloseTask)
+		if synchronousTask ~= nil then return synchronousTask:Wait() end
+		if dataStore.__public.State == false and dataStore.TaskManager:FindLast(OpenTask) == nil then return "Success" end
+		local synchronousTask = dataStore.TaskManager:FindFirst(DestroyTask)
+		if synchronousTask ~= nil then return synchronousTask:Wait() end
+		StopLockTimer(dataStore)
+		StopSaveTimer(dataStore)
+		return dataStore.TaskManager:InsertBack(CloseTask, proxy):Wait()
+	end,
+	Destroy = function(proxy)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Destroy failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.State == nil then return "Success" end
+		dataStores[dataStore.__public.Id] = nil
+		StopLockTimer(dataStore)
+		StopSaveTimer(dataStore)
+		return (dataStore.TaskManager:FindFirst(DestroyTask) or dataStore.TaskManager:InsertBack(DestroyTask, proxy)):Wait()
+	end,
+	Queue = function(proxy, value, expiration, priority)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Queue failed: Passed value is not a DataStore", 3) end
+		if expiration ~= nil and type(expiration) ~= "number" then error("Attempt to Queue failed: Passed value is not nil or number", 3) end
+		if priority ~= nil and type(priority) ~= "number" then error("Attempt to Queue failed: Passed value is not nil or number", 3) end
+		local success, errorMessage
+		for i = 1, 3 do
+			if i > 1 then task.wait(1) end
+			success, errorMessage = pcall(dataStore.Queue.AddAsync, dataStore.Queue, value, expiration or 604800, priority)
+			if success == true then return "Success" end
+		end
+		return "Error", errorMessage
+	end,
+	Remove = function(proxy, id)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Remove failed: Passed value is not a DataStore", 3) end
+		if type(id) ~= "string" then error("Attempt to RemoveQueue failed: Passed value is not a string", 3) end
+		local success, errorMessage
+		for i = 1, 3 do
+			if i > 1 then task.wait(1) end
+			success, errorMessage = pcall(dataStore.Queue.RemoveAsync, dataStore.Queue, id)
+			if success == true then return "Success" end
+		end
+		return "Error", errorMessage
+	end,
+	Clone = function(proxy)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Clone failed: Passed value is not a DataStore", 3) end
+		return Clone(dataStore.__public.Value)
+	end,
+	Reconcile = function(proxy, template)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Reconcile failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.Value == nil then
+			dataStore.__public.Value = Clone(template)
+		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
+			Reconcile(dataStore.__public.Value, template)
+		end
+	end,
+	Usage = function(proxy)
+		local dataStore = getmetatable(proxy)
+		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Usage failed: Passed value is not a DataStore", 3) end
+		if dataStore.__public.Value == nil then return 0, 0 end
+		if type(dataStore.__public.Metadata.Compress) ~= "table" then
+			local characters = #httpService:JSONEncode(dataStore.__public.Value)
+			return characters, characters / 4194303
+		else
+			local level = dataStore.__public.Metadata.Compress.Level or 2
+			local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
+			local safety = if dataStore.__public.Metadata.Compress.Safety == nil then true else dataStore.__public.Metadata.Compress.Safety
+			dataStore.__public.CompressedValue = Compress(dataStore.__public.Value, level, decimals, safety)
+			local characters = #httpService:JSONEncode(dataStore.__public.CompressedValue)
+			return characters, characters / 4194303
+		end
+	end,
+}
+
+DataStore.__set = {
+	Metadata = function(proxy, dataStore, value)
+		if type(value) ~= "table" then error("Attempt to set Metadata failed: Passed value is not a table", 3) end
+		dataStore.__public.Metadata = value
+	end,
+	UserIds = function(proxy, dataStore, value)
+		if type(value) ~= "table" then error("Attempt to set UserIds failed: Passed value is not a table", 3) end
+		dataStore.__public.UserIds = value
+	end,
+	SaveInterval = function(proxy, dataStore, value)
+		if type(value) ~= "number" then error("Attempt to set SaveInterval failed: Passed value is not a number", 3) end
+		if value < 10 and value ~= 0 then error("Attempt to set SaveInterval failed: Passed value is less then 10 and not 0", 3) end
+		if value > 1000 then error("Attempt to set SaveInterval failed: Passed value is more then 1000", 3) end
+		if value == dataStore.__public.SaveInterval then return end
+		dataStore.__public.SaveInterval = value
+		if dataStore.__public.State ~= true then return end
+		if value == 0 then
+			StopSaveTimer(dataStore)
+		elseif dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then
+			StartSaveTimer(proxy)
+		end
+	end,
+	SaveDelay = function(proxy, dataStore, value)
+		if type(value) ~= "number" then error("Attempt to set SaveDelay failed: Passed value is not a number", 3) end
+		if value < 0 then error("Attempt to set SaveDelay failed: Passed value is less then 0", 3) end
+		if value > 10 then error("Attempt to set SaveDelay failed: Passed value is more then 10", 3) end
+		dataStore.__public.SaveDelay = value
+	end,
+	LockInterval = function(proxy, dataStore, value)
+		if type(value) ~= "number" then error("Attempt to set LockInterval failed: Passed value is not a number", 3) end
+		if value < 10 then error("Attempt to set LockInterval failed: Passed value is less then 10", 3) end
+		if value > 1000 then error("Attempt to set LockInterval failed: Passed value is more then 1000", 3) end
+		dataStore.__public.LockInterval = value
+	end,
+	LockAttempts = function(proxy, dataStore, value)
+		if type(value) ~= "number" then error("Attempt to set LockAttempts failed: Passed value is not a number", 3) end
+		if value < 1 then error("Attempt to set LockAttempts failed: Passed value is less then 1", 3) end
+		if value > 100 then error("Attempt to set LockAttempts failed: Passed value is more then 100", 3) end
+		dataStore.__public.LockAttempts = value
+	end,
+	SaveOnClose = function(proxy, dataStore, value)
+		if type(value) ~= "boolean" then error("Attempt to set SaveOnClose failed: Passed value is not a boolean", 3) end
+		dataStore.__public.SaveOnClose = value
+	end,
+	Id = false,
+	UniqueId = false,
+	Key = false,
+	State = false,
+	Hidden = false,
+	AttemptsRemaining = false,
+	CreatedTime = false,
+	UpdatedTime = false,
+	Version = false,
+	CompressedValue = false,
+	StateChanged = false,
+	Saving = false,
+	Saved = false,
+	AttemptsChanged = false,
+	ProcessQueue = false,
+}
+
+
+
+
+-- Functions
+OpenTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	local response, responseData = Lock(dataStore, 3)
+	if response ~= "Success" then for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
+	local response, responseData = Load(dataStore, 3)
+	if response ~= "Success" then Unlock(dataStore, 3) for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
+	dataStore.__public.State = true
+	if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then
+		StartSaveTimer(proxy)
+		StartLockTimer(proxy)
+	end
+	for thread, template in runningTask:Iterate() do
+		if dataStore.__public.Value == nil then
+			dataStore.__public.Value = Clone(template)
+		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
+			Reconcile(dataStore.__public.Value, template)
+		end
+		task.defer(thread, response)
+	end
+	if dataStore.ProcessingQueue == false and dataStore.__public.ProcessQueue.Connections > 0 then task.defer(ProcessQueue, proxy) end
+	dataStore.__public.StateChanged:Fire(true, proxy)
+end
+
+ReadTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.__public.State == true then for thread in runningTask:Iterate() do task.defer(thread, "State", "Open") end return end
+	local response, responseData = Load(dataStore, 3)
+	if response ~= "Success" then for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
+	for thread, template in runningTask:Iterate() do
+		if dataStore.__public.Value == nil then
+			dataStore.__public.Value = Clone(template)
+		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
+			Reconcile(dataStore.__public.Value, template)
+		end
+		task.defer(thread, response)
+	end
+end
+
+LockTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	local attemptsRemaining = dataStore.__public.AttemptsRemaining
+	local response, responseData = Lock(dataStore, 3)
+	if response ~= "Success" then dataStore.__public.AttemptsRemaining -= 1 end
+	if dataStore.__public.AttemptsRemaining ~= attemptsRemaining then dataStore.__public.AttemptsChanged:Fire(dataStore.__public.AttemptsRemaining, proxy) end
+	if dataStore.__public.AttemptsRemaining > 0 then
+		if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then StartLockTimer(proxy) end
+	else
+		dataStore.__public.State = false
+		StopLockTimer(dataStore)
+		StopSaveTimer(dataStore)
+		if dataStore.__public.SaveOnClose == true then Save(proxy, 3) end
+		Unlock(dataStore, 3)
+		dataStore.__public.StateChanged:Fire(false, proxy)
+	end
+	for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
+end
+	
+SaveTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.__public.State == false then for thread in runningTask:Iterate() do task.defer(thread, "State", "Closed") end return end
+	StopSaveTimer(dataStore)
+	runningTask:End()
+	local response, responseData = Save(proxy, 3)
+	if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then StartSaveTimer(proxy) end
+	for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
+end
+
+CloseTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.__public.State == false then for thread in runningTask:Iterate() do task.defer(thread, "Success") end return end
+	dataStore.__public.State = false
+	local response, responseData = nil, nil
+	if dataStore.__public.SaveOnClose == true then response, responseData = Save(proxy, 3) end
+	Unlock(dataStore, 3)
+	dataStore.__public.StateChanged:Fire(false, proxy)
+	if response == "Saved" then
+		for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
+	else
+		for thread in runningTask:Iterate() do task.defer(thread, "Success") end
+	end
+end
+
+DestroyTask = function(runningTask, proxy)
+	local dataStore = getmetatable(proxy)
+	local response, responseData = nil, nil
+	if dataStore.__public.State == false then
+		dataStore.__public.State = nil
+	else
+		dataStore.__public.State = nil
+		if dataStore.__public.SaveOnClose == true then response, responseData = Save(proxy, 3) end
+		Unlock(dataStore, 3)
+	end
+	dataStore.__public.StateChanged:Fire(nil, proxy)
+	dataStore.__public.StateChanged:DisconnectAll()
+	dataStore.__public.Saving:DisconnectAll()
+	dataStore.__public.Saved:DisconnectAll()
+	dataStore.__public.AttemptsChanged:DisconnectAll()
+	dataStore.__public.ProcessQueue:DisconnectAll()
+	bindToClose[dataStore.__public.UniqueId] = nil
+	if response == "Saved" then
+		for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
+	else
+		for thread in runningTask:Iterate() do task.defer(thread, "Success") end
+	end
+end
+
+Lock = function(dataStore, attempts)
+	local success, value, id, lockTime, lockInterval, lockAttempts = nil, nil, nil, nil, dataStore.__public.LockInterval, dataStore.__public.LockAttempts
+	for i = 1, attempts do
+		if i > 1 then task.wait(1) end
+		lockTime = os.clock()
+		success, value = pcall(dataStore.MemoryStore.UpdateAsync, dataStore.MemoryStore, "Id", function(value) id = value return if id == nil or id == dataStore.__public.UniqueId then dataStore.__public.UniqueId else nil end, lockInterval * lockAttempts + 30)
+		if success == true then break end
+	end
+	if success == false then return "Error", value end
+	if value == nil then return "Locked", id end
+	dataStore.LockTime = lockTime + lockInterval * lockAttempts
+	dataStore.ActiveLockInterval = lockInterval
+	dataStore.__public.AttemptsRemaining = lockAttempts
+	return "Success"
+end
+
+Unlock = function(dataStore, attempts)
+	local success, value, id = nil, nil, nil
+	for i = 1, attempts do
+		if i > 1 then task.wait(1) end
+		success, value = pcall(dataStore.MemoryStore.UpdateAsync, dataStore.MemoryStore, "Id", function(value) id = value return if id == dataStore.__public.UniqueId then dataStore.__public.UniqueId else nil end, 0)
+		if success == true then break end
+	end
+	if success == false then return "Error", value end
+	if value == nil and id ~= nil then return "Locked", id end
+	return "Success"
+end
+
+Load = function(dataStore, attempts)
+	local success, value, info = nil, nil, nil
+	for i = 1, attempts do
+		if i > 1 then task.wait(1) end
+		success, value, info = pcall(dataStore.DataStore.GetAsync, dataStore.DataStore, dataStore.__public.Key)
+		if success == true then break end
+	end
+	if success == false then return "Error", value end
+	if info == nil then
+		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = {}, {}, 0, 0, ""
+	else
+		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = info:GetMetadata(), info:GetUserIds(), info.CreatedTime, info.UpdatedTime, info.Version
+	end
+	if type(dataStore.__public.Metadata.Compress) ~= "table" then
+		dataStore.__public.Value = value
+	else
+		dataStore.__public.CompressedValue = value
+		local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
+		dataStore.__public.Value = Decompress(dataStore.__public.CompressedValue, decimals)
+	end
+	return "Success"
+end
+
+Save = function(proxy, attempts)
+	local dataStore = getmetatable(proxy)
+	local deltaTime = os.clock() - dataStore.SaveTime
+	if deltaTime < dataStore.__public.SaveDelay then task.wait(dataStore.__public.SaveDelay - deltaTime) end
+	dataStore.__public.Saving:Fire(dataStore.__public.Value, proxy)
+	local success, value, info = nil, nil, nil
+	if dataStore.__public.Value == nil then
+		for i = 1, attempts do
+			if i > 1 then task.wait(1) end
+			success, value, info = pcall(dataStore.DataStore.RemoveAsync, dataStore.DataStore, dataStore.__public.Key)
+			if success == true then break end
+		end
+		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
+		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = {}, {}, 0, 0, ""
+	elseif type(dataStore.__public.Metadata.Compress) ~= "table" then
+		dataStore.Options:SetMetadata(dataStore.__public.Metadata)
+		for i = 1, attempts do
+			if i > 1 then task.wait(1) end
+			success, value = pcall(dataStore.DataStore.SetAsync, dataStore.DataStore, dataStore.__public.Key, dataStore.__public.Value, dataStore.__public.UserIds, dataStore.Options)
+			if success == true then break end
+		end	
+		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
+		dataStore.__public.Version = value
+	else
+		local level = dataStore.__public.Metadata.Compress.Level or 2
+		local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
+		local safety = if dataStore.__public.Metadata.Compress.Safety == nil then true else dataStore.__public.Metadata.Compress.Safety
+		dataStore.__public.CompressedValue = Compress(dataStore.__public.Value, level, decimals, safety)
+		dataStore.Options:SetMetadata(dataStore.__public.Metadata)
+		for i = 1, attempts do
+			if i > 1 then task.wait(1) end
+			success, value = pcall(dataStore.DataStore.SetAsync, dataStore.DataStore, dataStore.__public.Key, dataStore.__public.CompressedValue, dataStore.__public.UserIds, dataStore.Options)
+			if success == true then break end
+		end
+		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
+		dataStore.Version = value
+	end
+	dataStore.SaveTime = os.clock()
+	dataStore.__public.Saved:Fire("Saved", dataStore.__public.Value, proxy)
+	return "Saved", dataStore.__public.Value
+end
+
+StartSaveTimer = function(proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.SaveThread ~= nil then task.cancel(dataStore.SaveThread) end
+	if dataStore.__public.SaveInterval == 0 then return end
+	dataStore.SaveThread = task.delay(dataStore.__public.SaveInterval, SaveTimerEnded, proxy)
+end
+
+StopSaveTimer = function(dataStore)
+	if dataStore.SaveThread == nil then return end
+	task.cancel(dataStore.SaveThread)
+	dataStore.SaveThread = nil
+end
+
+SaveTimerEnded = function(proxy)
+	local dataStore = getmetatable(proxy)
+	dataStore.SaveThread = nil
+	if dataStore.TaskManager:FindLast(SaveTask) ~= nil then return end
+	dataStore.TaskManager:InsertBack(SaveTask, proxy)
+end
+
+StartLockTimer = function(proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.LockThread ~= nil then task.cancel(dataStore.LockThread) end
+	local startTime = dataStore.LockTime - dataStore.__public.AttemptsRemaining * dataStore.ActiveLockInterval
+	dataStore.LockThread = task.delay(startTime - os.clock() + dataStore.ActiveLockInterval, LockTimerEnded, proxy)
+end
+
+StopLockTimer = function(dataStore)
+	if dataStore.LockThread == nil then return end
+	task.cancel(dataStore.LockThread)
+	dataStore.LockThread = nil
+end
+
+LockTimerEnded = function(proxy)
+	local dataStore = getmetatable(proxy)
+	dataStore.LockThread = nil
+	if dataStore.TaskManager:FindFirst(LockTask) ~= nil then return end
+	dataStore.TaskManager:InsertBack(LockTask, proxy)
+end
+
+ProcessQueue = function(proxy)
+	local dataStore = getmetatable(proxy)
+	if dataStore.__public.State ~= true then return end
+	if dataStore.__public.ProcessQueue.Connections == 0 then return end
+	if dataStore.ProcessingQueue == true then return end
+	dataStore.ProcessingQueue = true
+	while true do
+		local success, values, id = pcall(dataStore.Queue.ReadAsync, dataStore.Queue, 100, false, 30)
+		if dataStore.__public.State ~= true then break end
+		if dataStore.__public.ProcessQueue.Connections == 0 then break end
+		if success == true and id ~= nil then dataStore.__public.ProcessQueue:Fire(id, values, proxy) end
+	end
+	dataStore.ProcessingQueue = false
+end
+
+SignalConnected = function(connected, signal)
+	if connected == false then return end
+	ProcessQueue(signal.DataStore)
+end
+
+Clone = function(original)
+	if type(original) ~= "table" then return original end
+	local clone = {}
+	for index, value in original do clone[index] = Clone(value) end
+	return clone
+end
+
+Reconcile = function(target, template)	
+	for index, value in template do
+		if type(index) == "number" then continue end
+		if target[index] == nil then
+			target[index] = Clone(value)
+		elseif type(target[index]) == "table" and type(value) == "table" then
+			Reconcile(target[index], value)
+		end
+	end
+end
+
+Compress = function(value, level, decimals, safety)
+	local data = {}
+	if type(value) == "boolean" then
+		table.insert(data, if value == false then "-" else "+")
+	elseif type(value) == "number" then
+		if value % 1 == 0 then
+			table.insert(data, if value < 0 then "<" .. Encode(-value) else ">" .. Encode(value))
+		else
+			table.insert(data, if value < 0 then "(" .. Encode(math.round(-value * decimals)) else ")" .. Encode(math.round(value * decimals)))
+		end
+	elseif type(value) == "string" then
+		if safety == true then value = value:gsub("", " ") end
+		table.insert(data, "#" .. value .. "")
+	elseif type(value) == "table" then
+		if #value > 0 and level == 2 then
+			table.insert(data, "|")
+			for i = 1, #value do table.insert(data, Compress(value[i], level, decimals, safety)) end
+			table.insert(data, "")
+		else
+			table.insert(data, "*")
+			for key, tableValue in value do table.insert(data, Compress(key, level, decimals, safety)) table.insert(data, Compress(tableValue, level, decimals, safety)) end
+			table.insert(data, "")
+		end
+	end
+	return table.concat(data)
+end
+
+Decompress = function(value, decimals, index)	
+	local i1, i2, dataType, data = value:find("([-+<>()#|*])", index or 1)
+	if dataType == "-" then
+		return false, i2
+	elseif dataType == "+" then
+		return true, i2
+	elseif dataType == "<" then
+		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
+		return -Decode(data), i2
+	elseif dataType == ">" then
+		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
+		return Decode(data), i2
+	elseif dataType == "(" then
+		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
+		return -Decode(data) / decimals, i2
+	elseif dataType == ")" then
+		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
+		return Decode(data) / decimals, i2
+	elseif dataType == "#" then
+		i1, i2, data = value:find("(.-)", i2 + 1)
+		return data, i2
+	elseif dataType == "|" then
+		local array = {}
+		while true do
+			data, i2 = Decompress(value, decimals, i2 + 1)
+			if data == nil then break end
+			table.insert(array, data)
+		end
+		return array, i2
+	elseif dataType == "*" then
+		local dictionary, key = {}, nil
+		while true do
+			key, i2 = Decompress(value, decimals, i2 + 1)
+			if key == nil then break end
+			data, i2 = Decompress(value, decimals, i2 + 1)
+			dictionary[key] = data
+		end
+		return dictionary, i2
+	end
+	return nil, i2
+end
+
+Encode = function(value)
+	if value == 0 then return "0" end
+	local data = {}
+	while value > 0 do
+		table.insert(data, characters[value % base])
+		value = math.floor(value / base)
+	end
+	return table.concat(data)
+end
+
+Decode = function(value)
+	local number, power, data = 0, 1, {string.byte(value, 1, #value)}	
+	for i, code in data do
+		number += bytes[code] * power
+		power *= base
+	end
+	return number
+end
+
+BindToClose = function()
+	active = false
+	for uniqueId, proxy in bindToClose do
+		local dataStore = getmetatable(proxy)
+		if dataStore.__public.State == nil then continue end
+		dataStores[dataStore.__public.Id] = nil
+		StopLockTimer(dataStore)
+		StopSaveTimer(dataStore)
+		if dataStore.TaskManager:FindFirst(DestroyTask) == nil then dataStore.TaskManager:InsertBack(DestroyTask, proxy) end
+	end
+	while next(bindToClose) ~= nil do task.wait() end
+end
+
+
+
+
+-- Events
+game:BindToClose(BindToClose)
+
+
+
+
+return table.freeze(Constructor) :: Constructor]]></ProtectedString>
+				<int64 name="SourceAssetId">11671168253</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff6</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBX07B9DFCB63924B2EAAD56F5DD0E28325">
+				<Properties>
+					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Proxy</string>
+					<string name="ScriptGuid">{DF6627EE-14A8-426E-BBAB-1CDC55EAF55A}</string>
+					<ProtectedString name="Source"><![CDATA[-- Variables
+local Constructor = {}
+local Index, NewIndex
+
+
+
+
+-- Types
+export type Constructor = {
+	new: (data: {[any]: any}, public: {[any]: any}?) -> ({}, {[any]: any}),
+}
+
+
+
+
+-- Constructor
+Constructor.new = function(data, public)
+	local proxy = newproxy(true)
+	local metatable = getmetatable(proxy)
+	for index, value in data do metatable[index] = value end
+	metatable.__index = Index
+	metatable.__newindex = NewIndex
+	metatable.__public = public or {}
+	return proxy, metatable
+end
+
+
+
+
+-- Functions
+Index = function(proxy, index)
+	local metatable = getmetatable(proxy)
+	local public = metatable.__public[index]
+	return if public == nil then metatable.__shared[index] else public
+end
+
+NewIndex = function(proxy, index, value)
+	local metatable = getmetatable(proxy)
+	local set = metatable.__set[index]
+	if set == nil then
+		metatable.__public[index] = value
+	elseif set == false then
+		error("Attempt to modify a readonly value", 2)
+	else
+		set(proxy, metatable, value)
+	end
+end
+
+
+
+
+return table.freeze(Constructor) :: Constructor]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff7</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBX84EF99B45AC2428E97511130297D6B37">
+				<Properties>
+					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Signal</string>
+					<string name="ScriptGuid">{F76F0CE0-6883-4079-B9BB-F720B8869CBB}</string>
+					<ProtectedString name="Source"><![CDATA[-- Variables
+local Proxy = require(script.Parent.Proxy)
+local Constructor, Signal, Connection = {}, {}, {}
+local Thread, Call
+local threads = {}
+
+
+
+
+-- Types
+export type Constructor = {
+	new: () -> Signal,
+}
+
+export type Signal = {
+	[any]: any,
+	Connections: number,
+	Connected: (connected: boolean, signal: Signal) -> ()?,
+	Connect: (self: Signal, func: (...any) -> (), ...any) -> Connection,
+	Once: (self: Signal, func: (...any) -> (), ...any) -> Connection,
+	Wait: (self: Signal, ...any) -> ...any,
+	Fire: (self: Signal, ...any) -> (),
+	FastFire: (self: Signal, ...any) -> (),
+	DisconnectAll: (self: Signal) -> (),
+}
+
+export type Connection = {
+	[any]: any,
+	Signal: Signal?,
+	Disconnect: (self: Connection) -> (),
+}
+
+
+
+
+-- Constructor
+Constructor.new = function()
+	local proxy, signal = Proxy.new(Signal, {Connections = 0})
+	return proxy
+end
+
+
+
+
+-- Signal
+Signal.__tostring = function(proxy)
+	return "Signal"
+end
+
+Signal.__shared = {
+	Connect = function(proxy, func, ...)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
+		if type(func) ~= "function" then error("Attempt to Connect failed: Passed value is not a function", 3) end
+		signal.__public.Connections += 1
+		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
+		connection.FunctionOrThread = func
+		connection.Parameters = if ... == nil then nil else {...}
+		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
+		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
+		return connectionProxy
+	end,
+	Once = function(proxy, func, ...)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
+		if type(func) ~= "function" then error("Attempt to Connect failed: Passed value is not a function", 3) end
+		signal.__public.Connections += 1
+		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
+		connection.FunctionOrThread = func
+		connection.Once = true
+		connection.Parameters = if ... == nil then nil else {...}
+		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
+		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
+		return connectionProxy
+	end,
+	Wait = function(proxy, ...)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
+		signal.__public.Connections += 1
+		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
+		connection.FunctionOrThread = coroutine.running()
+		connection.Once = true
+		connection.Parameters = if ... == nil then nil else {...}
+		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
+		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
+		return coroutine.yield()
+	end,
+	Fire = function(proxy, ...)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to connect failed: Passed value is not a Signal", 3) end
+		local connection = signal.First
+		while connection ~= nil do
+			if connection.Once == true then
+				signal.__public.Connections -= 1
+				connection.__public.Signal = nil
+				if signal.First == connection then signal.First = connection.Next end
+				if signal.Last == connection then signal.Last = connection.Previous end
+				if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
+				if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
+				if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
+			end
+			if type(connection.FunctionOrThread) == "thread" then
+				if connection.Parameters == nil then
+					task.spawn(connection.FunctionOrThread, ...)
+				else
+					local parameters = {...}
+					task.spawn(connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
+				end
+			else
+				local thread = table.remove(threads)
+				if thread == nil then thread = coroutine.create(Thread) coroutine.resume(thread) end
+				if connection.Parameters == nil then
+					task.spawn(thread, thread, connection.FunctionOrThread, ...)
+				else
+					local parameters = {...}
+					task.spawn(thread, thread, connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
+				end
+			end
+			connection = connection.Next
+		end
+	end,
+	FastFire = function(proxy, ...)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to connect failed: Passed value is not a Signal", 3) end
+		local connection = signal.First
+		while connection ~= nil do
+			if connection.Once == true then
+				signal.__public.Connections -= 1
+				connection.__public.Signal = nil
+				if signal.First == connection then signal.First = connection.Next end
+				if signal.Last == connection then signal.Last = connection.Previous end
+				if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
+				if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
+				if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
+			end
+			if type(connection.FunctionOrThread) == "thread" then
+				if connection.Parameters == nil then
+					coroutine.resume(connection.FunctionOrThread, ...)
+				else
+					local parameters = {...}
+					coroutine.resume(connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
+				end
+			else
+				if connection.Parameters == nil then
+					connection.FunctionOrThread(...)
+				else
+					local parameters = {...}
+					connection.FunctionOrThread(table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
+				end
+			end
+			connection = connection.Next
+		end
+	end,
+	DisconnectAll = function(proxy)
+		local signal = getmetatable(proxy)
+		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
+		local connection = signal.First
+		if connection == nil then return end
+		while connection ~= nil do
+			connection.__public.Signal = nil
+			if type(connection.FunctionOrThread) == "thread" then task.cancel(connection.FunctionOrThread) end
+			connection = connection.Next
+		end
+		if signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
+		signal.__public.Connections, signal.First, signal.Last = 0, nil, nil
+	end,
+}
+
+Signal.__set = {
+	Connections = false,
+}
+
+
+
+
+-- Connection
+Connection.__tostring = function(proxy)
+	return "Connection"
+end
+
+Connection.__shared = {
+	Disconnect = function(proxy)
+		local connection = getmetatable(proxy)
+		if type(connection) ~= "table" or connection.__shared ~= Connection.__shared then error("Attempt to Disconnect failed: Passed value is not a Connection", 3) end
+		local signal =  getmetatable(connection.__public.Signal)
+		if signal == nil then return end
+		signal.__public.Connections -= 1
+		connection.__public.Signal = nil
+		if signal.First == connection then signal.First = connection.Next end
+		if signal.Last == connection then signal.Last = connection.Previous end
+		if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
+		if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
+		if type(connection.FunctionOrThread) == "thread" then task.cancel(connection.FunctionOrThread) end
+		if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
+	end,
+}
+
+Connection.__set = {
+	Signal = false,
+}
+
+
+
+
+-- Functions
+Thread = function()
+	while true do Call(coroutine.yield()) end
+end
+
+Call = function(thread, func, ...)
+	func(...)
+	if #threads >= 16 then return end
+	table.insert(threads, thread)
+end
+
+
+
+
+return table.freeze(Constructor) :: Constructor]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff8</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXB48D324A4A7E47399B187E14ABFB6278">
+				<Properties>
+					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">SynchronousTaskManager</string>
+					<string name="ScriptGuid">{30CB454B-B536-44CD-BBEB-BAECABBAE0FE}</string>
+					<ProtectedString name="Source"><![CDATA[-- Variables
+local Proxy = require(script.Parent.Proxy)
+local Constructor, TaskManager, SynchronousTask, RunningTask = {}, {}, {}, {}
+local Run
+
+
+
+
+-- Types
+export type Constructor = {
+	new: () -> TaskManager,
+}
+
+export type TaskManager = {
+	[any]: any,
+	Enabled: boolean,
+	Tasks: number,
+	Running: SynchronousTask?,
+	InsertFront: (self: TaskManager, func: (RunningTask, ...any) -> (), ...any) -> SynchronousTask,
+	InsertBack: (self: TaskManager, func: (RunningTask, ...any) -> (), ...any) -> SynchronousTask,
+	FindFirst: (self: TaskManager, func: (RunningTask, ...any) -> ()) -> (SynchronousTask?, number?),
+	FindLast: (self: TaskManager, func: (RunningTask, ...any) -> ()) -> (SynchronousTask?, number?),
+	CancelAll: (self: TaskManager, func: (RunningTask, ...any) -> ()?) -> (),
+}
+
+export type SynchronousTask = {
+	[any]: any,
+	TaskManager: TaskManager?,
+	Running: boolean,
+	Wait: (self: SynchronousTask, ...any) -> ...any,
+	Cancel: (self: SynchronousTask) -> (),
+}
+
+export type RunningTask = {
+	Next: (self: RunningTask) -> (thread, ...any),
+	Iterate: (self: RunningTask) -> ((self: RunningTask) -> (thread, ...any), RunningTask),
+	End: (self: RunningTask) -> (),
+}
+
+
+
+
+-- Constructor
+Constructor.new = function()
+	local proxy, taskManager = Proxy.new(TaskManager, {Enabled = true, Tasks = 0})
+	taskManager.Active = false
+	return proxy
+end
+
+
+
+
+-- TaskManager
+TaskManager.__tostring = function(proxy)
+	return "Task Manager"
+end
+
+TaskManager.__shared = {
+	InsertFront = function(proxy, func, ...)
+		local taskManager = getmetatable(proxy)
+		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to InsertFront failed: Passed value is not a Task Manager", 3) end
+		if type(func) ~= "function" then error("Attempt to InsertFront failed: Passed value is not a function", 3) end
+		taskManager.__public.Tasks += 1
+		local proxy, synchronousTask = Proxy.new(SynchronousTask, {TaskManager = proxy, Running = false})
+		synchronousTask.Active = true
+		synchronousTask.Function = func
+		synchronousTask.Parameters = if ... == nil then nil else {...}
+		if taskManager.First == nil then taskManager.First, taskManager.Last = proxy, proxy else synchronousTask.Next, getmetatable(taskManager.First).Previous, taskManager.First = taskManager.First, proxy, proxy end
+		if taskManager.Active == false and taskManager.__public.Enabled == true then taskManager.Active = true task.defer(Run, taskManager) end
+		return proxy
+	end,
+	InsertBack = function(proxy, func, ...)
+		local taskManager = getmetatable(proxy)
+		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to InsertBack failed: Passed value is not a Task Manager", 3) end
+		if type(func) ~= "function" then error("Attempt to InsertBack failed: Passed value is not a function", 3) end
+		taskManager.__public.Tasks += 1
+		local proxy, synchronousTask = Proxy.new(SynchronousTask, {TaskManager = proxy, Running = false})
+		synchronousTask.Active = true
+		synchronousTask.Function = func
+		synchronousTask.Parameters = if ... == nil then nil else {...}
+		if taskManager.Last == nil then taskManager.First, taskManager.Last = proxy, proxy else synchronousTask.Previous, getmetatable(taskManager.Last).Next, taskManager.Last = taskManager.Last, proxy, proxy end
+		if taskManager.Active == false and taskManager.__public.Enabled == true then taskManager.Active = true task.defer(Run, taskManager) end
+		return proxy
+	end,
+	FindFirst = function(proxy, func)
+		local taskManager = getmetatable(proxy)
+		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindFirst failed: Passed value is not a Task Manager", 3) end
+		if type(func) ~= "function" then error("Attempt to FindFirst failed: Passed value is not a function", 3) end
+		proxy = taskManager.__public.Running
+		if proxy ~= nil then
+			local synchronousTask = getmetatable(proxy)
+			if synchronousTask.Active == true and synchronousTask.Function == func then return proxy, 0 end
+		end
+		local index = 1
+		proxy = taskManager.First
+		while proxy ~= nil do
+			local synchronousTask = getmetatable(proxy)
+			if synchronousTask.Function == func then return proxy, index end
+			proxy = synchronousTask.Next
+			index += 1
+		end
+	end,
+	FindLast = function(proxy, func)
+		local taskManager = getmetatable(proxy)
+		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindLast failed: Passed value is not a Task Manager", 3) end
+		if type(func) ~= "function" then error("Attempt to FindFirst failed: Passed value is not a function", 3) end
+		local index = if taskManager.__public.Running == nil then taskManager.__public.Tasks else taskManager.__public.Tasks - 1
+		proxy = taskManager.Last
+		while proxy ~= nil do
+			local synchronousTask = getmetatable(proxy)
+			if synchronousTask.Function == func then return proxy, index end
+			proxy = synchronousTask.Previous
+			index -= 1
+		end
+		proxy = taskManager.__public.Running
+		if proxy ~= nil then
+			local synchronousTask = getmetatable(proxy)
+			if synchronousTask.Active == true and synchronousTask.Function == func then return proxy, 0 end
+		end
+	end,
+	CancelAll =  function(proxy, func)
+		local taskManager = getmetatable(proxy)
+		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindLast failed: Passed value is not a Task Manager", 3) end
+		if func == nil then
+			local proxy = taskManager.First
+			taskManager.First = nil
+			taskManager.Last = nil
+			if taskManager.__public.Running == nil then taskManager.__public.Tasks = 0 else taskManager.__public.Tasks = 1 end
+			while proxy ~= nil do
+				local synchronousTask = getmetatable(proxy)
+				proxy, synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = synchronousTask.Next, false, nil, nil, nil
+			end
+		else
+			if type(func) ~= "function" then error("Attempt to CancelAll failed: Passed value is not nil or function", 3) end
+			local proxy = taskManager.First
+			while proxy ~= nil do
+				local synchronousTask = getmetatable(proxy)
+				if synchronousTask.Function == func then
+					taskManager.__public.Tasks -= 1
+					if taskManager.First == proxy then taskManager.First = synchronousTask.Next end
+					if taskManager.Last == proxy then taskManager.Last = synchronousTask.Previous end
+					if synchronousTask.Previous ~= nil then getmetatable(synchronousTask.Previous).Next = synchronousTask.Next end
+					if synchronousTask.Next ~= nil then getmetatable(synchronousTask.Next).Previous = synchronousTask.Previous end
+					proxy, synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = synchronousTask.Next, false, nil, nil, nil
+				else
+					proxy = synchronousTask.Next
+				end
+			end
+		end
+	end,
+}
+
+TaskManager.__set = {
+	Enabled = function(proxy, taskManager, value)
+		if type(value) ~= "boolean" then error("Attempt to set Enabled failed: Passed value is not a boolean", 3) end
+		taskManager.__public.Enabled = value
+		if value == false or taskManager.First == nil or taskManager.Active == true then return end 
+		taskManager.Active = true
+		task.defer(Run, taskManager)
+	end,
+	Tasks = false,
+	Running = false,
+}
+
+
+
+
+-- SynchronousTask
+SynchronousTask.__tostring = function(proxy)
+	return "Synchronous Task"
+end
+
+SynchronousTask.__shared = {
+	Wait = function(proxy, ...)
+		local synchronousTask = getmetatable(proxy)
+		if type(synchronousTask) ~= "table" or synchronousTask.__shared ~= SynchronousTask.__shared then error("Attempt to Wait failed: Passed value is not a Synchronous Task", 3) end
+		if synchronousTask.Active == false then return end
+		local waiter = {coroutine.running(), ...}
+		if synchronousTask.Last == nil then synchronousTask.First, synchronousTask.Last = waiter, waiter else synchronousTask.Last.Next, synchronousTask.Last = waiter, waiter end
+		return coroutine.yield()
+	end,
+	Cancel = function(proxy)
+		local synchronousTask = getmetatable(proxy)
+		if type(synchronousTask) ~= "table" or synchronousTask.__shared ~= SynchronousTask.__shared then error("Attempt to Cancel failed: Passed value is not a Synchronous Task", 3) end
+		if synchronousTask.__public.Running == true then return false end
+		local taskManager = synchronousTask.__public.TaskManager
+		if taskManager == nil then return false end
+		taskManager = getmetatable(taskManager)
+		taskManager.__public.Tasks -= 1
+		if taskManager.First == proxy then taskManager.First = synchronousTask.Next end
+		if taskManager.Last == proxy then taskManager.Last = synchronousTask.Previous end
+		if synchronousTask.Previous ~= nil then getmetatable(synchronousTask.Previous).Next = synchronousTask.Next end
+		if synchronousTask.Next ~= nil then getmetatable(synchronousTask.Next).Previous = synchronousTask.Previous end
+		synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = false, nil, nil, nil
+		return true
+	end,
+}
+
+SynchronousTask.__set = {
+	TaskManager = false,
+	Running = false,
+}
+
+
+
+
+-- RunningTask
+RunningTask.__tostring = function(proxy)
+	return "Running Task"
+end
+
+RunningTask.__shared = {
+	Next = function(proxy)
+		local runningTask = getmetatable(proxy)
+		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to Next failed: Passed value is not a Running Task", 3) end
+		local synchronousTask = runningTask.SynchronousTask
+		local waiter = synchronousTask.First
+		if waiter == nil then return end
+		synchronousTask.First = waiter.Next
+		if synchronousTask.Last == waiter then synchronousTask.Last = nil end
+		return table.unpack(waiter)
+	end,
+	Iterate = function(proxy)
+		local runningTask = getmetatable(proxy)
+		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to Iterate failed: Passed value is not a Running Task", 3) end
+		return runningTask.__shared.Next, proxy
+	end,
+	End = function(proxy)
+		local runningTask = getmetatable(proxy)
+		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to End failed: Passed value is not a Running Task", 3) end
+		runningTask.SynchronousTask.Active = false
+	end,
+}
+
+RunningTask.__set = {
+
+}
+
+
+
+
+-- Functions
+Run = function(taskManager)
+	if taskManager.__public.Enabled == false then taskManager.Active = false return end
+	local proxy = taskManager.First
+	if proxy == nil then taskManager.Active = false return end
+	local synchronousTask = getmetatable(proxy)
+	taskManager.__public.Running = proxy
+	taskManager.First = synchronousTask.Next
+	synchronousTask.__public.Running = true
+	if synchronousTask.Next == nil then taskManager.Last = nil else getmetatable(synchronousTask.Next).Previous = nil synchronousTask.Next = nil end
+	local proxy, runningTask = Proxy.new(RunningTask)
+	runningTask.SynchronousTask = synchronousTask
+	if synchronousTask.Parameters == nil then synchronousTask.Function(proxy) else synchronousTask.Function(proxy, table.unpack(synchronousTask.Parameters)) end
+	taskManager.__public.Tasks -= 1
+	taskManager.__public.Running = nil
+	synchronousTask.Active = false
+	synchronousTask.__public.TaskManager = nil
+	synchronousTask.__public.Running = false
+	if taskManager.__public.Enabled == false or taskManager.First == nil then taskManager.Active = false else task.defer(Run, taskManager) end 
+end
+
+
+
+
+return table.freeze(Constructor) :: Constructor]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff9</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBX78F9A37887184BA49B7E8B3D3F5B0566">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Services</string>
+				<string name="ScriptGuid">{8FE39420-29BD-4E23-896F-52E5AF05E4FB}</string>
+				<ProtectedString name="Source"><![CDATA[return {
+    players = game:GetService("Players"),
+    dss = game:GetService("DataStoreService"),
+    mss = game:GetService("MemoryStoreService"),
+    https = game:GetService("HttpService"),
+    sss = game:GetService("ServerScriptService"),
+    ss = game:GetService("ServerStorage"),
+    rs = game:GetService("ReplicatedStorage"),
+    ts = game:GetService("TweenService")
+}]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">15fd8e44855dd92905ff700b00003ef2</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="TextLabel" referent="RBXF07A7E75DB374C3CAF80CD731753FB20">
+			<Properties>
+				<bool name="Active">false</bool>
+				<Vector2 name="AnchorPoint">
+					<X>0.5</X>
+					<Y>0.5</Y>
+				</Vector2>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="AutoLocalize">true</bool>
+				<token name="AutomaticSize">0</token>
+				<Color3 name="BackgroundColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<float name="BackgroundTransparency">1</float>
+				<Color3 name="BorderColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<token name="BorderMode">0</token>
+				<int name="BorderSizePixel">0</int>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="ClipsDescendants">false</bool>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Draggable">false</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/JosefinSans.json</url></Family>
+					<Weight>400</Weight>
+					<Style>Normal</Style>
+				</Font>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<bool name="Interactable">true</bool>
+				<int name="LayoutOrder">0</int>
+				<float name="LineHeight">1</float>
+				<string name="LocalizationMatchIdentifier"></string>
+				<string name="LocalizationMatchedSourceText"></string>
+				<int name="MaxVisibleGraphemes">-1</int>
+				<string name="Name">Title</string>
+				<Ref name="NextSelectionDown">null</Ref>
+				<Ref name="NextSelectionLeft">null</Ref>
+				<Ref name="NextSelectionRight">null</Ref>
+				<Ref name="NextSelectionUp">null</Ref>
+				<UDim2 name="Position">
+					<XS>0.5</XS>
+					<XO>0</XO>
+					<YS>0.5</YS>
+					<YO>0</YO>
+				</UDim2>
+				<bool name="RichText">false</bool>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<float name="Rotation">0</float>
+				<bool name="Selectable">false</bool>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
+				<Ref name="SelectionImageObject">null</Ref>
+				<int name="SelectionOrder">0</int>
+				<UDim2 name="Size">
+					<XS>0.349999994</XS>
+					<XO>0</XO>
+					<YS>0.5</YS>
+					<YO>0</YO>
+				</UDim2>
+				<token name="SizeConstraint">0</token>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<string name="Text">SERVER LIST</string>
+				<Color3 name="TextColor3">
+					<R>0.615686297</R>
+					<G>0.615686297</G>
+					<B>0.615686297</B>
+				</Color3>
+				<token name="TextDirection">0</token>
+				<bool name="TextScaled">false</bool>
+				<float name="TextSize">22</float>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<float name="TextStrokeTransparency">1</float>
+				<float name="TextTransparency">0</float>
+				<token name="TextTruncate">0</token>
+				<bool name="TextWrapped">false</bool>
+				<token name="TextXAlignment">2</token>
+				<token name="TextYAlignment">1</token>
+				<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003ee4</UniqueId>
+				<bool name="Visible">true</bool>
+				<int name="ZIndex">1</int>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="TimerService" referent="RBX9B876CFB2C3B427DAB2AFC9D9005DF6D">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TimerService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000030e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="SoundService" referent="6">
+		<Properties>
+			<token name="AmbientReverb">0</token>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<float name="DistanceFactor">3.32999992</float>
+			<float name="DopplerScale">1</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">SoundService</string>
+			<bool name="RespectFilteringEnabled">true</bool>
+			<float name="RolloffScale">1</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000030f</UniqueId>
+			<token name="VolumetricAudio">1</token>
+		</Properties>
+	</Item>
+	<Item class="VideoCaptureService" referent="RBXFA83DA0448EE4FACA4440B8F1E8A1014">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VideoCaptureService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000310</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="NonReplicatedCSGDictionaryService" referent="RBX3D70507E2B46444E9C00002EDD046AD2">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">NonReplicatedCSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000311</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CSGDictionaryService" referent="RBX156878ABACBC49BCBA16F7A372EE6DFA">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CSGDictionaryService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000312</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Chat" referent="RBXD2FF2BE584BB497682F7C82012B12662">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="BubbleChatEnabled">false</bool>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="LoadDefaultChat">true</bool>
+			<string name="Name">Chat</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000317</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Players" referent="RBX8640F7E3727E46908FF34A832C6B0E0C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="CharacterAutoLoads">true</bool>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<int name="MaxPlayersInternal">12</int>
+			<string name="Name">Players</string>
+			<int name="PreferredPlayersInternal">0</int>
+			<float name="RespawnTime">5</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000319</UniqueId>
+			<bool name="UseStrafingAnimations">false</bool>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedFirst" referent="RBX3D702604EC704A1C87D66FD1F11DB6EF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedFirst</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000031c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TweenService" referent="RBX58B4A05068A045C4999D3CB914DB49D1">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TweenService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000031e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="MaterialService" referent="RBXF7A1B29F289B48069C3840A5452C7674">
+		<Properties>
+			<string name="AsphaltName">Asphalt</string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<string name="BasaltName">Basalt</string>
+			<string name="BrickName">Brick</string>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<string name="CardboardName">Cardboard</string>
+			<string name="CarpetName">Carpet</string>
+			<string name="CeramicTilesName">CeramicTiles</string>
+			<string name="ClayRoofTilesName">ClayRoofTiles</string>
+			<string name="CobblestoneName">Cobblestone</string>
+			<string name="ConcreteName">Concrete</string>
+			<string name="CorrodedMetalName">CorrodedMetal</string>
+			<string name="CrackedLavaName">CrackedLava</string>
+			<bool name="DefinesCapabilities">false</bool>
+			<string name="DiamondPlateName">DiamondPlate</string>
+			<string name="FabricName">Fabric</string>
+			<string name="FoilName">Foil</string>
+			<string name="GlacierName">Glacier</string>
+			<string name="GraniteName">Granite</string>
+			<string name="GrassName">Grass</string>
+			<string name="GroundName">Ground</string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="IceName">Ice</string>
+			<string name="LeafyGrassName">LeafyGrass</string>
+			<string name="LeatherName">Leather</string>
+			<string name="LimestoneName">Limestone</string>
+			<string name="MarbleName">Marble</string>
+			<string name="MetalName">Metal</string>
+			<string name="MudName">Mud</string>
+			<string name="Name">MaterialService</string>
+			<string name="PavementName">Pavement</string>
+			<string name="PebbleName">Pebble</string>
+			<string name="PlasterName">Plaster</string>
+			<string name="PlasticName">Plastic</string>
+			<string name="RockName">Rock</string>
+			<string name="RoofShinglesName">RoofShingles</string>
+			<string name="RubberName">Rubber</string>
+			<string name="SaltName">Salt</string>
+			<string name="SandName">Sand</string>
+			<string name="SandstoneName">Sandstone</string>
+			<string name="SlateName">Slate</string>
+			<string name="SmoothPlasticName">SmoothPlastic</string>
+			<string name="SnowName">Snow</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000031f</UniqueId>
+			<bool name="Use2022MaterialsXml">false</bool>
+			<string name="WoodName">Wood</string>
+			<string name="WoodPlanksName">WoodPlanks</string>
+		</Properties>
+	</Item>
+	<Item class="TextChatService" referent="RBXBE3A1ACF0D07495D9F78F7863498EBCE">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="ChatTranslationFTUXShown">true</bool>
+			<bool name="ChatTranslationToggleEnabled">false</bool>
+			<token name="ChatVersion">0</token>
+			<bool name="CreateDefaultCommands">true</bool>
+			<bool name="CreateDefaultTextChannels">true</bool>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TextChatService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000320</UniqueId>
+		</Properties>
+		<Item class="ChatWindowConfiguration" referent="RBXC0D084C3258348D292FFBB1E424FE613">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2999999999999999889</double>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<float name="HeightScale">1</float>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<token name="HorizontalAlignment">1</token>
+				<string name="Name">ChatWindowConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c39</UniqueId>
+				<token name="VerticalAlignment">1</token>
+				<float name="WidthScale">1</float>
+			</Properties>
+		</Item>
+		<Item class="ChatInputBarConfiguration" referent="RBX6155FD0E54E7429CBE9064025F46C2ED">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="AutocompleteEnabled">true</bool>
+				<Color3 name="BackgroundColor3">
+					<R>0.0980392173</R>
+					<G>0.105882354</G>
+					<B>0.113725491</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.2000000000000000111</double>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<token name="KeyboardKeyCode">47</token>
+				<string name="Name">ChatInputBarConfiguration</string>
+				<Color3 name="PlaceholderColor3">
+					<R>0.698039234</R>
+					<G>0.698039234</G>
+					<B>0.698039234</B>
+				</Color3>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<Ref name="TargetTextChannel">null</Ref>
+				<Color3 name="TextColor3">
+					<R>1</R>
+					<G>1</G>
+					<B>1</B>
+				</Color3>
+				<int64 name="TextSize">14</int64>
+				<Color3 name="TextStrokeColor3">
+					<R>0</R>
+					<G>0</G>
+					<B>0</B>
+				</Color3>
+				<double name="TextStrokeTransparency">0.5</double>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c3a</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="BubbleChatConfiguration" referent="RBX41B674F9566A42F893BA59F9712B4A2E">
+			<Properties>
+				<string name="AdorneeName">HumanoidRootPart</string>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<Color3 name="BackgroundColor3">
+					<R>0.980392158</R>
+					<G>0.980392158</G>
+					<B>0.980392158</B>
+				</Color3>
+				<double name="BackgroundTransparency">0.10000000000000000555</double>
+				<float name="BubbleDuration">15</float>
+				<float name="BubblesSpacing">6</float>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Enabled">true</bool>
+				<token name="Font">18</token>
+				<Font name="FontFace">
+					<Family><url>rbxasset://fonts/families/GothamSSm.json</url></Family>
+					<Weight>500</Weight>
+					<Style>Normal</Style>
+					<CachedFaceId><url>rbxasset://fonts/GothamSSm-Medium.otf</url></CachedFaceId>
+				</Font>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Vector3 name="LocalPlayerStudsOffset">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="MaxBubbles">3</float>
+				<float name="MaxDistance">100</float>
+				<float name="MinimizeDistance">40</float>
+				<string name="Name">BubbleChatConfiguration</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<bool name="TailVisible">true</bool>
+				<Color3 name="TextColor3">
+					<R>0.223529413</R>
+					<G>0.23137255</G>
+					<B>0.239215687</B>
+				</Color3>
+				<int64 name="TextSize">16</int64>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c3b</UniqueId>
+				<float name="VerticalStudsOffset">0</float>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="PermissionsService" referent="RBX752B8EA089FA4B92B5DBAD38C460DB62">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PermissionsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000324</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PlayerEmulatorService" referent="RBXF693F0FFD7BE4F34B31E56B9D78D7808">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="CustomPoliciesEnabled">false</bool>
+			<bool name="DefinesCapabilities">false</bool>
+			<string name="EmulatedCountryCode"></string>
+			<string name="EmulatedGameLocale"></string>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PlayerEmulatorService</string>
+			<bool name="PlayerEmulationEnabled">false</bool>
+			<bool name="PseudolocalizationEnabled">false</bool>
+			<BinaryString name="SerializedEmulatedPolicyInfo"></BinaryString>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000326</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StudioData" referent="RBX16078B0CAB934D758139C7BFE6A3EC07">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<bool name="EnableScriptCollabByDefaultOnLoad">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StudioData</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000032a</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterPlayer" referent="7">
+		<Properties>
+			<bool name="AllowCustomAnimations">true</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutoJumpEnabled">true</bool>
+			<token name="AvatarJointUpgrade_Serialized">0</token>
+			<float name="CameraMaxZoomDistance">400</float>
+			<float name="CameraMinZoomDistance">0.5</float>
+			<token name="CameraMode">0</token>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<float name="CharacterJumpHeight">7.19999981</float>
+			<float name="CharacterJumpPower">50</float>
+			<float name="CharacterMaxSlopeAngle">89</float>
+			<bool name="CharacterUseJumpPower">true</bool>
+			<float name="CharacterWalkSpeed">16</float>
+			<token name="DeathStyle">0</token>
+			<bool name="DefinesCapabilities">false</bool>
+			<token name="DevCameraOcclusionMode">0</token>
+			<token name="DevComputerCameraMovementMode">0</token>
+			<token name="DevComputerMovementMode">0</token>
+			<token name="DevTouchCameraMovementMode">0</token>
+			<token name="DevTouchMovementMode">0</token>
+			<token name="EnableDynamicHeads">0</token>
+			<bool name="EnableMouseLockOption">true</bool>
+			<int64 name="GameSettingsAssetIDFace">0</int64>
+			<int64 name="GameSettingsAssetIDHead">0</int64>
+			<int64 name="GameSettingsAssetIDLeftArm">0</int64>
+			<int64 name="GameSettingsAssetIDLeftLeg">0</int64>
+			<int64 name="GameSettingsAssetIDPants">0</int64>
+			<int64 name="GameSettingsAssetIDRightArm">0</int64>
+			<int64 name="GameSettingsAssetIDRightLeg">0</int64>
+			<int64 name="GameSettingsAssetIDShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTeeShirt">0</int64>
+			<int64 name="GameSettingsAssetIDTorso">0</int64>
+			<token name="GameSettingsAvatar">1</token>
+			<token name="GameSettingsR15Collision">0</token>
+			<NumberRange name="GameSettingsScaleRangeBodyType">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHead">0.95 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeHeight">0.9 1.05 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeProportion">0 1 </NumberRange>
+			<NumberRange name="GameSettingsScaleRangeWidth">0.7 1 </NumberRange>
+			<float name="HealthDisplayDistance">100</float>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="LoadCharacterAppearance">true</bool>
+			<token name="LoadCharacterLayeredClothing">0</token>
+			<token name="LuaCharacterController">0</token>
+			<string name="Name">StarterPlayer</string>
+			<float name="NameDisplayDistance">100</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000032c</UniqueId>
+			<bool name="UserEmotesEnabled">true</bool>
+		</Properties>
+		<Item class="StarterPlayerScripts" referent="8">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterPlayerScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c34</UniqueId>
+			</Properties>
+		</Item>
+		<Item class="StarterCharacterScripts" referent="RBX67806A47640E40728A8027EC54FC8AF9">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">StarterCharacterScripts</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c38</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="StarterPack" referent="RBX547C9F4D380F487194BFF1BB99345DB6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterPack</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000032d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="StarterGui" referent="RBX862E1B3A856947AB9E2CAE47A22D08F7">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">StarterGui</string>
+			<bool name="ResetPlayerGuiOnSpawn">true</bool>
+			<token name="RtlTextSupport">0</token>
+			<token name="ScreenOrientation">2</token>
+			<bool name="ShowDevelopmentGui">true</bool>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000032e</UniqueId>
+			<token name="VirtualCursorMode">0</token>
+		</Properties>
+		<Item class="ScreenGui" referent="RBXD80C9CFF8CDF4F24B476229F1AA24FB8">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<bool name="AutoLocalize">true</bool>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="ClipToDeviceSafeArea">true</bool>
+				<bool name="DefinesCapabilities">false</bool>
+				<int name="DisplayOrder">0</int>
+				<bool name="Enabled">true</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">ServerList</string>
+				<bool name="ResetOnSpawn">true</bool>
+				<Ref name="RootLocalizationTable">null</Ref>
+				<token name="SafeAreaCompatibility">1</token>
+				<token name="ScreenInsets">2</token>
+				<token name="SelectionBehaviorDown">0</token>
+				<token name="SelectionBehaviorLeft">0</token>
+				<token name="SelectionBehaviorRight">0</token>
+				<token name="SelectionBehaviorUp">0</token>
+				<bool name="SelectionGroup">false</bool>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e27</UniqueId>
+				<token name="ZIndexBehavior">1</token>
+			</Properties>
+			<Item class="Frame" referent="RBX27B66DCC1B8F463F82DDD8B80C1F8C80">
+				<Properties>
+					<bool name="Active">false</bool>
+					<Vector2 name="AnchorPoint">
+						<X>0.5</X>
+						<Y>0.5</Y>
+					</Vector2>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<bool name="AutoLocalize">true</bool>
+					<token name="AutomaticSize">0</token>
+					<Color3 name="BackgroundColor3">
+						<R>0.137254909</R>
+						<G>0.137254909</G>
+						<B>0.137254909</B>
+					</Color3>
+					<float name="BackgroundTransparency">0.0500000007</float>
+					<Color3 name="BorderColor3">
+						<R>0</R>
+						<G>0</G>
+						<B>0</B>
+					</Color3>
+					<token name="BorderMode">0</token>
+					<int name="BorderSizePixel">0</int>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="ClipsDescendants">true</bool>
+					<bool name="DefinesCapabilities">false</bool>
+					<bool name="Draggable">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<bool name="Interactable">true</bool>
+					<int name="LayoutOrder">0</int>
+					<string name="Name">Canvas</string>
+					<Ref name="NextSelectionDown">null</Ref>
+					<Ref name="NextSelectionLeft">null</Ref>
+					<Ref name="NextSelectionRight">null</Ref>
+					<Ref name="NextSelectionUp">null</Ref>
+					<UDim2 name="Position">
+						<XS>0.5</XS>
+						<XO>0</XO>
+						<YS>0.5</YS>
+						<YO>0</YO>
+					</UDim2>
+					<Ref name="RootLocalizationTable">null</Ref>
+					<float name="Rotation">0</float>
+					<bool name="Selectable">false</bool>
+					<token name="SelectionBehaviorDown">0</token>
+					<token name="SelectionBehaviorLeft">0</token>
+					<token name="SelectionBehaviorRight">0</token>
+					<token name="SelectionBehaviorUp">0</token>
+					<bool name="SelectionGroup">false</bool>
+					<Ref name="SelectionImageObject">null</Ref>
+					<int name="SelectionOrder">0</int>
+					<UDim2 name="Size">
+						<XS>0.5</XS>
+						<XO>0</XO>
+						<YS>0.5</YS>
+						<YO>0</YO>
+					</UDim2>
+					<token name="SizeConstraint">0</token>
+					<int64 name="SourceAssetId">-1</int64>
+					<token name="Style">0</token>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e28</UniqueId>
+					<bool name="Visible">true</bool>
+					<int name="ZIndex">1</int>
+				</Properties>
+				<Item class="Frame" referent="RBX14A04B4C2DC24B6B889BAA8E6383E72C">
+					<Properties>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0.5</X>
+							<Y>0.5</Y>
+						</Vector2>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<bool name="AutoLocalize">true</bool>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>0.427451015</R>
+							<G>0.427451015</G>
+							<B>0.427451015</B>
+						</Color3>
+						<float name="BackgroundTransparency">0.699999988</float>
+						<Color3 name="BorderColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">0</int>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="DefinesCapabilities">false</bool>
+						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">34e9093ff71b1f7205ffa67700003dc6</UniqueId>
+						<bool name="Interactable">true</bool>
+						<int name="LayoutOrder">0</int>
+						<string name="Name">TopBar</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.5</XS>
+							<XO>0</XO>
+							<YS>0.0500000007</YS>
+							<YO>0</YO>
+						</UDim2>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<UDim2 name="Size">
+							<XS>0.995000005</XS>
+							<XO>0</XO>
+							<YS>0.0900000036</YS>
+							<YO>0</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<int64 name="SourceAssetId">-1</int64>
+						<token name="Style">0</token>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e29</UniqueId>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+					</Properties>
+					<Item class="UICorner" referent="RBXD4CFC8BC4FAD41EE81B8ABB9C29AE0F0">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<UDim name="CornerRadius">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">UICorner</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2a</UniqueId>
+						</Properties>
+					</Item>
+					<Item class="TextLabel" referent="RBX1F4F7882652E4D1CA6935A6C104ABFAD">
+						<Properties>
+							<bool name="Active">false</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0.5</X>
+								<Y>0.5</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">0</int>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="DefinesCapabilities">false</bool>
+							<bool name="Draggable">false</bool>
+							<Font name="FontFace">
+								<Family><url>rbxasset://fonts/families/JosefinSans.json</url></Family>
+								<Weight>400</Weight>
+								<Style>Normal</Style>
+							</Font>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<bool name="Interactable">true</bool>
+							<int name="LayoutOrder">0</int>
+							<float name="LineHeight">1</float>
+							<string name="LocalizationMatchIdentifier"></string>
+							<string name="LocalizationMatchedSourceText"></string>
+							<int name="MaxVisibleGraphemes">-1</int>
+							<string name="Name">Title</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.5</XS>
+								<XO>0</XO>
+								<YS>0.5</YS>
+								<YO>0</YO>
+							</UDim2>
+							<bool name="RichText">false</bool>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<bool name="Selectable">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.349999994</XS>
+								<XO>0</XO>
+								<YS>0.5</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<string name="Text">SERVER LIST</string>
+							<Color3 name="TextColor3">
+								<R>0.615686297</R>
+								<G>0.615686297</G>
+								<B>0.615686297</B>
+							</Color3>
+							<token name="TextDirection">0</token>
+							<bool name="TextScaled">false</bool>
+							<float name="TextSize">22</float>
+							<Color3 name="TextStrokeColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<float name="TextStrokeTransparency">1</float>
+							<float name="TextTransparency">0</float>
+							<token name="TextTruncate">0</token>
+							<bool name="TextWrapped">false</bool>
+							<token name="TextXAlignment">2</token>
+							<token name="TextYAlignment">1</token>
+							<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2b</UniqueId>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+					</Item>
+					<Item class="ImageButton" referent="RBXFB1C7320C65C44168BA3B17EA0DD6FD4">
+						<Properties>
+							<bool name="Active">true</bool>
+							<Vector2 name="AnchorPoint">
+								<X>1</X>
+								<Y>0.5</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoButtonColor">true</bool>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>1</R>
+								<G>1</G>
+								<B>1</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">0</int>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="ClipsDescendants">false</bool>
+							<bool name="DefinesCapabilities">false</bool>
+							<bool name="Draggable">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<Content name="HoverImage"><null></null></Content>
+							<Content name="Image"><url>rbxassetid://16704803426</url></Content>
+							<Color3 name="ImageColor3">
+								<R>0.639215708</R>
+								<G>0.176470593</G>
+								<B>0.184313729</B>
+							</Color3>
+							<Vector2 name="ImageRectOffset">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<Vector2 name="ImageRectSize">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<float name="ImageTransparency">0.0299999993</float>
+							<bool name="Interactable">true</bool>
+							<int name="LayoutOrder">0</int>
+							<bool name="Modal">false</bool>
+							<string name="Name">Exit</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.985000014</XS>
+								<XO>0</XO>
+								<YS>0.349999994</YS>
+								<YO>0</YO>
+							</UDim2>
+							<Content name="PressedImage"><null></null></Content>
+							<token name="ResampleMode">1</token>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<token name="ScaleType">0</token>
+							<bool name="Selectable">true</bool>
+							<bool name="Selected">false</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">false</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.5</XS>
+								<XO>0</XO>
+								<YS>0.5</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<Rect2D name="SliceCenter">
+								<min>
+									<X>0</X>
+									<Y>0</Y>
+								</min>
+								<max>
+									<X>0</X>
+									<Y>0</Y>
+								</max>
+							</Rect2D>
+							<float name="SliceScale">1</float>
+							<int64 name="SourceAssetId">-1</int64>
+							<token name="Style">0</token>
+							<BinaryString name="Tags"></BinaryString>
+							<UDim2 name="TileSize">
+								<XS>1</XS>
+								<XO>0</XO>
+								<YS>1</YS>
+								<YO>0</YO>
+							</UDim2>
+							<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2c</UniqueId>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+						<Item class="UIAspectRatioConstraint" referent="RBX4B1C4D9B4AD644B2A35756FA95E39C0B">
+							<Properties>
+								<float name="AspectRatio">1</float>
+								<token name="AspectType">0</token>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<token name="DominantAxis">0</token>
+								<UniqueId name="HistoryId">34e9093ff71b1f7205ffa67700003fbb</UniqueId>
+								<string name="Name">UIAspectRatioConstraint</string>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2d</UniqueId>
+							</Properties>
+						</Item>
+					</Item>
+				</Item>
+				<Item class="UIStroke" referent="RBX0F464E06D0E546659CA32C8CA21EE431">
+					<Properties>
+						<token name="ApplyStrokeMode">0</token>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<Color3 name="Color">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<bool name="DefinesCapabilities">false</bool>
+						<bool name="Enabled">true</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<token name="LineJoinMode">1</token>
+						<string name="Name">UIStroke</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<float name="Thickness">3.9000001</float>
+						<float name="Transparency">0.569999993</float>
+						<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2e</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="UICorner" referent="RBX6BE3744535EC41D9927A78BF76A869CA">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<UDim name="CornerRadius">
+							<S>0</S>
+							<O>8</O>
+						</UDim>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">34e9093ff71b1f7205ffa67700003ef8</UniqueId>
+						<string name="Name">UICorner</string>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e2f</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="Frame" referent="RBX838F9442B31E469CBFFC7278B23CCF51">
+					<Properties>
+						<bool name="Active">false</bool>
+						<Vector2 name="AnchorPoint">
+							<X>0.5</X>
+							<Y>0.5</Y>
+						</Vector2>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<bool name="AutoLocalize">true</bool>
+						<token name="AutomaticSize">0</token>
+						<Color3 name="BackgroundColor3">
+							<R>0.0941176564</R>
+							<G>0.0941176564</G>
+							<B>0.0941176564</B>
+						</Color3>
+						<float name="BackgroundTransparency">0</float>
+						<Color3 name="BorderColor3">
+							<R>0</R>
+							<G>0</G>
+							<B>0</B>
+						</Color3>
+						<token name="BorderMode">0</token>
+						<int name="BorderSizePixel">0</int>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="ClipsDescendants">false</bool>
+						<bool name="DefinesCapabilities">false</bool>
+						<bool name="Draggable">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<bool name="Interactable">true</bool>
+						<int name="LayoutOrder">0</int>
+						<string name="Name">ServerCanvas</string>
+						<Ref name="NextSelectionDown">null</Ref>
+						<Ref name="NextSelectionLeft">null</Ref>
+						<Ref name="NextSelectionRight">null</Ref>
+						<Ref name="NextSelectionUp">null</Ref>
+						<UDim2 name="Position">
+							<XS>0.5</XS>
+							<XO>0</XO>
+							<YS>0.541999996</YS>
+							<YO>0</YO>
+						</UDim2>
+						<Ref name="RootLocalizationTable">null</Ref>
+						<float name="Rotation">0</float>
+						<bool name="Selectable">false</bool>
+						<token name="SelectionBehaviorDown">0</token>
+						<token name="SelectionBehaviorLeft">0</token>
+						<token name="SelectionBehaviorRight">0</token>
+						<token name="SelectionBehaviorUp">0</token>
+						<bool name="SelectionGroup">false</bool>
+						<Ref name="SelectionImageObject">null</Ref>
+						<int name="SelectionOrder">0</int>
+						<UDim2 name="Size">
+							<XS>0.949999988</XS>
+							<XO>0</XO>
+							<YS>0.819000006</YS>
+							<YO>0</YO>
+						</UDim2>
+						<token name="SizeConstraint">0</token>
+						<int64 name="SourceAssetId">-1</int64>
+						<token name="Style">0</token>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e30</UniqueId>
+						<bool name="Visible">true</bool>
+						<int name="ZIndex">1</int>
+					</Properties>
+					<Item class="ScrollingFrame" referent="RBXFD8E33003008465099B98890977AE13D">
+						<Properties>
+							<bool name="Active">true</bool>
+							<Vector2 name="AnchorPoint">
+								<X>0.5</X>
+								<Y>0.5</Y>
+							</Vector2>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<bool name="AutoLocalize">true</bool>
+							<token name="AutomaticCanvasSize">0</token>
+							<token name="AutomaticSize">0</token>
+							<Color3 name="BackgroundColor3">
+								<R>0.352941185</R>
+								<G>0.352941185</G>
+								<B>0.352941185</B>
+							</Color3>
+							<float name="BackgroundTransparency">1</float>
+							<Color3 name="BorderColor3">
+								<R>0</R>
+								<G>0</G>
+								<B>0</B>
+							</Color3>
+							<token name="BorderMode">0</token>
+							<int name="BorderSizePixel">0</int>
+							<Content name="BottomImage"><url>rbxasset://textures/ui/Scroll/scroll-bottom.png</url></Content>
+							<Vector2 name="CanvasPosition">
+								<X>0</X>
+								<Y>0</Y>
+							</Vector2>
+							<UDim2 name="CanvasSize">
+								<XS>0</XS>
+								<XO>0</XO>
+								<YS>2</YS>
+								<YO>0</YO>
+							</UDim2>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<bool name="ClipsDescendants">true</bool>
+							<bool name="DefinesCapabilities">false</bool>
+							<bool name="Draggable">false</bool>
+							<token name="ElasticBehavior">0</token>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<token name="HorizontalScrollBarInset">0</token>
+							<bool name="Interactable">true</bool>
+							<int name="LayoutOrder">0</int>
+							<Content name="MidImage"><url>rbxasset://textures/ui/Scroll/scroll-middle.png</url></Content>
+							<string name="Name">Servers</string>
+							<Ref name="NextSelectionDown">null</Ref>
+							<Ref name="NextSelectionLeft">null</Ref>
+							<Ref name="NextSelectionRight">null</Ref>
+							<Ref name="NextSelectionUp">null</Ref>
+							<UDim2 name="Position">
+								<XS>0.5</XS>
+								<XO>0</XO>
+								<YS>0.5</YS>
+								<YO>0</YO>
+							</UDim2>
+							<Ref name="RootLocalizationTable">null</Ref>
+							<float name="Rotation">0</float>
+							<Color3 name="ScrollBarImageColor3">
+								<R>0.721568644</R>
+								<G>0.756862819</G>
+								<B>0.760784388</B>
+							</Color3>
+							<float name="ScrollBarImageTransparency">0</float>
+							<int name="ScrollBarThickness">4</int>
+							<token name="ScrollingDirection">4</token>
+							<bool name="ScrollingEnabled">true</bool>
+							<bool name="Selectable">true</bool>
+							<token name="SelectionBehaviorDown">0</token>
+							<token name="SelectionBehaviorLeft">0</token>
+							<token name="SelectionBehaviorRight">0</token>
+							<token name="SelectionBehaviorUp">0</token>
+							<bool name="SelectionGroup">true</bool>
+							<Ref name="SelectionImageObject">null</Ref>
+							<int name="SelectionOrder">0</int>
+							<UDim2 name="Size">
+								<XS>0.949999988</XS>
+								<XO>0</XO>
+								<YS>0.949999988</YS>
+								<YO>0</YO>
+							</UDim2>
+							<token name="SizeConstraint">0</token>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<Content name="TopImage"><url>rbxasset://textures/ui/Scroll/scroll-top.png</url></Content>
+							<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e31</UniqueId>
+							<token name="VerticalScrollBarInset">0</token>
+							<token name="VerticalScrollBarPosition">1</token>
+							<bool name="Visible">true</bool>
+							<int name="ZIndex">1</int>
+						</Properties>
+						<Item class="UIListLayout" referent="RBX9F76A120A32649DF8A7BFFD50BC7BF14">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<token name="FillDirection">1</token>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+								<token name="HorizontalAlignment">2</token>
+								<token name="HorizontalFlex">0</token>
+								<token name="ItemLineAlignment">0</token>
+								<string name="Name">UIListLayout</string>
+								<UDim name="Padding">
+									<S>0</S>
+									<O>0</O>
+								</UDim>
+								<token name="SortOrder">2</token>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e32</UniqueId>
+								<token name="VerticalAlignment">1</token>
+								<token name="VerticalFlex">0</token>
+								<bool name="Wraps">false</bool>
+							</Properties>
+						</Item>
+						<Item class="Frame" referent="RBX9C0730DAA22549CAA9451AD30318A028">
+							<Properties>
+								<bool name="Active">false</bool>
+								<Vector2 name="AnchorPoint">
+									<X>0.5</X>
+									<Y>0.5</Y>
+								</Vector2>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<bool name="AutoLocalize">true</bool>
+								<token name="AutomaticSize">0</token>
+								<Color3 name="BackgroundColor3">
+									<R>0.164705887</R>
+									<G>0.164705887</G>
+									<B>0.164705887</B>
+								</Color3>
+								<float name="BackgroundTransparency">0.449999988</float>
+								<Color3 name="BorderColor3">
+									<R>0</R>
+									<G>0</G>
+									<B>0</B>
+								</Color3>
+								<token name="BorderMode">0</token>
+								<int name="BorderSizePixel">0</int>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="ClipsDescendants">false</bool>
+								<bool name="DefinesCapabilities">false</bool>
+								<bool name="Draggable">false</bool>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+								<bool name="Interactable">true</bool>
+								<int name="LayoutOrder">0</int>
+								<string name="Name">Server</string>
+								<Ref name="NextSelectionDown">null</Ref>
+								<Ref name="NextSelectionLeft">null</Ref>
+								<Ref name="NextSelectionRight">null</Ref>
+								<Ref name="NextSelectionUp">null</Ref>
+								<UDim2 name="Position">
+									<XS>0.504999995</XS>
+									<XO>0</XO>
+									<YS>0.0352700092</YS>
+									<YO>0</YO>
+								</UDim2>
+								<Ref name="RootLocalizationTable">null</Ref>
+								<float name="Rotation">0</float>
+								<bool name="Selectable">false</bool>
+								<token name="SelectionBehaviorDown">0</token>
+								<token name="SelectionBehaviorLeft">0</token>
+								<token name="SelectionBehaviorRight">0</token>
+								<token name="SelectionBehaviorUp">0</token>
+								<bool name="SelectionGroup">false</bool>
+								<Ref name="SelectionImageObject">null</Ref>
+								<int name="SelectionOrder">0</int>
+								<UDim2 name="Size">
+									<XS>0.98999989</XS>
+									<XO>0</XO>
+									<YS>0.0705400184</YS>
+									<YO>0</YO>
+								</UDim2>
+								<token name="SizeConstraint">0</token>
+								<int64 name="SourceAssetId">-1</int64>
+								<token name="Style">0</token>
+								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e33</UniqueId>
+								<bool name="Visible">true</bool>
+								<int name="ZIndex">1</int>
+							</Properties>
+							<Item class="UICorner" referent="RBXA1F10AACDB9A47FF97BFB52107145BB7">
+								<Properties>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<UDim name="CornerRadius">
+										<S>0</S>
+										<O>8</O>
+									</UDim>
+									<bool name="DefinesCapabilities">false</bool>
+									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+									<string name="Name">UICorner</string>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e34</UniqueId>
+								</Properties>
+							</Item>
+							<Item class="TextLabel" referent="RBX3C00828621684674A60F5C383B4CEB5E">
+								<Properties>
+									<bool name="Active">false</bool>
+									<Vector2 name="AnchorPoint">
+										<X>0</X>
+										<Y>0</Y>
+									</Vector2>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<token name="AutomaticSize">0</token>
+									<Color3 name="BackgroundColor3">
+										<R>1</R>
+										<G>1</G>
+										<B>1</B>
+									</Color3>
+									<float name="BackgroundTransparency">1</float>
+									<Color3 name="BorderColor3">
+										<R>0</R>
+										<G>0</G>
+										<B>0</B>
+									</Color3>
+									<token name="BorderMode">0</token>
+									<int name="BorderSizePixel">0</int>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="ClipsDescendants">false</bool>
+									<bool name="DefinesCapabilities">false</bool>
+									<bool name="Draggable">false</bool>
+									<Font name="FontFace">
+										<Family><url>rbxasset://fonts/families/RobotoMono.json</url></Family>
+										<Weight>400</Weight>
+										<Style>Normal</Style>
+									</Font>
+									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+									<bool name="Interactable">true</bool>
+									<int name="LayoutOrder">0</int>
+									<float name="LineHeight">1</float>
+									<string name="LocalizationMatchIdentifier"></string>
+									<string name="LocalizationMatchedSourceText"></string>
+									<int name="MaxVisibleGraphemes">-1</int>
+									<string name="Name">ServerID</string>
+									<Ref name="NextSelectionDown">null</Ref>
+									<Ref name="NextSelectionLeft">null</Ref>
+									<Ref name="NextSelectionRight">null</Ref>
+									<Ref name="NextSelectionUp">null</Ref>
+									<UDim2 name="Position">
+										<XS>2.16726221e-07</XS>
+										<XO>0</XO>
+										<YS>6.90037041e-07</YS>
+										<YO>0</YO>
+									</UDim2>
+									<bool name="RichText">true</bool>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<float name="Rotation">0</float>
+									<bool name="Selectable">false</bool>
+									<token name="SelectionBehaviorDown">0</token>
+									<token name="SelectionBehaviorLeft">0</token>
+									<token name="SelectionBehaviorRight">0</token>
+									<token name="SelectionBehaviorUp">0</token>
+									<bool name="SelectionGroup">false</bool>
+									<Ref name="SelectionImageObject">null</Ref>
+									<int name="SelectionOrder">0</int>
+									<UDim2 name="Size">
+										<XS>0.490921706</XS>
+										<XO>0</XO>
+										<YS>0.301824391</YS>
+										<YO>0</YO>
+									</UDim2>
+									<token name="SizeConstraint">0</token>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<string name="Text">&lt;b&gt;SERVER ID:&lt;/b&gt; FF9F9B75-7C6F-438B-991E-4514514D9EF5</string>
+									<Color3 name="TextColor3">
+										<R>0.745098054</R>
+										<G>0.745098054</G>
+										<B>0.745098054</B>
+									</Color3>
+									<token name="TextDirection">0</token>
+									<bool name="TextScaled">false</bool>
+									<float name="TextSize">22</float>
+									<Color3 name="TextStrokeColor3">
+										<R>0</R>
+										<G>0</G>
+										<B>0</B>
+									</Color3>
+									<float name="TextStrokeTransparency">1</float>
+									<float name="TextTransparency">0</float>
+									<token name="TextTruncate">0</token>
+									<bool name="TextWrapped">false</bool>
+									<token name="TextXAlignment">0</token>
+									<token name="TextYAlignment">1</token>
+									<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003ebd</UniqueId>
+									<bool name="Visible">true</bool>
+									<int name="ZIndex">1</int>
+								</Properties>
+							</Item>
+							<Item class="TextLabel" referent="RBXD585AC9A6DBE4E47A712878BCE905B2E">
+								<Properties>
+									<bool name="Active">false</bool>
+									<Vector2 name="AnchorPoint">
+										<X>0</X>
+										<Y>0.5</Y>
+									</Vector2>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<token name="AutomaticSize">0</token>
+									<Color3 name="BackgroundColor3">
+										<R>1</R>
+										<G>1</G>
+										<B>1</B>
+									</Color3>
+									<float name="BackgroundTransparency">1</float>
+									<Color3 name="BorderColor3">
+										<R>0</R>
+										<G>0</G>
+										<B>0</B>
+									</Color3>
+									<token name="BorderMode">0</token>
+									<int name="BorderSizePixel">0</int>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="ClipsDescendants">false</bool>
+									<bool name="DefinesCapabilities">false</bool>
+									<bool name="Draggable">false</bool>
+									<Font name="FontFace">
+										<Family><url>rbxasset://fonts/families/RobotoMono.json</url></Family>
+										<Weight>700</Weight>
+										<Style>Normal</Style>
+									</Font>
+									<UniqueId name="HistoryId">2ac8fb984a85eb5305ffbd1300003ebd</UniqueId>
+									<bool name="Interactable">true</bool>
+									<int name="LayoutOrder">0</int>
+									<float name="LineHeight">1</float>
+									<string name="LocalizationMatchIdentifier"></string>
+									<string name="LocalizationMatchedSourceText"></string>
+									<int name="MaxVisibleGraphemes">-1</int>
+									<string name="Name">PlayerCount</string>
+									<Ref name="NextSelectionDown">null</Ref>
+									<Ref name="NextSelectionLeft">null</Ref>
+									<Ref name="NextSelectionRight">null</Ref>
+									<Ref name="NextSelectionUp">null</Ref>
+									<UDim2 name="Position">
+										<XS>0</XS>
+										<XO>0</XO>
+										<YS>0.5</YS>
+										<YO>0</YO>
+									</UDim2>
+									<bool name="RichText">true</bool>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<float name="Rotation">0</float>
+									<bool name="Selectable">false</bool>
+									<token name="SelectionBehaviorDown">0</token>
+									<token name="SelectionBehaviorLeft">0</token>
+									<token name="SelectionBehaviorRight">0</token>
+									<token name="SelectionBehaviorUp">0</token>
+									<bool name="SelectionGroup">false</bool>
+									<Ref name="SelectionImageObject">null</Ref>
+									<int name="SelectionOrder">0</int>
+									<UDim2 name="Size">
+										<XS>0.490921706</XS>
+										<XO>0</XO>
+										<YS>0.301824391</YS>
+										<YO>0</YO>
+									</UDim2>
+									<token name="SizeConstraint">0</token>
+									<int64 name="SourceAssetId">-1</int64>
+									<BinaryString name="Tags"></BinaryString>
+									<string name="Text">&lt;b&gt;PLAYER #:&lt;/b&gt;  50/50</string>
+									<Color3 name="TextColor3">
+										<R>0.745098054</R>
+										<G>0.745098054</G>
+										<B>0.745098054</B>
+									</Color3>
+									<token name="TextDirection">0</token>
+									<bool name="TextScaled">false</bool>
+									<float name="TextSize">22</float>
+									<Color3 name="TextStrokeColor3">
+										<R>0</R>
+										<G>0</G>
+										<B>0</B>
+									</Color3>
+									<float name="TextStrokeTransparency">1</float>
+									<float name="TextTransparency">0</float>
+									<token name="TextTruncate">0</token>
+									<bool name="TextWrapped">false</bool>
+									<token name="TextXAlignment">0</token>
+									<token name="TextYAlignment">1</token>
+									<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003f45</UniqueId>
+									<bool name="Visible">true</bool>
+									<int name="ZIndex">1</int>
+								</Properties>
+							</Item>
+							<Item class="Frame" referent="RBX906363C7D5004F6A94CF800D0722D174">
+								<Properties>
+									<bool name="Active">false</bool>
+									<Vector2 name="AnchorPoint">
+										<X>0</X>
+										<Y>0.5</Y>
+									</Vector2>
+									<BinaryString name="AttributesSerialize"></BinaryString>
+									<bool name="AutoLocalize">true</bool>
+									<token name="AutomaticSize">0</token>
+									<Color3 name="BackgroundColor3">
+										<R>1</R>
+										<G>1</G>
+										<B>1</B>
+									</Color3>
+									<float name="BackgroundTransparency">1</float>
+									<Color3 name="BorderColor3">
+										<R>0</R>
+										<G>0</G>
+										<B>0</B>
+									</Color3>
+									<token name="BorderMode">0</token>
+									<int name="BorderSizePixel">0</int>
+									<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+									<bool name="ClipsDescendants">false</bool>
+									<bool name="DefinesCapabilities">false</bool>
+									<bool name="Draggable">false</bool>
+									<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+									<bool name="Interactable">true</bool>
+									<int name="LayoutOrder">0</int>
+									<string name="Name">Thumbnails</string>
+									<Ref name="NextSelectionDown">null</Ref>
+									<Ref name="NextSelectionLeft">null</Ref>
+									<Ref name="NextSelectionRight">null</Ref>
+									<Ref name="NextSelectionUp">null</Ref>
+									<UDim2 name="Position">
+										<XS>0.565000057</XS>
+										<XO>0</XO>
+										<YS>0.49999994</YS>
+										<YO>0</YO>
+									</UDim2>
+									<Ref name="RootLocalizationTable">null</Ref>
+									<float name="Rotation">0</float>
+									<bool name="Selectable">false</bool>
+									<token name="SelectionBehaviorDown">0</token>
+									<token name="SelectionBehaviorLeft">0</token>
+									<token name="SelectionBehaviorRight">0</token>
+									<token name="SelectionBehaviorUp">0</token>
+									<bool name="SelectionGroup">false</bool>
+									<Ref name="SelectionImageObject">null</Ref>
+									<int name="SelectionOrder">0</int>
+									<UDim2 name="Size">
+										<XS>0.425000012</XS>
+										<XO>0</XO>
+										<YS>0.850000024</YS>
+										<YO>0</YO>
+									</UDim2>
+									<token name="SizeConstraint">0</token>
+									<int64 name="SourceAssetId">-1</int64>
+									<token name="Style">0</token>
+									<BinaryString name="Tags"></BinaryString>
+									<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003fe6</UniqueId>
+									<bool name="Visible">true</bool>
+									<int name="ZIndex">1</int>
+								</Properties>
+								<Item class="UIGridLayout" referent="RBX5F5E360FFD67426F96440A6630187012">
+									<Properties>
+										<BinaryString name="AttributesSerialize"></BinaryString>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<UDim2 name="CellPadding">
+											<XS>0</XS>
+											<XO>5</XO>
+											<YS>0</YS>
+											<YO>5</YO>
+										</UDim2>
+										<UDim2 name="CellSize">
+											<XS>0.5</XS>
+											<XO>0</XO>
+											<YS>0.5</YS>
+											<YO>0</YO>
+										</UDim2>
+										<bool name="DefinesCapabilities">false</bool>
+										<token name="FillDirection">0</token>
+										<int name="FillDirectionMaxCells">0</int>
+										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+										<token name="HorizontalAlignment">1</token>
+										<string name="Name">UIGridLayout</string>
+										<token name="SortOrder">2</token>
+										<int64 name="SourceAssetId">-1</int64>
+										<token name="StartCorner">0</token>
+										<BinaryString name="Tags"></BinaryString>
+										<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300004061</UniqueId>
+										<token name="VerticalAlignment">1</token>
+									</Properties>
+									<Item class="UIAspectRatioConstraint" referent="RBXF9056D72FDCC4C22B516E985044A95DC">
+										<Properties>
+											<float name="AspectRatio">1</float>
+											<token name="AspectType">0</token>
+											<BinaryString name="AttributesSerialize"></BinaryString>
+											<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+											<bool name="DefinesCapabilities">false</bool>
+											<token name="DominantAxis">0</token>
+											<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+											<string name="Name">UIAspectRatioConstraint</string>
+											<int64 name="SourceAssetId">-1</int64>
+											<BinaryString name="Tags"></BinaryString>
+											<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300004113</UniqueId>
+										</Properties>
+									</Item>
+								</Item>
+								<Item class="ImageButton" referent="RBX6A0349B2E89145CDA55C5100ECA92A8C">
+									<Properties>
+										<bool name="Active">true</bool>
+										<Vector2 name="AnchorPoint">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<BinaryString name="AttributesSerialize"></BinaryString>
+										<bool name="AutoButtonColor">true</bool>
+										<bool name="AutoLocalize">true</bool>
+										<token name="AutomaticSize">0</token>
+										<Color3 name="BackgroundColor3">
+											<R>1</R>
+											<G>1</G>
+											<B>1</B>
+										</Color3>
+										<float name="BackgroundTransparency">0</float>
+										<Color3 name="BorderColor3">
+											<R>0</R>
+											<G>0</G>
+											<B>0</B>
+										</Color3>
+										<token name="BorderMode">0</token>
+										<int name="BorderSizePixel">0</int>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="ClipsDescendants">false</bool>
+										<bool name="DefinesCapabilities">false</bool>
+										<bool name="Draggable">false</bool>
+										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+										<Content name="HoverImage"><null></null></Content>
+										<Content name="Image"><url>rbxasset://textures/ui/GuiImagePlaceholder.png</url></Content>
+										<Color3 name="ImageColor3">
+											<R>1</R>
+											<G>1</G>
+											<B>1</B>
+										</Color3>
+										<Vector2 name="ImageRectOffset">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<Vector2 name="ImageRectSize">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<float name="ImageTransparency">0</float>
+										<bool name="Interactable">true</bool>
+										<int name="LayoutOrder">0</int>
+										<bool name="Modal">false</bool>
+										<string name="Name">ImageButton</string>
+										<Ref name="NextSelectionDown">null</Ref>
+										<Ref name="NextSelectionLeft">null</Ref>
+										<Ref name="NextSelectionRight">null</Ref>
+										<Ref name="NextSelectionUp">null</Ref>
+										<UDim2 name="Position">
+											<XS>0</XS>
+											<XO>0</XO>
+											<YS>0</YS>
+											<YO>0</YO>
+										</UDim2>
+										<Content name="PressedImage"><null></null></Content>
+										<token name="ResampleMode">0</token>
+										<Ref name="RootLocalizationTable">null</Ref>
+										<float name="Rotation">0</float>
+										<token name="ScaleType">0</token>
+										<bool name="Selectable">true</bool>
+										<bool name="Selected">false</bool>
+										<token name="SelectionBehaviorDown">0</token>
+										<token name="SelectionBehaviorLeft">0</token>
+										<token name="SelectionBehaviorRight">0</token>
+										<token name="SelectionBehaviorUp">0</token>
+										<bool name="SelectionGroup">false</bool>
+										<Ref name="SelectionImageObject">null</Ref>
+										<int name="SelectionOrder">0</int>
+										<UDim2 name="Size">
+											<XS>0</XS>
+											<XO>100</XO>
+											<YS>0</YS>
+											<YO>100</YO>
+										</UDim2>
+										<token name="SizeConstraint">0</token>
+										<Rect2D name="SliceCenter">
+											<min>
+												<X>0</X>
+												<Y>0</Y>
+											</min>
+											<max>
+												<X>0</X>
+												<Y>0</Y>
+											</max>
+										</Rect2D>
+										<float name="SliceScale">1</float>
+										<int64 name="SourceAssetId">-1</int64>
+										<token name="Style">0</token>
+										<BinaryString name="Tags"></BinaryString>
+										<UDim2 name="TileSize">
+											<XS>1</XS>
+											<XO>0</XO>
+											<YS>1</YS>
+											<YO>0</YO>
+										</UDim2>
+										<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd13000040ea</UniqueId>
+										<bool name="Visible">true</bool>
+										<int name="ZIndex">1</int>
+									</Properties>
+								</Item>
+								<Item class="ImageLabel" referent="RBX271722677B3E46D2A9E38FE2E42782BE">
+									<Properties>
+										<bool name="Active">false</bool>
+										<Vector2 name="AnchorPoint">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<BinaryString name="AttributesSerialize"></BinaryString>
+										<bool name="AutoLocalize">true</bool>
+										<token name="AutomaticSize">0</token>
+										<Color3 name="BackgroundColor3">
+											<R>1</R>
+											<G>1</G>
+											<B>1</B>
+										</Color3>
+										<float name="BackgroundTransparency">0</float>
+										<Color3 name="BorderColor3">
+											<R>0</R>
+											<G>0</G>
+											<B>0</B>
+										</Color3>
+										<token name="BorderMode">0</token>
+										<int name="BorderSizePixel">0</int>
+										<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+										<bool name="ClipsDescendants">false</bool>
+										<bool name="DefinesCapabilities">false</bool>
+										<bool name="Draggable">false</bool>
+										<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+										<Content name="Image"><url>rbxasset://textures/ui/GuiImagePlaceholder.png</url></Content>
+										<Color3 name="ImageColor3">
+											<R>1</R>
+											<G>1</G>
+											<B>1</B>
+										</Color3>
+										<Vector2 name="ImageRectOffset">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<Vector2 name="ImageRectSize">
+											<X>0</X>
+											<Y>0</Y>
+										</Vector2>
+										<float name="ImageTransparency">0</float>
+										<bool name="Interactable">true</bool>
+										<int name="LayoutOrder">0</int>
+										<string name="Name">ImageLabel</string>
+										<Ref name="NextSelectionDown">null</Ref>
+										<Ref name="NextSelectionLeft">null</Ref>
+										<Ref name="NextSelectionRight">null</Ref>
+										<Ref name="NextSelectionUp">null</Ref>
+										<UDim2 name="Position">
+											<XS>0</XS>
+											<XO>0</XO>
+											<YS>0</YS>
+											<YO>0</YO>
+										</UDim2>
+										<token name="ResampleMode">0</token>
+										<Ref name="RootLocalizationTable">null</Ref>
+										<float name="Rotation">0</float>
+										<token name="ScaleType">0</token>
+										<bool name="Selectable">false</bool>
+										<token name="SelectionBehaviorDown">0</token>
+										<token name="SelectionBehaviorLeft">0</token>
+										<token name="SelectionBehaviorRight">0</token>
+										<token name="SelectionBehaviorUp">0</token>
+										<bool name="SelectionGroup">false</bool>
+										<Ref name="SelectionImageObject">null</Ref>
+										<int name="SelectionOrder">0</int>
+										<UDim2 name="Size">
+											<XS>0</XS>
+											<XO>100</XO>
+											<YS>0</YS>
+											<YO>100</YO>
+										</UDim2>
+										<token name="SizeConstraint">0</token>
+										<Rect2D name="SliceCenter">
+											<min>
+												<X>0</X>
+												<Y>0</Y>
+											</min>
+											<max>
+												<X>0</X>
+												<Y>0</Y>
+											</max>
+										</Rect2D>
+										<float name="SliceScale">1</float>
+										<int64 name="SourceAssetId">-1</int64>
+										<BinaryString name="Tags"></BinaryString>
+										<UDim2 name="TileSize">
+											<XS>1</XS>
+											<XO>0</XO>
+											<YS>1</YS>
+											<YO>0</YO>
+										</UDim2>
+										<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd13000041ae</UniqueId>
+										<bool name="Visible">true</bool>
+										<int name="ZIndex">1</int>
+									</Properties>
+								</Item>
+							</Item>
+						</Item>
+						<Item class="UIPadding" referent="RBX86711419F64B4F7AB276A59286EC60DA">
+							<Properties>
+								<BinaryString name="AttributesSerialize"></BinaryString>
+								<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+								<bool name="DefinesCapabilities">false</bool>
+								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+								<string name="Name">UIPadding</string>
+								<UDim name="PaddingBottom">
+									<S>0</S>
+									<O>0</O>
+								</UDim>
+								<UDim name="PaddingLeft">
+									<S>0.0149999997</S>
+									<O>0</O>
+								</UDim>
+								<UDim name="PaddingRight">
+									<S>0</S>
+									<O>0</O>
+								</UDim>
+								<UDim name="PaddingTop">
+									<S>0</S>
+									<O>0</O>
+								</UDim>
+								<int64 name="SourceAssetId">-1</int64>
+								<BinaryString name="Tags"></BinaryString>
+								<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e35</UniqueId>
+							</Properties>
+						</Item>
+					</Item>
+					<Item class="UICorner" referent="RBX5D2B79AD131C4DA198BE103C257E736C">
+						<Properties>
+							<BinaryString name="AttributesSerialize"></BinaryString>
+							<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+							<UDim name="CornerRadius">
+								<S>0</S>
+								<O>8</O>
+							</UDim>
+							<bool name="DefinesCapabilities">false</bool>
+							<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+							<string name="Name">UICorner</string>
+							<int64 name="SourceAssetId">-1</int64>
+							<BinaryString name="Tags"></BinaryString>
+							<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e36</UniqueId>
+						</Properties>
+					</Item>
+				</Item>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="LocalizationService" referent="RBX95F54681562941C49C8009841EA0862D">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LocalizationService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000332</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TeleportService" referent="RBX7AC89DE7147C44E1BD62A651A2DF3D5C">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Teleport Service</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000335</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CollectionService" referent="RBX8A1AFFB12CFA4CE38AC3B2662E1576F6">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CollectionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000337</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="PhysicsService" referent="RBX0F69A44A09E34B22BF8F124D887E313A">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">PhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000338</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="InsertService" referent="RBXCD565F9D03F343669D75C9BA3DDF9264">
+		<Properties>
+			<bool name="AllowClientInsertModels">false</bool>
+			<bool name="AllowInsertFreeModels">false</bool>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">InsertService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000033c</UniqueId>
+		</Properties>
+		<Item class="StringValue" referent="RBX2B3C072CB6BC4CE8B1044A4886270F67">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">InsertionHash</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f98000044d0</UniqueId>
+				<string name="Value">{10DA5070-AF8A-4655-832F-4B43236F75DB}</string>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="GamePassService" referent="RBXE1D919913A6240178DBABA91FA58D568">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">GamePassService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000033d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Debris" referent="RBX90538AE48F4C44EB880AEECB9172B5CC">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<int name="MaxItems">1000</int>
+			<string name="Name">Debris</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000033e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="CookiesService" referent="RBXC05681D49C1C494F9496AD83B101AA25">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">CookiesService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000033f</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VRService" referent="RBX1393F925F0D349DFB604954386EAC57D">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<token name="AutomaticScaling">0</token>
+			<bool name="AvatarGestures">false</bool>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<bool name="FadeOutViewOnCollision">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VRService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000343</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ContextActionService" referent="RBX606F3387EA8B406D84B9CEEA8029FCC7">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ContextActionService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000344</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ScriptService" referent="RBXBDB2007B23024D1AA81FC3D5186428E0">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000345</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AssetService" referent="RBXF66F9D0EFF4D4C1C99A69F426DD8E115">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AssetService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000346</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TouchInputService" referent="RBX7F48353AEB6644109C36FB162C6ED61A">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">TouchInputService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000347</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="AnalyticsService" referent="RBXAF02ECA7EADA4489A068D8358195FFEE">
+		<Properties>
+			<string name="ApiKey"></string>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">AnalyticsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034a</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Selection" referent="RBXAAADB120862B4394A23BE6452F83BFD8">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Selection</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034c</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServerScriptService" referent="4">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="LoadStringEnabled">false</bool>
+			<string name="Name">ServerScriptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034d</UniqueId>
+		</Properties>
+		<Item class="Script" referent="RBX497860A7723541E7B13EFAFDB1F15DB7">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<bool name="Disabled">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Script</string>
+				<token name="RunContext">0</token>
+				<string name="ScriptGuid">{8CF82FAC-C74E-48FE-B965-A6BEC602DE1D}</string>
+				<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local XThread = require(Services.rs.modules.XThread)
+local ServerManager = require(Services.rs.modules.ServerList)
+
+ServerManager.Callback = function()
+    for _,server in ServerManager.Active do
+		for _,userid in server.value do
+            XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,r)
+                print(r)
+            end)
+        end 
+    end
+end]]></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">54ae2e42a34dfe8e05ff74b200003de5</UniqueId>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="ServerStorage" referent="RBX76719BE8EBCF4465BF9C328ECE4FB213">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServerStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedStorage" referent="1">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034f</UniqueId>
+		</Properties>
+		<Item class="Folder" referent="RBX737F77A6BDC24883A46B30DAEEAE1D12">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">modules</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000404e</UniqueId>
+			</Properties>
+			<Item class="ModuleScript" referent="RBXC2A0EB33339049C2BD69D2C16B88E5BA">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">ServerList</string>
+					<string name="ScriptGuid">{99B0E10D-C323-486E-8FBC-8820A971F3B3}</string>
+					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local XThread = require(Services.rs.modules.XThread)
+
+local ServerStore = Services.mss:GetSortedMap("Servers")
+local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
+local JOB_ID = Services.https:GenerateGUID(false)
+
+--// Functions
+--/ Local
+local PlayersChanged = false
+local function AddPlayer(player:Player)
+	PlayersChanged = true
+	table.insert(Players,player.UserId)
+end
+local function RemovePlayer(player)
+	PlayersChanged = true
+	table.remove(Players,table.find(Players,player.UserId))
+end
+local function UploadPlayers()
+	Util.attempt(ServerStore.SetAsync,20,ServerStore,JOB_ID,Players,604800)
+end
+
+
+--Initialize self
+for _,v in Services.players:GetPlayers() do AddPlayer(v) end
+Services.players.PlayerAdded:Connect(AddPlayer)
+
+Services.players.PlayerRemoving:Connect(RemovePlayer)
+game:BindToClose(function() Util.attempt(ServerStore.RemoveAsync,20,ServerStore,JOB_ID) end)
+UploadPlayers()
+
+--[[
+1000+(100*experience players) rpm
+500 player scenario; 5e4 rpm
+50 servers of 10
+1 rps of quota 49 * 50 = 2450 
+1 ups of quota 1 * 50 = 50 
+//
+2500 of 5e4 rpm
+]]
+
+print(JOB_ID)
+
+XThread.new(function()
+	while task.wait(1) do
+		local serverCache
+		repeat
+			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+			print(_,rr)
+		until #rr ~= 200
+		
+		table.sort(serverCache,function(a,b)
+			return #a.value > #b.value
+		end)
+		Servers.Active = serverCache
+		if Servers.Callback then task.spawn(Servers.Callback) end
+		if PlayersChanged then UploadPlayers() PlayersChanged = false end
+	end
+end,function()
+	for _,v in Services.players:GetPlayers() do
+		v:Kick("Error fetching server data, closing server...")
+	end
+end)
+
+
+return Servers]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000404f</UniqueId>
+				</Properties>
+			</Item>
+			<Item class="ModuleScript" referent="RBXD8783068F0BF40C0A63ACAA42FC80036">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">Util</string>
+					<string name="ScriptGuid">{9A75ACEB-D05C-463B-9491-966EE5F146D6}</string>
+					<ProtectedString name="Source"><![CDATA[local ts = game:GetService("TweenService")
+local cp = game:GetService("ContentProvider")
+
+local function ExtendGlobal<G,E>(global:G,extends:E):E
+	local copy = table.clone(global)
+	for i,v in extends do
+		copy[i] = v
+	end
+	return extends
+end
+
+local function Recurse(t,f)
+	for i,v in t do
+		local search = f(i,v)
+		if not search then  t[i] = tostring(v) continue end
+		Recurse(search,f)
+	end
+end
+
+--EXTENDS
+local _table = {}
+local _math = {}
+local _string = {}
+local _ui = {}
+local _tween = {}
+local _debug = {}
+local _vector3 = {}
+local _misc = {}
+
+--Types
+
+type __math = {bezier: <T>(t:number,...T&(Vector3|Vector2))->T}
+
+--------------------------------------------
+
+--GlobalReplacements
+local _newproxy
+do
+	local function __index(proxy,index) 
+		local meta = getmetatable(proxy)
+		return meta.__methods[index] or meta.__data.__public[index]
+	end
+	local __privatemeta = {
+		__newindex = function(meta,index,value)
+			meta.__data.__private[index] = value
+		end,
+		__index = function(meta,index)
+			return (meta.__data.__private[index]~=nil and meta.__data.__private[index]) or meta.__data.__public[index]
+		end,
+	}
+
+	_newproxy = function(metadata,data:{}?)
+		local proxy = newproxy(true)
+		local meta = getmetatable(proxy)
+		for i,v in _table.clone(metadata,true) do 
+            meta[i] = v 
+        end
+		meta.__index = metadata.__index or __index
+		meta.__data = data
+		if data then setmetatable(meta,__privatemeta) end
+		return proxy,meta
+	end
+end
+
+do 
+	local f = function()end
+	local locked = {
+		__metatable = "Locked meta.",
+		__newindex = f,
+		__index = f,
+	}
+	function _lockmeta(t)
+		local meta = _getmetatable(t)
+		for i in locked do
+			meta[i] = locked
+		end
+	end
+end
+
+function _typeof(v):string
+	local t = typeof(v)
+	if t ~= "userdata" then return t end
+	return getmetatable(v).type
+end
+
+function _print(...)
+	local pack = {...}
+	Recurse(pack,function(i,v)
+		local t = typeof(v) 
+		if t == "userdata" then 
+			pack[i] = getmetatable(v)
+			return pack[i]
+		elseif t == "table" then
+			return v
+		end
+		return
+	end)
+	local stack = {}
+	for match in string.gmatch(debug.traceback(),"%a+:%d+") do
+		table.insert(stack,match)
+	end
+	table.remove(stack,1)
+	print(unpack(pack),` - {table.concat(_table.reverse(stack)," - ")}`)
+end
+
+function _getmetatable(self)
+	return getmetatable(self)
+end
+
+--------------------------------------------
+
+--Modules
+
+
+--Table
+function _table.istable(t)
+	return typeof(t) == "table"
+end
+
+do
+	local function Return(self,f)
+		local custom = self.__methods[`__{f}`]
+		if custom then return custom() end
+	end
+	
+	function _table.newmeta<T,M>(t:T,methods:M?):T
+		local tbl = table.clone(t)
+		local meta = {}
+		
+		meta = {
+			__newindex = function(self,index,value)
+				if self[index] == value or Return(meta,"newindex") then return end
+				if value ~= nil then
+					meta.__hidden.i+=1
+				elseif meta.__hidden.i~=0 then
+					meta.__hidden.i-=1
+				end
+				meta.__data[index] = value
+			end,
+			__index = function(_,index)
+				return meta.__data[index]
+			end,
+			__len = function()
+				return meta.__hidden.i
+			end,
+			__iter = function()
+				return next,meta.__data
+			end,
+			__methods = methods or {},
+			__hidden = {
+				i=0,
+			},
+			__data = tbl,
+		}
+		for _ in tbl do
+			meta.__hidden.i += 1
+		end
+		return _newproxy(meta)
+	end
+end
+
+function _table.random<I,T>(tbl: {[I]:T}): T
+	if tbl[1] then return tbl[math.random(1,#tbl)] end
+	local c = {}
+	for i,_ in table.clone(tbl) do
+		table.insert(c,i)
+	end
+	local randomIndex = _table.random(c)
+	return tbl[randomIndex],randomIndex
+end
+
+do
+	local function wrap(toCopy)
+		local clone = table.clone(toCopy)
+		for i,v in clone do
+			if not _table.istable(v) then continue end
+			clone[i] = wrap(v)
+		end
+		return clone
+	end
+	function _table.clone<T>(tbl:T,deep:boolean?):T
+		if not deep then return table.clone(tbl) end
+		return wrap(tbl)
+	end
+end
+
+
+function _table.combine<O,F>(other:O,favour:F,Replace:boolean?): F&O
+	for i,v in table.clone(other) do
+		if favour[i] and not Replace then continue end
+		favour[i] = v
+	end
+	return favour
+end
+
+function _table.add<F,O>(favour:F,other:O):F&O
+	for _,v in table.clone(other) do
+		table.insert(favour,v)
+	end
+	return favour
+end
+
+function _table.reconcile<T,P>(tbl:T,template:P):P&T
+	return _table.combine(template,tbl)
+end
+
+function _table.reverse<T>(tbl:{T}):{T}
+	local c = {}
+	for i=#tbl,1,-1 do
+		table.insert(c,tbl[i])
+	end
+	return c
+end
+
+
+--String
+function _string.seperateCaps(str:string,inbetween:string?)
+	inbetween = inbetween or " "
+	return str:gsub("(%u)",`{inbetween}%1`):gsub(`^{inbetween}`,"")
+end
+
+--Math
+function _math.round(num:number,decimalPlaces:number?)
+	local mult = 10^(decimalPlaces or 0)
+	return math.round(num*mult)/mult
+end
+
+function _math.random(num1:number,num2:number,dp:number?)
+	if not num1 then return math.random() end
+	local mult = 10^(dp or 0)
+	return math.random(num1*mult,num2*mult)/mult
+end
+
+function _math.lerp(a:number,b:number,t:number)
+	return a + (b - a) * t
+end
+
+function _math.fiftyfifty()
+	return math.random(1,2)==1
+end
+
+function _math.deg<T>(value:T):T
+	local t = typeof(value)
+	if t=="number" then
+		return math.deg(value)
+	elseif t=="Vector3" then
+		return Vector3.new(math.deg(value.X),math.deg(value.Y),math.deg(value.Z))
+	elseif t=="Vector2" then
+		return Vector2.new(math.deg(value.X),math.deg(value.Y))
+	end
+	error(`{value} is not valid for math.deg`)
+end
+
+function _math.bezier(t,...)
+	local pack = {...}
+	local nxt = {}
+	for i=#pack,2,-1 do
+		local point = pack[i]
+		local node = i-1
+		nxt[node] = pack[node]:Lerp(point,t)
+	end
+	return if #nxt>1 then _math.bezier(t,unpack(nxt)) else nxt[1]
+end
+
+--OtherUtility
+
+--Ui
+function _ui.scrollToBottom(ui: ScrollingFrame)
+	return _tween.new(ui,TweenInfo.new(.18,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{CanvasPosition = Vector2.new(0,ui.AbsoluteCanvasSize.Y-ui.AbsoluteWindowSize.Y)})
+end
+
+function _ui.animate(signal,f:(Vector2)->nil,onc:(()->nil)?,increment:number,max:number,startFrom:Vector2?,reverse:boolean?)
+	local x
+	local y
+	local start
+	local goal
+	if reverse then
+		start = max-increment
+		x = max
+		y = max
+		goal = 0
+		max = 0
+		increment *= -1
+	else
+		start = 0
+		x = 0
+		y = 0
+		goal = max
+	end
+	if startFrom then x = startFrom.X y = startFrom.Y end
+	local conn conn = signal:Connect(function()
+		x+=increment
+		if x == goal then 
+			if y == goal then
+				conn:Disconnect()
+				if onc then onc() end
+				return
+			end
+			x=start 
+			y+=increment 
+		end
+		f(Vector2.new(x,y))
+	end)
+	return conn
+end
+
+do
+	local function calc(child:GuiObject,parent:GuiObject)
+		
+		local cPos = _ui.getBounds(child)
+		local cSizeX,cSizeY = child.AbsoluteSize.X,child.AbsoluteSize.Y
+		local cPosX:number,cPosY:number = cPos.X.Offset,cPos.Y.Offset
+		
+		local pPos = _ui.getBounds(parent)
+		local pSizeX,pSizeY = parent.AbsoluteSize.X,parent.AbsoluteSize.Y
+		local pPosX,pPosY = pPos.X.Offset,pPos.Y.Offset
+		
+
+		local Compensate=UDim2.new()
+		Compensate += UDim2.fromOffset(if cPosX<pPosX then cPosX+(cPosX-pPosX) 
+			elseif cPosX+cSizeX>pPosX+pSizeX then cPosX-(cPosX-pPosX)
+			else 0,
+			if cPosY-cSizeY<pPosY-pSizeY then cPosY+(cPosY-pPosY)
+			elseif cPosY>pPosY then cPosY-(cPosY-pPosY)
+			else 0)
+		return Compensate
+	end	
+	
+	function _ui.isWithin(child:GuiObject,parent:GuiObject):boolean
+		return not not calc(child,parent)
+	end
+	
+	function _ui.forceWithin(child,parent)
+		local compensate = calc(child,parent)
+		child.Position += compensate
+	end
+end
+
+function _ui.getBounds(ui:GuiObject,normalize:boolean?)
+	local topLeft = if normalize then UDim2.fromOffset(0,0) else UDim2.fromOffset(ui.AbsolutePosition.X,ui.AbsolutePosition.Y)
+	return topLeft,topLeft+UDim2.fromOffset(ui.AbsoluteSize.X,ui.AbsoluteSize.Y)
+end
+
+function _ui.randomIn(ui:GuiObject)
+	local TL,BR = _ui.getBounds(ui,true)
+	return UDim2.fromOffset(math.random(TL.X.Offset,BR.X.Offset),math.random(TL.Y.Offset,BR.Y.Offset))
+end
+
+function _ui.vec2toUdim2(v2:Vector2)
+	return UDim2.fromOffset(v2.X,v2.Y)
+end
+
+function _ui.udim2toVec2(udim:UDim2)
+	return Vector2.new(udim.X.Offset,udim.Y.Offset)
+end
+
+--Tween
+function _tween.new(inst:Instance,Info:TweenInfo,Properties:{})
+	local t = ts:Create(inst,Info,Properties)
+	t:Play()
+	return t
+end
+
+function _tween.once(i,...)
+	_tween.new(i,...).Completed:Once(function()
+		i:Destroy()
+	end)
+end
+
+--Vector3
+
+function _vector3.clamp(v:Vector3,lower,upper,x:boolean?,y:boolean?,z:boolean?)
+	return Vector3.new(if x then v.X else math.clamp(v.X,lower,upper),if y then v.Y else math.clamp(v.Y,lower,upper),if z then v.Z else math.clamp(v.Z,lower,upper))
+end
+
+--Misc
+function _misc.preload(ToLoad: {[number]: any},callback:(()->nil)?)
+	return cp:PreloadAsync(ToLoad,callback)
+end
+
+--------------------------------------------
+
+local Util= {
+	ui = _ui,
+	tween = _tween,
+	misc = _misc,
+	newproxy = _newproxy,	
+	easings = require(script.easings),
+	debug = ExtendGlobal(debug,_debug)::typeof(debug)&typeof(_debug),
+	math = ExtendGlobal(math,_math)::__math&typeof(math)&typeof(_math),
+	table = ExtendGlobal(table,_table)::typeof(table)&typeof(_table),
+	string = ExtendGlobal(string,_string)::typeof(string)&typeof(string),
+	Vector3 = ExtendGlobal(Vector3,_vector3)::typeof(Vector3)&typeof(Vector3),
+	attempt = function(func:()->(),iters,...)
+		iters = iters or 10
+		local i,err = 0,nil
+		while i<=iters do
+			if i ~=0 then task.wait(1*i) end
+			i+=1
+			local t: {any} = {pcall(func,...)}
+			if not t[1] then err = t[2] warn(err,...) continue end
+			table.remove(t,1)
+			return true,unpack(t)
+		end
+		warn(err,debug.info(2,"s"))
+		return false,err
+	end,
+	print = _print,
+	typeof = _typeof,
+}
+
+
+for i,v in Util do
+	if not _table.istable(v) or table.isfrozen(v) then continue end
+	Util[i] = table.freeze(v)
+end
+
+return Util
+	]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800004051</UniqueId>
+				</Properties>
+				<Item class="ModuleScript" referent="RBX51D95450515C409891E48ECADDCE09DA">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">easings</string>
+						<string name="ScriptGuid">{C54774EA-C834-4702-A87B-CF06BA5EBAB7}</string>
+						<ProtectedString name="Source"><![CDATA[--
+-- Adapted from
+-- Tweener's easing functions (Penner's Easing Equations)
+-- and http://code.google.com/p/tweener/ (jstweener javascript version)
+--
+
+--[[
+Disclaimer for Robert Penner's Easing Equations license:
+
+TERMS OF USE - EASING EQUATIONS
+
+Open source under the BSD License.
+
+Copyright © 2001 Robert Penner
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of the author nor the names of contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+]]
+
+-- For all easing functions:
+-- t = elapsed time
+-- b = begin
+-- c = change == ending - beginning
+-- d = duration (total time)
+
+local pow = math.pow
+local sin = math.sin
+local cos = math.cos
+local pi = math.pi
+local sqrt = math.sqrt
+local abs = math.abs
+local asin  = math.asin
+
+local function linear(t, b, c, d)
+	return c * t / d + b
+end
+
+local function inQuad(t, b, c, d)
+	t = t / d
+	return c * pow(t, 2) + b
+end
+
+local function outQuad(t, b, c, d)
+	t = t / d
+	return -c * t * (t - 2) + b
+end
+
+local function inOutQuad(t, b, c, d)
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * pow(t, 2) + b
+	else
+		return -c / 2 * ((t - 1) * (t - 3) - 1) + b
+	end
+end
+
+local function outInQuad(t, b, c, d)
+	if t < d / 2 then
+		return outQuad (t * 2, b, c / 2, d)
+	else
+		return inQuad((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inCubic (t, b, c, d)
+	t = t / d
+	return c * pow(t, 3) + b
+end
+
+local function outCubic(t, b, c, d)
+	t = t / d - 1
+	return c * (pow(t, 3) + 1) + b
+end
+
+local function inOutCubic(t, b, c, d)
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * t * t * t + b
+	else
+		t = t - 2
+		return c / 2 * (t * t * t + 2) + b
+	end
+end
+
+local function outInCubic(t, b, c, d)
+	if t < d / 2 then
+		return outCubic(t * 2, b, c / 2, d)
+	else
+		return inCubic((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inQuart(t, b, c, d)
+	t = t / d
+	return c * pow(t, 4) + b
+end
+
+local function outQuart(t, b, c, d)
+	t = t / d - 1
+	return -c * (pow(t, 4) - 1) + b
+end
+
+local function inOutQuart(t, b, c, d)
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * pow(t, 4) + b
+	else
+		t = t - 2
+		return -c / 2 * (pow(t, 4) - 2) + b
+	end
+end
+
+local function outInQuart(t, b, c, d)
+	if t < d / 2 then
+		return outQuart(t * 2, b, c / 2, d)
+	else
+		return inQuart((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inQuint(t, b, c, d)
+	t = t / d
+	return c * pow(t, 5) + b
+end
+
+local function outQuint(t, b, c, d)
+	t = t / d - 1
+	return c * (pow(t, 5) + 1) + b
+end
+
+local function inOutQuint(t, b, c, d)
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * pow(t, 5) + b
+	else
+		t = t - 2
+		return c / 2 * (pow(t, 5) + 2) + b
+	end
+end
+
+local function outInQuint(t, b, c, d)
+	if t < d / 2 then
+		return outQuint(t * 2, b, c / 2, d)
+	else
+		return inQuint((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inSine(t, b, c, d)
+	return -c * cos(t / d * (pi / 2)) + c + b
+end
+
+local function outSine(t, b, c, d)
+	return c * sin(t / d * (pi / 2)) + b
+end
+
+local function inOutSine(t, b, c, d)
+	return -c / 2 * (cos(pi * t / d) - 1) + b
+end
+
+local function outInSine(t, b, c, d)
+	if t < d / 2 then
+		return outSine(t * 2, b, c / 2, d)
+	else
+		return inSine((t * 2) -d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inExpo(t, b, c, d)
+	if t == 0 then
+		return b
+	else
+		return c * pow(2, 10 * (t / d - 1)) + b - c * 0.001
+	end
+end
+
+local function outExpo(t, b, c, d)
+	if t == d then
+		return b + c
+	else
+		return c * 1.001 * (-pow(2, -10 * t / d) + 1) + b
+	end
+end
+
+local function inOutExpo(t, b, c, d)
+	if t == 0 then return b end
+	if t == d then return b + c end
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * pow(2, 10 * (t - 1)) + b - c * 0.0005
+	else
+		t = t - 1
+		return c / 2 * 1.0005 * (-pow(2, -10 * t) + 2) + b
+	end
+end
+
+local function outInExpo(t, b, c, d)
+	if t < d / 2 then
+		return outExpo(t * 2, b, c / 2, d)
+	else
+		return inExpo((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inCirc(t, b, c, d)
+	t = t / d
+	return(-c * (sqrt(1 - pow(t, 2)) - 1) + b)
+end
+
+local function outCirc(t, b, c, d)
+	t = t / d - 1
+	return(c * sqrt(1 - pow(t, 2)) + b)
+end
+
+local function inOutCirc(t, b, c, d)
+	t = t / d * 2
+	if t < 1 then
+		return -c / 2 * (sqrt(1 - t * t) - 1) + b
+	else
+		t = t - 2
+		return c / 2 * (sqrt(1 - t * t) + 1) + b
+	end
+end
+
+local function outInCirc(t, b, c, d)
+	if t < d / 2 then
+		return outCirc(t * 2, b, c / 2, d)
+	else
+		return inCirc((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+local function inElastic(t, b, c, d, a, p)
+	if t == 0 then return b end
+
+	t = t / d
+
+	if t == 1  then return b + c end
+
+	if not p then p = d * 0.3 end
+
+	local s
+
+	if not a or a < abs(c) then
+		a = c
+		s = p / 4
+	else
+		s = p / (2 * pi) * asin(c/a)
+	end
+
+	t = t - 1
+
+	return -(a * pow(2, 10 * t) * sin((t * d - s) * (2 * pi) / p)) + b
+end
+
+-- a: amplitud
+-- p: period
+local function outElastic(t, b, c, d, a, p)
+	if t == 0 then return b end
+
+	t = t / d
+
+	if t == 1 then return b + c end
+
+	if not p then p = d * 0.3 end
+
+	local s
+
+	if not a or a < abs(c) then
+		a = c
+		s = p / 4
+	else
+		s = p / (2 * pi) * asin(c/a)
+	end
+
+	return a * pow(2, -10 * t) * sin((t * d - s) * (2 * pi) / p) + c + b
+end
+
+-- p = period
+-- a = amplitud
+local function inOutElastic(t, b, c, d, a, p)
+	if t == 0 then return b end
+
+	t = t / d * 2
+
+	if t == 2 then return b + c end
+
+	if not p then p = d * (0.3 * 1.5) end
+	if not a then a = 0 end
+
+	local s
+
+	if not a or a < abs(c) then
+		a = c
+		s = p / 4
+	else
+		s = p / (2 * pi) * asin(c / a)
+	end
+
+	if t < 1 then
+		t = t - 1
+		return -0.5 * (a * pow(2, 10 * t) * sin((t * d - s) * (2 * pi) / p)) + b
+	else
+		t = t - 1
+		return a * pow(2, -10 * t) * sin((t * d - s) * (2 * pi) / p ) * 0.5 + c + b
+	end
+end
+
+-- a: amplitud
+-- p: period
+local function outInElastic(t, b, c, d, a, p)
+	if t < d / 2 then
+		return outElastic(t * 2, b, c / 2, d, a, p)
+	else
+		return inElastic((t * 2) - d, b + c / 2, c / 2, d, a, p)
+	end
+end
+
+local function inBack(t, b, c, d, s)
+	if not s then s = 1.70158 end
+	t = t / d
+	return c * t * t * ((s + 1) * t - s) + b
+end
+
+local function outBack(t, b, c, d, s)
+	if not s then s = 1.70158 end
+	t = t / d - 1
+	return c * (t * t * ((s + 1) * t + s) + 1) + b
+end
+
+local function inOutBack(t, b, c, d, s)
+	if not s then s = 1.70158 end
+	s = s * 1.525
+	t = t / d * 2
+	if t < 1 then
+		return c / 2 * (t * t * ((s + 1) * t - s)) + b
+	else
+		t = t - 2
+		return c / 2 * (t * t * ((s + 1) * t + s) + 2) + b
+	end
+end
+
+local function outInBack(t, b, c, d, s)
+	if t < d / 2 then
+		return outBack(t * 2, b, c / 2, d, s)
+	else
+		return inBack((t * 2) - d, b + c / 2, c / 2, d, s)
+	end
+end
+
+local function outBounce(t, b, c, d)
+	t = t / d
+	if t < 1 / 2.75 then
+		return c * (7.5625 * t * t) + b
+	elseif t < 2 / 2.75 then
+		t = t - (1.5 / 2.75)
+		return c * (7.5625 * t * t + 0.75) + b
+	elseif t < 2.5 / 2.75 then
+		t = t - (2.25 / 2.75)
+		return c * (7.5625 * t * t + 0.9375) + b
+	else
+		t = t - (2.625 / 2.75)
+		return c * (7.5625 * t * t + 0.984375) + b
+	end
+end
+
+local function inBounce(t, b, c, d)
+	return c - outBounce(d - t, 0, c, d) + b
+end
+
+local function inOutBounce(t, b, c, d)
+	if t < d / 2 then
+		return inBounce(t * 2, 0, c, d) * 0.5 + b
+	else
+		return outBounce(t * 2 - d, 0, c, d) * 0.5 + c * .5 + b
+	end
+end
+
+local function outInBounce(t, b, c, d)
+	if t < d / 2 then
+		return outBounce(t * 2, b, c / 2, d)
+	else
+		return inBounce((t * 2) - d, b + c / 2, c / 2, d)
+	end
+end
+
+return {
+	linear = linear,
+	inQuad = inQuad,
+	outQuad = outQuad,
+	inOutQuad = inOutQuad,
+	outInQuad = outInQuad,
+	inCubic  = inCubic ,
+	outCubic = outCubic,
+	inOutCubic = inOutCubic,
+	outInCubic = outInCubic,
+	inQuart = inQuart,
+	outQuart = outQuart,
+	inOutQuart = inOutQuart,
+	outInQuart = outInQuart,
+	inQuint = inQuint,
+	outQuint = outQuint,
+	inOutQuint = inOutQuint,
+	outInQuint = outInQuint,
+	inSine = inSine,
+	outSine = outSine,
+	inOutSine = inOutSine,
+	outInSine = outInSine,
+	inExpo = inExpo,
+	outExpo = outExpo,
+	inOutExpo = inOutExpo,
+	outInExpo = outInExpo,
+	inCirc = inCirc,
+	outCirc = outCirc,
+	inOutCirc = inOutCirc,
+	outInCirc = outInCirc,
+	inElastic = inElastic,
+	outElastic = outElastic,
+	inOutElastic = inOutElastic,
+	outInElastic = outInElastic,
+	inBack = inBack,
+	outBack = outBack,
+	inOutBack = inOutBack,
+	outInBack = outInBack,
+	inBounce = inBounce,
+	outBounce = outBounce,
+	inOutBounce = inOutBounce,
+	outInBounce = outInBounce,
+}]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800004052</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX0FE8CF9409ED409FA09B137A075A8E7C">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">XStore</string>
+						<string name="ScriptGuid">{40210DAE-A8BA-4DBD-B9E7-177FA745596D}</string>
+						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local newproxy,typeof,table = Util.newproxy,Util.typeof,Util.table
+
+--// Types
+export type XStore = {
+    Value: {},
+    Options: StoreOptions,
+}
+
+type XStoreMeta = {
+    type: "XStore",
+}&StoreOptions&StoreData
+
+type StoreData = {
+    For:  Player,
+    ID: string,
+}
+
+type StoreOptions = {
+    UpdateIncrement: number,
+}
+
+--// Vars
+local Open,Close
+
+local ImmutableOptions = {
+    UpdateIncrement = "number",
+}
+
+local DataTemplate = {}
+
+--// Functions
+
+Close = function(self:XStore)
+    local meta = getmetatable(self)::XStoreMeta
+
+end
+
+--/ Local
+
+--// Interface
+
+--/ Metadata
+local __StoreMeta = {
+    type = "XStore",
+    __methods = {
+        Close = Close,
+    },
+}
+
+local __InterfaceMetaData = {
+    __newindex = function(self,index,value)
+        local OptionType = ImmutableOptions[index]
+        local ValueType = typeof(value)
+        assert(OptionType,`Invalid index {index} to XStore options}`)
+        assert(ValueType==OptionType,`Invalid type for index {index} of XStore. Expected {OptionType}, got {ValueType}`)
+        rawset(self,index,value)
+    end
+}
+
+--/ Functions
+Open = function(For:Player,Options:StoreOptions):XStore
+    local t = {}
+    local proxy:XStore = newproxy(__StoreMeta,{
+        __public = {
+            Value = table.reconcile(t,DataTemplate),
+            Options = setmetatable({},__InterfaceMetaData),
+        },
+        __private = table.combine({
+            For = For,
+            ID = Services.https:GenerateGUID(false)
+        },Options or {}),
+    })
+    return proxy
+end
+
+
+
+return {Open = Open,}]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800004055</UniqueId>
+					</Properties>
+				</Item>
+			</Item>
+			<Item class="ModuleScript" referent="RBX4E167B53BBB74A899C1B4F679A939090">
+				<Properties>
+					<BinaryString name="AttributesSerialize"></BinaryString>
+					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+					<bool name="DefinesCapabilities">false</bool>
+					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+					<Content name="LinkedSource"><null></null></Content>
+					<string name="Name">XThread</string>
+					<string name="ScriptGuid">{24DD168D-0763-4A63-8D2D-492BD22556B9}</string>
+					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local XThread = require(Services.rs.modules.XThread)
+
+local ServerStore = Services.mss:GetSortedMap("Servers")
+local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
+local JOB_ID = Services.https:GenerateGUID(false)
+
+--// Functions
+--/ Local
+local PlayersChanged = false
+local function AddPlayer(player:Player)
+	PlayersChanged = true
+	table.insert(Players,player.UserId)
+end
+local function RemovePlayer(player)
+	PlayersChanged = true
+	table.remove(Players,table.find(Players,player.UserId))
+end
+local function UploadPlayers()
+	Util.attempt(ServerStore.SetAsync,20,ServerStore,JOB_ID,Players,604800)
+end
+
+
+--Initialize self
+for _,v in Services.players:GetPlayers() do AddPlayer(v) end
+Services.players.PlayerAdded:Connect(AddPlayer)
+
+Services.players.PlayerRemoving:Connect(RemovePlayer)
+game:BindToClose(function() Util.attempt(ServerStore.RemoveAsync,20,ServerStore,JOB_ID) end)
+UploadPlayers()
+
+--[[
+1000+(100*experience players) rpm
+500 player scenario; 5e4 rpm
+50 servers of 10
+1 rps of quota 49 * 50 = 2450 
+1 ups of quota 1 * 50 = 50 
+//
+2500 of 5e4 rpm
+]]
+print(JOB_ID)
+XThread.new(function()
+	while task.wait(1) do
+		local serverCache
+		repeat
+			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+		until #rr ~= 200
+		
+		table.sort(serverCache,function(a,b)
+			return #a.value > #b.value
+		end)
+		Servers.Active = serverCache
+		if Servers.Callback then task.spawn(Servers.Callback) end
+		if PlayersChanged then UploadPlayers() PlayersChanged = false end
+	end
+end,function()
+	for _,v in Services.players:GetPlayers() do
+		v:Kick("Error fetching server data, closing server...")
+	end
+end)
+
+return Servers]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">54ae2e42a34dfe8e05ff74b200003eb5</UniqueId>
+				</Properties>
+			</Item>
+		</Item>
+	</Item>
+	<Item class="LuaWebService" referent="RBXB9641F83B3F94B4FB8C14ADF812A77AF">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LuaWebService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000355</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProcessInstancePhysicsService" referent="RBX1B46BC68445C42D79AA6776EDCEC06B3">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ProcessInstancePhysicsService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000357</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="Lighting" referent="0">
+		<Properties>
+			<Color3 name="Ambient">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<float name="Brightness">2</float>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<Color3 name="ColorShift_Bottom">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<Color3 name="ColorShift_Top">
+				<R>0</R>
+				<G>0</G>
+				<B>0</B>
+			</Color3>
+			<bool name="DefinesCapabilities">false</bool>
+			<float name="EnvironmentDiffuseScale">0</float>
+			<float name="EnvironmentSpecularScale">0</float>
+			<float name="ExposureCompensation">0</float>
+			<Color3 name="FogColor">
+				<R>0.75</R>
+				<G>0.75</G>
+				<B>0.75</B>
+			</Color3>
+			<float name="FogEnd">100000</float>
+			<float name="FogStart">0</float>
+			<float name="GeographicLatitude">41.7332993</float>
+			<bool name="GlobalShadows">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">Lighting</string>
+			<Color3 name="OutdoorAmbient">
+				<R>0.5</R>
+				<G>0.5</G>
+				<B>0.5</B>
+			</Color3>
+			<bool name="Outlines">false</bool>
+			<float name="ShadowSoftness">0.5</float>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<token name="Technology">1</token>
+			<string name="TimeOfDay">14:00:00</string>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000036d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="LodDataService" referent="RBX71E25602E13243B98123B688442B1736">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">LodDataService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800000370</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ServiceVisibilityService" referent="RBX20281B07233048AE88F58F3DCBFD1D36">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<BinaryString name="HiddenServices">AAAAAA==</BinaryString>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServiceVisibilityService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c2f</UniqueId>
+			<BinaryString name="VisibleServices">AAAAAA==</BinaryString>
+		</Properties>
+	</Item>
+	<Item class="HttpService" referent="RBX13792E73C6AE42D8ACE0EC9987D5FFE8">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="HttpEnabled">false</bool>
+			<string name="Name">HttpService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c50</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="TestService" referent="RBXCBACF967E07B4D6FA4F2801C0D88AB6F">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<bool name="AutoRuns">true</bool>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<string name="Description"></string>
+			<bool name="ExecuteWithStudioRun">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<bool name="IsSleepAllowed">true</bool>
+			<string name="Name">TestService</string>
+			<int name="NumberOfPlayers">0</int>
+			<double name="SimulateSecondsLag">0</double>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<double name="Timeout">10</double>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c5d</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="UGCAvatarService" referent="RBXD631E51513A0479680A4F3D790BB1B94">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">UGCAvatarService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c63</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="VirtualInputManager" referent="RBXFFC17CB525FD47949E492E82BCD5EB45">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">VirtualInputManager</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c6b</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ProximityPromptService" referent="RBX047C838F866F486EB41A9213C04846A3">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<bool name="Enabled">true</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<int name="MaxPromptsVisible">16</int>
+			<string name="Name">ProximityPromptService</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003f1f</UniqueId>
+		</Properties>
+	</Item>
+	<SharedStrings>
+		<SharedString md5="yuZpQdnvvUBOTYh1jqZ2cA=="></SharedString>
+	</SharedStrings>
+</roblox>
