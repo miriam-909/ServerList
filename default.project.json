@@ -4,14 +4,19 @@
     "$className": "DataModel",
 
     "ReplicatedStorage": {
-      "Shared": {
+      "modules": {
         "$path": "src/modules"
       }
     },
-
+    "ServerScriptService": {
+      "$path": "src/SSS"
+    },
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true
+      },
+      "Services": {
+        "$path": "src/services"
       },
       "Baseplate": {
         "$className": "Part",
