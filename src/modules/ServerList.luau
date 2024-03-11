@@ -3,7 +3,7 @@ local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {},{}
+local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
 local JOB_ID = Services.https:GenerateGUID(false)
 
 --// Functions
@@ -40,12 +40,22 @@ UploadPlayers()
 2500 of 5e4 rpm
 ]]
 
+print(JOB_ID)
+
 XThread.new(function()
 	while task.wait(1) do
+		local serverCache
 		repeat
-			local rs,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
-			print(rs,rr)
+			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+			print(_,rr)
 		until #rr ~= 200
+		
+		table.sort(serverCache,function(a,b)
+			return #a.value > #b.value
+		end)
+		Servers.Active = serverCache
+		if Servers.Callback then task.spawn(Servers.Callback) end
 		if PlayersChanged then UploadPlayers() PlayersChanged = false end
 	end
 end,function()
@@ -53,4 +63,6 @@ end,function()
 		v:Kick("Error fetching server data, closing server...")
 	end
 end)
+
+
 return Servers

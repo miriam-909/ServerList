@@ -398,7 +398,7 @@ local Util= {
 			if i ~=0 then task.wait(1*i) end
 			i+=1
 			local t: {any} = {pcall(func,...)}
-			if not t[1] then warn(err,...) err = t[2] continue end
+			if not t[1] then err = t[2] warn(err,...) continue end
 			table.remove(t,1)
 			return true,unpack(t)
 		end
@@ -416,4 +416,4 @@ for i,v in Util do
 end
 
 return Util
-
+	
