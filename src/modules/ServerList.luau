@@ -47,10 +47,9 @@ XThread.new(function()
 		local serverCache
 		repeat
 			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+			--for _,v in rr do Util.attempt(ServerStore.RemoveAsync,5,ServerStore,v.key) end // clear memory store
 			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
-			print(_,rr)
 		until #rr ~= 200
-		
 		table.sort(serverCache,function(a,b)
 			return #a.value > #b.value
 		end)
