@@ -6,5 +6,6 @@ return {
     sss = game:GetService("ServerScriptService"),
     ss = game:GetService("ServerStorage"),
     rs = game:GetService("ReplicatedStorage"),
-    ts = game:GetService("TweenService")
+    ts = game:GetService("TweenService"),
+    run = game:GetService("RunService"),
 }

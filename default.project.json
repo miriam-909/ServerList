@@ -7,16 +7,22 @@
       "modules": {
         "$path": "src/modules"
       }
+      
     },
     "ServerScriptService": {
       "$path": "src/SSS"
+    },
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "$path": "src/SPS"
+      }
     },
     "Workspace": {
       "$properties": {
         "FilteringEnabled": true
       },
       "Services": {
-        "$path": "src/services"
+        "$path": "src/Services"
       },
       "Baseplate": {
         "$className": "Part",
