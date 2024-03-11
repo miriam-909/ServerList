@@ -78,18 +78,18 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>6.82532501</X>
-					<Y>72.9558868</Y>
-					<Z>74.5427475</Z>
-					<R00>0.45126906</R00>
-					<R01>0.622210145</R01>
-					<R02>-0.639695823</R02>
-					<R10>1.49011612e-08</R10>
-					<R11>0.716835976</R11>
-					<R12>0.697241783</R12>
-					<R20>0.892387927</R20>
-					<R21>-0.314643651</R21>
-					<R22>0.323485911</R22>
+					<X>3.86672974</X>
+					<Y>71.6251831</Y>
+					<Z>58.2734184</Z>
+					<R00>-0.244597167</R00>
+					<R01>0.635761321</R01>
+					<R02>-0.732106447</R02>
+					<R10>7.4505806e-09</R10>
+					<R11>0.755041003</R11>
+					<R12>0.655677617</R12>
+					<R20>0.969624877</R20>
+					<R21>0.160376891</R21>
+					<R22>-0.184680879</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -337,1334 +337,6 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				</Vector3>
 			</Properties>
 		</Item>
-		<Item class="ModuleScript" referent="RBX709814E417554CAEA7272FA1E20A37A1">
-			<Properties>
-				<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjM=</BinaryString>
-				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-				<bool name="DefinesCapabilities">false</bool>
-				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-				<Content name="LinkedSource"><null></null></Content>
-				<string name="Name">MainModule</string>
-				<string name="ScriptGuid">{FB5E1731-F78C-46E1-AF69-6A288A05A3CF}</string>
-				<ProtectedString name="Source"><![CDATA[-- Variables
-local Proxy = require(script.Proxy)
-local Signal = require(script.Signal)
-local SynchronousTaskManager = require(script.SynchronousTaskManager)
-local dataStoreService, memoryStoreService, httpService = game:GetService("DataStoreService"), game:GetService("MemoryStoreService"), game:GetService("HttpService")
-local Constructor, DataStore = {}, {}
-local OpenTask, ReadTask, LockTask, SaveTask, CloseTask, DestroyTask, Lock, Unlock, Load, Save, StartSaveTimer, StopSaveTimer, SaveTimerEnded, StartLockTimer, StopLockTimer, LockTimerEnded, ProcessQueue, SignalConnected, Clone, Reconcile, Compress, Decompress, Encode, Decode, BindToClose
-local dataStores, bindToClose, active = {}, {}, true
-local characters = {[0] = "0","1","2","3","4","5","6","7","8","9","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","!","$","%","&","'",",",".","/",":",";","=","?","@","[","]","^","_","`","{","}","~"}
-local bytes = {} for i = (0), #characters do bytes[string.byte(characters[i])] = i end
-local base = #characters + 1
-
-
-
-
--- Types
-export type Constructor = {
-	new: (name: string, scope: string, key: string?) -> DataStore,
-	hidden: (name: string, scope: string, key: string?) -> DataStore,
-	find: (name: string, scope: string, key: string?) -> DataStore?,
-	Response: {Success: string, Saved: string, Locked: string, State: string, Error: string},
-}
-
-export type DataStore = {
-	[any]: any,
-	Value: any,
-	Metadata: {[string]: any},
-	UserIds: {any},
-	SaveInterval: number,
-	SaveDelay: number,
-	LockInterval: number,
-	LockAttempts: number,
-	SaveOnClose: boolean,
-	Id: string,
-	UniqueId: string,
-	Key: string,
-	State: boolean?,
-	Hidden: boolean,
-	AttemptsRemaining: number,
-	CreatedTime: number,
-	UpdatedTime: number,
-	Version: string,
-	CompressedValue: string,
-	StateChanged: Signal.Signal,
-	Saving: Signal.Signal,
-	Saved: Signal.Signal,
-	AttemptsChanged: Signal.Signal,
-	ProcessQueue: Signal.Signal,
-	Open: (self: DataStore, template: any?) -> (string, any),
-	Read: (self: DataStore, template: any?) -> (string, any),
-	Save: (self: DataStore) -> (string, any),
-	Close: (self: DataStore) -> (string, any),
-	Destroy: (self: DataStore) -> (string, any),
-	Queue: (self: DataStore, value: any, expiration: number?, priority: number?) -> (string, any),
-	Remove: (self: DataStore, id: string) -> (string, any),
-	Clone: (self: DataStore) -> any,
-	Reconcile: (self: DataStore, template: any) -> (),
-	Usage: (self: DataStore) -> (number, number),
-}
-
-
-
-
--- Constructor
-Constructor.new = function(name, scope, key)
-	if key == nil then key, scope = scope, "global" end
-	local id = name .. "/" .. scope .. "/" .. key
-	if dataStores[id] ~= nil then return dataStores[id] end
-	local proxy, dataStore = Proxy.new(DataStore, {
-		Metadata = {},
-		UserIds = {},
-		SaveInterval = 30,
-		SaveDelay = 0,
-		LockInterval = 60,
-		LockAttempts = 5,
-		SaveOnClose = true,
-		Id = id,
-		UniqueId = httpService:GenerateGUID(false),
-		Key = key,
-		State = false,
-		Hidden = false,
-		AttemptsRemaining = 0,
-		CreatedTime = 0,
-		UpdatedTime = 0,
-		Version = "",
-		CompressedValue = "",
-		StateChanged = Signal.new(),
-		Saving = Signal.new(),
-		Saved = Signal.new(),
-		AttemptsChanged = Signal.new(),
-		ProcessQueue = Signal.new(),
-	})
-	dataStore.TaskManager = SynchronousTaskManager.new()
-	dataStore.LockTime = -math.huge
-	dataStore.SaveTime = -math.huge
-	dataStore.ActiveLockInterval = 0
-	dataStore.ProcessingQueue = false
-	dataStore.DataStore = dataStoreService:GetDataStore(name, scope)
-	dataStore.MemoryStore = memoryStoreService:GetSortedMap(id)
-	dataStore.Queue = memoryStoreService:GetQueue(id)
-	dataStore.Options = Instance.new("DataStoreSetOptions")
-	dataStore.__public.ProcessQueue.DataStore = proxy
-	dataStore.__public.ProcessQueue.Connected = SignalConnected
-	dataStores[id] = proxy
-	if active == true then bindToClose[dataStore.__public.UniqueId] = proxy end
-	return proxy
-end
-
-Constructor.hidden = function(name, scope, key)
-	if key == nil then key, scope = scope, "global" end
-	local id = name .. "/" .. scope .. "/" .. key
-	local proxy, dataStore = Proxy.new(DataStore, {
-		Metadata = {},
-		UserIds = {},
-		SaveInterval = 30,
-		SaveDelay = 0,
-		LockInterval = 60,
-		LockAttempts = 5,
-		SaveOnClose = true,
-		Id = id,
-		UniqueId = httpService:GenerateGUID(false),
-		Key = key,
-		State = false,
-		Hidden = true,
-		AttemptsRemaining = 0,
-		CreatedTime = 0,
-		UpdatedTime = 0,
-		Version = "",
-		CompressedValue = "",
-		StateChanged = Signal.new(),
-		Saving = Signal.new(),
-		Saved = Signal.new(),
-		AttemptsChanged = Signal.new(),
-		ProcessQueue = Signal.new(),
-	})
-	dataStore.TaskManager = SynchronousTaskManager.new()
-	dataStore.LockTime = -math.huge
-	dataStore.SaveTime = -math.huge
-	dataStore.ActiveLockInterval = 0
-	dataStore.ProcessingQueue = false
-	dataStore.DataStore = dataStoreService:GetDataStore(name, scope)
-	dataStore.MemoryStore = memoryStoreService:GetSortedMap(id)
-	dataStore.Queue = memoryStoreService:GetQueue(id)
-	dataStore.Options = Instance.new("DataStoreSetOptions")
-	dataStore.__public.ProcessQueue.DataStore = proxy
-	dataStore.__public.ProcessQueue.Connected = SignalConnected
-	if active == true then bindToClose[dataStore.__public.UniqueId] = proxy end
-	return proxy
-end
-
-Constructor.find = function(name, scope, key)
-	if key == nil then key, scope = scope, "global" end
-	local id = name .. "/" .. scope .. "/" .. key
-	return dataStores[id]
-end
-
-Constructor.Response = {Success = "Success", Saved = "Saved", Locked = "Locked", State = "State", Error = "Error"}
-
-
-
-
--- DataStore
-DataStore.__tostring = function(proxy)
-	return "DataStore"
-end
-
-DataStore.__shared = {
-	Open = function(proxy, template)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Open failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.State == nil then return "State", "Destroyed" end
-		local synchronousTask = dataStore.TaskManager:FindFirst(OpenTask)
-		if synchronousTask ~= nil then return synchronousTask:Wait(template) end
-		if dataStore.TaskManager:FindLast(DestroyTask) ~= nil then return "State", "Destroying" end
-		if dataStore.__public.State == true and dataStore.TaskManager:FindLast(CloseTask) == nil then
-			if dataStore.__public.Value == nil then
-				dataStore.__public.Value = Clone(template)
-			elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
-				Reconcile(dataStore.__public.Value, template)
-			end
-			return "Success"
-		end
-		return dataStore.TaskManager:InsertBack(OpenTask, proxy):Wait(template)
-	end,
-	Read = function(proxy, template)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Read failed: Passed value is not a DataStore", 3) end
-		local synchronousTask = dataStore.TaskManager:FindFirst(ReadTask)
-		if synchronousTask ~= nil then return synchronousTask:Wait(template) end
-		if dataStore.__public.State == true and dataStore.TaskManager:FindLast(CloseTask) == nil then return "State", "Open" end
-		return dataStore.TaskManager:InsertBack(ReadTask, proxy):Wait(template)
-	end,
-	Save = function(proxy)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Save failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.State == false then return "State", "Closed" end
-		if dataStore.__public.State == nil then return "State", "Destroyed" end
-		local synchronousTask = dataStore.TaskManager:FindFirst(SaveTask)
-		if synchronousTask ~= nil then return synchronousTask:Wait() end
-		if dataStore.TaskManager:FindLast(CloseTask) ~= nil then return "State", "Closing" end
-		if dataStore.TaskManager:FindLast(DestroyTask) ~= nil then return "State", "Destroying" end
-		return dataStore.TaskManager:InsertBack(SaveTask, proxy):Wait()
-	end,
-	Close = function(proxy)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Close failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.State == nil then return "Success" end
-		local synchronousTask = dataStore.TaskManager:FindFirst(CloseTask)
-		if synchronousTask ~= nil then return synchronousTask:Wait() end
-		if dataStore.__public.State == false and dataStore.TaskManager:FindLast(OpenTask) == nil then return "Success" end
-		local synchronousTask = dataStore.TaskManager:FindFirst(DestroyTask)
-		if synchronousTask ~= nil then return synchronousTask:Wait() end
-		StopLockTimer(dataStore)
-		StopSaveTimer(dataStore)
-		return dataStore.TaskManager:InsertBack(CloseTask, proxy):Wait()
-	end,
-	Destroy = function(proxy)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Destroy failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.State == nil then return "Success" end
-		dataStores[dataStore.__public.Id] = nil
-		StopLockTimer(dataStore)
-		StopSaveTimer(dataStore)
-		return (dataStore.TaskManager:FindFirst(DestroyTask) or dataStore.TaskManager:InsertBack(DestroyTask, proxy)):Wait()
-	end,
-	Queue = function(proxy, value, expiration, priority)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Queue failed: Passed value is not a DataStore", 3) end
-		if expiration ~= nil and type(expiration) ~= "number" then error("Attempt to Queue failed: Passed value is not nil or number", 3) end
-		if priority ~= nil and type(priority) ~= "number" then error("Attempt to Queue failed: Passed value is not nil or number", 3) end
-		local success, errorMessage
-		for i = 1, 3 do
-			if i > 1 then task.wait(1) end
-			success, errorMessage = pcall(dataStore.Queue.AddAsync, dataStore.Queue, value, expiration or 604800, priority)
-			if success == true then return "Success" end
-		end
-		return "Error", errorMessage
-	end,
-	Remove = function(proxy, id)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Remove failed: Passed value is not a DataStore", 3) end
-		if type(id) ~= "string" then error("Attempt to RemoveQueue failed: Passed value is not a string", 3) end
-		local success, errorMessage
-		for i = 1, 3 do
-			if i > 1 then task.wait(1) end
-			success, errorMessage = pcall(dataStore.Queue.RemoveAsync, dataStore.Queue, id)
-			if success == true then return "Success" end
-		end
-		return "Error", errorMessage
-	end,
-	Clone = function(proxy)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Clone failed: Passed value is not a DataStore", 3) end
-		return Clone(dataStore.__public.Value)
-	end,
-	Reconcile = function(proxy, template)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Reconcile failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.Value == nil then
-			dataStore.__public.Value = Clone(template)
-		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
-			Reconcile(dataStore.__public.Value, template)
-		end
-	end,
-	Usage = function(proxy)
-		local dataStore = getmetatable(proxy)
-		if type(dataStore) ~= "table" or dataStore.__shared ~= DataStore.__shared then error("Attempt to Usage failed: Passed value is not a DataStore", 3) end
-		if dataStore.__public.Value == nil then return 0, 0 end
-		if type(dataStore.__public.Metadata.Compress) ~= "table" then
-			local characters = #httpService:JSONEncode(dataStore.__public.Value)
-			return characters, characters / 4194303
-		else
-			local level = dataStore.__public.Metadata.Compress.Level or 2
-			local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
-			local safety = if dataStore.__public.Metadata.Compress.Safety == nil then true else dataStore.__public.Metadata.Compress.Safety
-			dataStore.__public.CompressedValue = Compress(dataStore.__public.Value, level, decimals, safety)
-			local characters = #httpService:JSONEncode(dataStore.__public.CompressedValue)
-			return characters, characters / 4194303
-		end
-	end,
-}
-
-DataStore.__set = {
-	Metadata = function(proxy, dataStore, value)
-		if type(value) ~= "table" then error("Attempt to set Metadata failed: Passed value is not a table", 3) end
-		dataStore.__public.Metadata = value
-	end,
-	UserIds = function(proxy, dataStore, value)
-		if type(value) ~= "table" then error("Attempt to set UserIds failed: Passed value is not a table", 3) end
-		dataStore.__public.UserIds = value
-	end,
-	SaveInterval = function(proxy, dataStore, value)
-		if type(value) ~= "number" then error("Attempt to set SaveInterval failed: Passed value is not a number", 3) end
-		if value < 10 and value ~= 0 then error("Attempt to set SaveInterval failed: Passed value is less then 10 and not 0", 3) end
-		if value > 1000 then error("Attempt to set SaveInterval failed: Passed value is more then 1000", 3) end
-		if value == dataStore.__public.SaveInterval then return end
-		dataStore.__public.SaveInterval = value
-		if dataStore.__public.State ~= true then return end
-		if value == 0 then
-			StopSaveTimer(dataStore)
-		elseif dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then
-			StartSaveTimer(proxy)
-		end
-	end,
-	SaveDelay = function(proxy, dataStore, value)
-		if type(value) ~= "number" then error("Attempt to set SaveDelay failed: Passed value is not a number", 3) end
-		if value < 0 then error("Attempt to set SaveDelay failed: Passed value is less then 0", 3) end
-		if value > 10 then error("Attempt to set SaveDelay failed: Passed value is more then 10", 3) end
-		dataStore.__public.SaveDelay = value
-	end,
-	LockInterval = function(proxy, dataStore, value)
-		if type(value) ~= "number" then error("Attempt to set LockInterval failed: Passed value is not a number", 3) end
-		if value < 10 then error("Attempt to set LockInterval failed: Passed value is less then 10", 3) end
-		if value > 1000 then error("Attempt to set LockInterval failed: Passed value is more then 1000", 3) end
-		dataStore.__public.LockInterval = value
-	end,
-	LockAttempts = function(proxy, dataStore, value)
-		if type(value) ~= "number" then error("Attempt to set LockAttempts failed: Passed value is not a number", 3) end
-		if value < 1 then error("Attempt to set LockAttempts failed: Passed value is less then 1", 3) end
-		if value > 100 then error("Attempt to set LockAttempts failed: Passed value is more then 100", 3) end
-		dataStore.__public.LockAttempts = value
-	end,
-	SaveOnClose = function(proxy, dataStore, value)
-		if type(value) ~= "boolean" then error("Attempt to set SaveOnClose failed: Passed value is not a boolean", 3) end
-		dataStore.__public.SaveOnClose = value
-	end,
-	Id = false,
-	UniqueId = false,
-	Key = false,
-	State = false,
-	Hidden = false,
-	AttemptsRemaining = false,
-	CreatedTime = false,
-	UpdatedTime = false,
-	Version = false,
-	CompressedValue = false,
-	StateChanged = false,
-	Saving = false,
-	Saved = false,
-	AttemptsChanged = false,
-	ProcessQueue = false,
-}
-
-
-
-
--- Functions
-OpenTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	local response, responseData = Lock(dataStore, 3)
-	if response ~= "Success" then for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
-	local response, responseData = Load(dataStore, 3)
-	if response ~= "Success" then Unlock(dataStore, 3) for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
-	dataStore.__public.State = true
-	if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then
-		StartSaveTimer(proxy)
-		StartLockTimer(proxy)
-	end
-	for thread, template in runningTask:Iterate() do
-		if dataStore.__public.Value == nil then
-			dataStore.__public.Value = Clone(template)
-		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
-			Reconcile(dataStore.__public.Value, template)
-		end
-		task.defer(thread, response)
-	end
-	if dataStore.ProcessingQueue == false and dataStore.__public.ProcessQueue.Connections > 0 then task.defer(ProcessQueue, proxy) end
-	dataStore.__public.StateChanged:Fire(true, proxy)
-end
-
-ReadTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.__public.State == true then for thread in runningTask:Iterate() do task.defer(thread, "State", "Open") end return end
-	local response, responseData = Load(dataStore, 3)
-	if response ~= "Success" then for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end return end
-	for thread, template in runningTask:Iterate() do
-		if dataStore.__public.Value == nil then
-			dataStore.__public.Value = Clone(template)
-		elseif type(dataStore.__public.Value) == "table" and type(template) == "table" then
-			Reconcile(dataStore.__public.Value, template)
-		end
-		task.defer(thread, response)
-	end
-end
-
-LockTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	local attemptsRemaining = dataStore.__public.AttemptsRemaining
-	local response, responseData = Lock(dataStore, 3)
-	if response ~= "Success" then dataStore.__public.AttemptsRemaining -= 1 end
-	if dataStore.__public.AttemptsRemaining ~= attemptsRemaining then dataStore.__public.AttemptsChanged:Fire(dataStore.__public.AttemptsRemaining, proxy) end
-	if dataStore.__public.AttemptsRemaining > 0 then
-		if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then StartLockTimer(proxy) end
-	else
-		dataStore.__public.State = false
-		StopLockTimer(dataStore)
-		StopSaveTimer(dataStore)
-		if dataStore.__public.SaveOnClose == true then Save(proxy, 3) end
-		Unlock(dataStore, 3)
-		dataStore.__public.StateChanged:Fire(false, proxy)
-	end
-	for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
-end
-	
-SaveTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.__public.State == false then for thread in runningTask:Iterate() do task.defer(thread, "State", "Closed") end return end
-	StopSaveTimer(dataStore)
-	runningTask:End()
-	local response, responseData = Save(proxy, 3)
-	if dataStore.TaskManager:FindLast(CloseTask) == nil and dataStore.TaskManager:FindLast(DestroyTask) == nil then StartSaveTimer(proxy) end
-	for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
-end
-
-CloseTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.__public.State == false then for thread in runningTask:Iterate() do task.defer(thread, "Success") end return end
-	dataStore.__public.State = false
-	local response, responseData = nil, nil
-	if dataStore.__public.SaveOnClose == true then response, responseData = Save(proxy, 3) end
-	Unlock(dataStore, 3)
-	dataStore.__public.StateChanged:Fire(false, proxy)
-	if response == "Saved" then
-		for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
-	else
-		for thread in runningTask:Iterate() do task.defer(thread, "Success") end
-	end
-end
-
-DestroyTask = function(runningTask, proxy)
-	local dataStore = getmetatable(proxy)
-	local response, responseData = nil, nil
-	if dataStore.__public.State == false then
-		dataStore.__public.State = nil
-	else
-		dataStore.__public.State = nil
-		if dataStore.__public.SaveOnClose == true then response, responseData = Save(proxy, 3) end
-		Unlock(dataStore, 3)
-	end
-	dataStore.__public.StateChanged:Fire(nil, proxy)
-	dataStore.__public.StateChanged:DisconnectAll()
-	dataStore.__public.Saving:DisconnectAll()
-	dataStore.__public.Saved:DisconnectAll()
-	dataStore.__public.AttemptsChanged:DisconnectAll()
-	dataStore.__public.ProcessQueue:DisconnectAll()
-	bindToClose[dataStore.__public.UniqueId] = nil
-	if response == "Saved" then
-		for thread in runningTask:Iterate() do task.defer(thread, response, responseData) end
-	else
-		for thread in runningTask:Iterate() do task.defer(thread, "Success") end
-	end
-end
-
-Lock = function(dataStore, attempts)
-	local success, value, id, lockTime, lockInterval, lockAttempts = nil, nil, nil, nil, dataStore.__public.LockInterval, dataStore.__public.LockAttempts
-	for i = 1, attempts do
-		if i > 1 then task.wait(1) end
-		lockTime = os.clock()
-		success, value = pcall(dataStore.MemoryStore.UpdateAsync, dataStore.MemoryStore, "Id", function(value) id = value return if id == nil or id == dataStore.__public.UniqueId then dataStore.__public.UniqueId else nil end, lockInterval * lockAttempts + 30)
-		if success == true then break end
-	end
-	if success == false then return "Error", value end
-	if value == nil then return "Locked", id end
-	dataStore.LockTime = lockTime + lockInterval * lockAttempts
-	dataStore.ActiveLockInterval = lockInterval
-	dataStore.__public.AttemptsRemaining = lockAttempts
-	return "Success"
-end
-
-Unlock = function(dataStore, attempts)
-	local success, value, id = nil, nil, nil
-	for i = 1, attempts do
-		if i > 1 then task.wait(1) end
-		success, value = pcall(dataStore.MemoryStore.UpdateAsync, dataStore.MemoryStore, "Id", function(value) id = value return if id == dataStore.__public.UniqueId then dataStore.__public.UniqueId else nil end, 0)
-		if success == true then break end
-	end
-	if success == false then return "Error", value end
-	if value == nil and id ~= nil then return "Locked", id end
-	return "Success"
-end
-
-Load = function(dataStore, attempts)
-	local success, value, info = nil, nil, nil
-	for i = 1, attempts do
-		if i > 1 then task.wait(1) end
-		success, value, info = pcall(dataStore.DataStore.GetAsync, dataStore.DataStore, dataStore.__public.Key)
-		if success == true then break end
-	end
-	if success == false then return "Error", value end
-	if info == nil then
-		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = {}, {}, 0, 0, ""
-	else
-		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = info:GetMetadata(), info:GetUserIds(), info.CreatedTime, info.UpdatedTime, info.Version
-	end
-	if type(dataStore.__public.Metadata.Compress) ~= "table" then
-		dataStore.__public.Value = value
-	else
-		dataStore.__public.CompressedValue = value
-		local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
-		dataStore.__public.Value = Decompress(dataStore.__public.CompressedValue, decimals)
-	end
-	return "Success"
-end
-
-Save = function(proxy, attempts)
-	local dataStore = getmetatable(proxy)
-	local deltaTime = os.clock() - dataStore.SaveTime
-	if deltaTime < dataStore.__public.SaveDelay then task.wait(dataStore.__public.SaveDelay - deltaTime) end
-	dataStore.__public.Saving:Fire(dataStore.__public.Value, proxy)
-	local success, value, info = nil, nil, nil
-	if dataStore.__public.Value == nil then
-		for i = 1, attempts do
-			if i > 1 then task.wait(1) end
-			success, value, info = pcall(dataStore.DataStore.RemoveAsync, dataStore.DataStore, dataStore.__public.Key)
-			if success == true then break end
-		end
-		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
-		dataStore.__public.Metadata, dataStore.__public.UserIds, dataStore.__public.CreatedTime, dataStore.__public.UpdatedTime, dataStore.__public.Version = {}, {}, 0, 0, ""
-	elseif type(dataStore.__public.Metadata.Compress) ~= "table" then
-		dataStore.Options:SetMetadata(dataStore.__public.Metadata)
-		for i = 1, attempts do
-			if i > 1 then task.wait(1) end
-			success, value = pcall(dataStore.DataStore.SetAsync, dataStore.DataStore, dataStore.__public.Key, dataStore.__public.Value, dataStore.__public.UserIds, dataStore.Options)
-			if success == true then break end
-		end	
-		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
-		dataStore.__public.Version = value
-	else
-		local level = dataStore.__public.Metadata.Compress.Level or 2
-		local decimals = 10 ^ (dataStore.__public.Metadata.Compress.Decimals or 3)
-		local safety = if dataStore.__public.Metadata.Compress.Safety == nil then true else dataStore.__public.Metadata.Compress.Safety
-		dataStore.__public.CompressedValue = Compress(dataStore.__public.Value, level, decimals, safety)
-		dataStore.Options:SetMetadata(dataStore.__public.Metadata)
-		for i = 1, attempts do
-			if i > 1 then task.wait(1) end
-			success, value = pcall(dataStore.DataStore.SetAsync, dataStore.DataStore, dataStore.__public.Key, dataStore.__public.CompressedValue, dataStore.__public.UserIds, dataStore.Options)
-			if success == true then break end
-		end
-		if success == false then dataStore.__public.Saved:Fire("Error", value, proxy) return "Error", value end
-		dataStore.Version = value
-	end
-	dataStore.SaveTime = os.clock()
-	dataStore.__public.Saved:Fire("Saved", dataStore.__public.Value, proxy)
-	return "Saved", dataStore.__public.Value
-end
-
-StartSaveTimer = function(proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.SaveThread ~= nil then task.cancel(dataStore.SaveThread) end
-	if dataStore.__public.SaveInterval == 0 then return end
-	dataStore.SaveThread = task.delay(dataStore.__public.SaveInterval, SaveTimerEnded, proxy)
-end
-
-StopSaveTimer = function(dataStore)
-	if dataStore.SaveThread == nil then return end
-	task.cancel(dataStore.SaveThread)
-	dataStore.SaveThread = nil
-end
-
-SaveTimerEnded = function(proxy)
-	local dataStore = getmetatable(proxy)
-	dataStore.SaveThread = nil
-	if dataStore.TaskManager:FindLast(SaveTask) ~= nil then return end
-	dataStore.TaskManager:InsertBack(SaveTask, proxy)
-end
-
-StartLockTimer = function(proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.LockThread ~= nil then task.cancel(dataStore.LockThread) end
-	local startTime = dataStore.LockTime - dataStore.__public.AttemptsRemaining * dataStore.ActiveLockInterval
-	dataStore.LockThread = task.delay(startTime - os.clock() + dataStore.ActiveLockInterval, LockTimerEnded, proxy)
-end
-
-StopLockTimer = function(dataStore)
-	if dataStore.LockThread == nil then return end
-	task.cancel(dataStore.LockThread)
-	dataStore.LockThread = nil
-end
-
-LockTimerEnded = function(proxy)
-	local dataStore = getmetatable(proxy)
-	dataStore.LockThread = nil
-	if dataStore.TaskManager:FindFirst(LockTask) ~= nil then return end
-	dataStore.TaskManager:InsertBack(LockTask, proxy)
-end
-
-ProcessQueue = function(proxy)
-	local dataStore = getmetatable(proxy)
-	if dataStore.__public.State ~= true then return end
-	if dataStore.__public.ProcessQueue.Connections == 0 then return end
-	if dataStore.ProcessingQueue == true then return end
-	dataStore.ProcessingQueue = true
-	while true do
-		local success, values, id = pcall(dataStore.Queue.ReadAsync, dataStore.Queue, 100, false, 30)
-		if dataStore.__public.State ~= true then break end
-		if dataStore.__public.ProcessQueue.Connections == 0 then break end
-		if success == true and id ~= nil then dataStore.__public.ProcessQueue:Fire(id, values, proxy) end
-	end
-	dataStore.ProcessingQueue = false
-end
-
-SignalConnected = function(connected, signal)
-	if connected == false then return end
-	ProcessQueue(signal.DataStore)
-end
-
-Clone = function(original)
-	if type(original) ~= "table" then return original end
-	local clone = {}
-	for index, value in original do clone[index] = Clone(value) end
-	return clone
-end
-
-Reconcile = function(target, template)	
-	for index, value in template do
-		if type(index) == "number" then continue end
-		if target[index] == nil then
-			target[index] = Clone(value)
-		elseif type(target[index]) == "table" and type(value) == "table" then
-			Reconcile(target[index], value)
-		end
-	end
-end
-
-Compress = function(value, level, decimals, safety)
-	local data = {}
-	if type(value) == "boolean" then
-		table.insert(data, if value == false then "-" else "+")
-	elseif type(value) == "number" then
-		if value % 1 == 0 then
-			table.insert(data, if value < 0 then "<" .. Encode(-value) else ">" .. Encode(value))
-		else
-			table.insert(data, if value < 0 then "(" .. Encode(math.round(-value * decimals)) else ")" .. Encode(math.round(value * decimals)))
-		end
-	elseif type(value) == "string" then
-		if safety == true then value = value:gsub("", " ") end
-		table.insert(data, "#" .. value .. "")
-	elseif type(value) == "table" then
-		if #value > 0 and level == 2 then
-			table.insert(data, "|")
-			for i = 1, #value do table.insert(data, Compress(value[i], level, decimals, safety)) end
-			table.insert(data, "")
-		else
-			table.insert(data, "*")
-			for key, tableValue in value do table.insert(data, Compress(key, level, decimals, safety)) table.insert(data, Compress(tableValue, level, decimals, safety)) end
-			table.insert(data, "")
-		end
-	end
-	return table.concat(data)
-end
-
-Decompress = function(value, decimals, index)	
-	local i1, i2, dataType, data = value:find("([-+<>()#|*])", index or 1)
-	if dataType == "-" then
-		return false, i2
-	elseif dataType == "+" then
-		return true, i2
-	elseif dataType == "<" then
-		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
-		return -Decode(data), i2
-	elseif dataType == ">" then
-		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
-		return Decode(data), i2
-	elseif dataType == "(" then
-		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
-		return -Decode(data) / decimals, i2
-	elseif dataType == ")" then
-		i1, i2, data = value:find("([^-+<>()#|*]*)", i2 + 1)
-		return Decode(data) / decimals, i2
-	elseif dataType == "#" then
-		i1, i2, data = value:find("(.-)", i2 + 1)
-		return data, i2
-	elseif dataType == "|" then
-		local array = {}
-		while true do
-			data, i2 = Decompress(value, decimals, i2 + 1)
-			if data == nil then break end
-			table.insert(array, data)
-		end
-		return array, i2
-	elseif dataType == "*" then
-		local dictionary, key = {}, nil
-		while true do
-			key, i2 = Decompress(value, decimals, i2 + 1)
-			if key == nil then break end
-			data, i2 = Decompress(value, decimals, i2 + 1)
-			dictionary[key] = data
-		end
-		return dictionary, i2
-	end
-	return nil, i2
-end
-
-Encode = function(value)
-	if value == 0 then return "0" end
-	local data = {}
-	while value > 0 do
-		table.insert(data, characters[value % base])
-		value = math.floor(value / base)
-	end
-	return table.concat(data)
-end
-
-Decode = function(value)
-	local number, power, data = 0, 1, {string.byte(value, 1, #value)}	
-	for i, code in data do
-		number += bytes[code] * power
-		power *= base
-	end
-	return number
-end
-
-BindToClose = function()
-	active = false
-	for uniqueId, proxy in bindToClose do
-		local dataStore = getmetatable(proxy)
-		if dataStore.__public.State == nil then continue end
-		dataStores[dataStore.__public.Id] = nil
-		StopLockTimer(dataStore)
-		StopSaveTimer(dataStore)
-		if dataStore.TaskManager:FindFirst(DestroyTask) == nil then dataStore.TaskManager:InsertBack(DestroyTask, proxy) end
-	end
-	while next(bindToClose) ~= nil do task.wait() end
-end
-
-
-
-
--- Events
-game:BindToClose(BindToClose)
-
-
-
-
-return table.freeze(Constructor) :: Constructor]]></ProtectedString>
-				<int64 name="SourceAssetId">11671168253</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff6</UniqueId>
-			</Properties>
-			<Item class="ModuleScript" referent="RBX07B9DFCB63924B2EAAD56F5DD0E28325">
-				<Properties>
-					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
-					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-					<bool name="DefinesCapabilities">false</bool>
-					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Proxy</string>
-					<string name="ScriptGuid">{DF6627EE-14A8-426E-BBAB-1CDC55EAF55A}</string>
-					<ProtectedString name="Source"><![CDATA[-- Variables
-local Constructor = {}
-local Index, NewIndex
-
-
-
-
--- Types
-export type Constructor = {
-	new: (data: {[any]: any}, public: {[any]: any}?) -> ({}, {[any]: any}),
-}
-
-
-
-
--- Constructor
-Constructor.new = function(data, public)
-	local proxy = newproxy(true)
-	local metatable = getmetatable(proxy)
-	for index, value in data do metatable[index] = value end
-	metatable.__index = Index
-	metatable.__newindex = NewIndex
-	metatable.__public = public or {}
-	return proxy, metatable
-end
-
-
-
-
--- Functions
-Index = function(proxy, index)
-	local metatable = getmetatable(proxy)
-	local public = metatable.__public[index]
-	return if public == nil then metatable.__shared[index] else public
-end
-
-NewIndex = function(proxy, index, value)
-	local metatable = getmetatable(proxy)
-	local set = metatable.__set[index]
-	if set == nil then
-		metatable.__public[index] = value
-	elseif set == false then
-		error("Attempt to modify a readonly value", 2)
-	else
-		set(proxy, metatable, value)
-	end
-end
-
-
-
-
-return table.freeze(Constructor) :: Constructor]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff7</UniqueId>
-				</Properties>
-			</Item>
-			<Item class="ModuleScript" referent="RBX84EF99B45AC2428E97511130297D6B37">
-				<Properties>
-					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
-					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-					<bool name="DefinesCapabilities">false</bool>
-					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">Signal</string>
-					<string name="ScriptGuid">{F76F0CE0-6883-4079-B9BB-F720B8869CBB}</string>
-					<ProtectedString name="Source"><![CDATA[-- Variables
-local Proxy = require(script.Parent.Proxy)
-local Constructor, Signal, Connection = {}, {}, {}
-local Thread, Call
-local threads = {}
-
-
-
-
--- Types
-export type Constructor = {
-	new: () -> Signal,
-}
-
-export type Signal = {
-	[any]: any,
-	Connections: number,
-	Connected: (connected: boolean, signal: Signal) -> ()?,
-	Connect: (self: Signal, func: (...any) -> (), ...any) -> Connection,
-	Once: (self: Signal, func: (...any) -> (), ...any) -> Connection,
-	Wait: (self: Signal, ...any) -> ...any,
-	Fire: (self: Signal, ...any) -> (),
-	FastFire: (self: Signal, ...any) -> (),
-	DisconnectAll: (self: Signal) -> (),
-}
-
-export type Connection = {
-	[any]: any,
-	Signal: Signal?,
-	Disconnect: (self: Connection) -> (),
-}
-
-
-
-
--- Constructor
-Constructor.new = function()
-	local proxy, signal = Proxy.new(Signal, {Connections = 0})
-	return proxy
-end
-
-
-
-
--- Signal
-Signal.__tostring = function(proxy)
-	return "Signal"
-end
-
-Signal.__shared = {
-	Connect = function(proxy, func, ...)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
-		if type(func) ~= "function" then error("Attempt to Connect failed: Passed value is not a function", 3) end
-		signal.__public.Connections += 1
-		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
-		connection.FunctionOrThread = func
-		connection.Parameters = if ... == nil then nil else {...}
-		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
-		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
-		return connectionProxy
-	end,
-	Once = function(proxy, func, ...)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
-		if type(func) ~= "function" then error("Attempt to Connect failed: Passed value is not a function", 3) end
-		signal.__public.Connections += 1
-		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
-		connection.FunctionOrThread = func
-		connection.Once = true
-		connection.Parameters = if ... == nil then nil else {...}
-		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
-		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
-		return connectionProxy
-	end,
-	Wait = function(proxy, ...)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
-		signal.__public.Connections += 1
-		local connectionProxy, connection = Proxy.new(Connection, {Signal = proxy})
-		connection.FunctionOrThread = coroutine.running()
-		connection.Once = true
-		connection.Parameters = if ... == nil then nil else {...}
-		if signal.Last == nil then signal.First, signal.Last = connection, connection else connection.Previous, signal.Last.Next, signal.Last = signal.Last, connection, connection end
-		if signal.__public.Connections == 1 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, true, proxy) end
-		return coroutine.yield()
-	end,
-	Fire = function(proxy, ...)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to connect failed: Passed value is not a Signal", 3) end
-		local connection = signal.First
-		while connection ~= nil do
-			if connection.Once == true then
-				signal.__public.Connections -= 1
-				connection.__public.Signal = nil
-				if signal.First == connection then signal.First = connection.Next end
-				if signal.Last == connection then signal.Last = connection.Previous end
-				if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
-				if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
-				if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
-			end
-			if type(connection.FunctionOrThread) == "thread" then
-				if connection.Parameters == nil then
-					task.spawn(connection.FunctionOrThread, ...)
-				else
-					local parameters = {...}
-					task.spawn(connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
-				end
-			else
-				local thread = table.remove(threads)
-				if thread == nil then thread = coroutine.create(Thread) coroutine.resume(thread) end
-				if connection.Parameters == nil then
-					task.spawn(thread, thread, connection.FunctionOrThread, ...)
-				else
-					local parameters = {...}
-					task.spawn(thread, thread, connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
-				end
-			end
-			connection = connection.Next
-		end
-	end,
-	FastFire = function(proxy, ...)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to connect failed: Passed value is not a Signal", 3) end
-		local connection = signal.First
-		while connection ~= nil do
-			if connection.Once == true then
-				signal.__public.Connections -= 1
-				connection.__public.Signal = nil
-				if signal.First == connection then signal.First = connection.Next end
-				if signal.Last == connection then signal.Last = connection.Previous end
-				if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
-				if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
-				if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
-			end
-			if type(connection.FunctionOrThread) == "thread" then
-				if connection.Parameters == nil then
-					coroutine.resume(connection.FunctionOrThread, ...)
-				else
-					local parameters = {...}
-					coroutine.resume(connection.FunctionOrThread, table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
-				end
-			else
-				if connection.Parameters == nil then
-					connection.FunctionOrThread(...)
-				else
-					local parameters = {...}
-					connection.FunctionOrThread(table.unpack(table.move(connection.Parameters, 1, #connection.Parameters, #parameters + 1, parameters)))
-				end
-			end
-			connection = connection.Next
-		end
-	end,
-	DisconnectAll = function(proxy)
-		local signal = getmetatable(proxy)
-		if type(signal) ~= "table" or signal.__shared ~= Signal.__shared then error("Attempt to Connect failed: Passed value is not a Signal", 3) end
-		local connection = signal.First
-		if connection == nil then return end
-		while connection ~= nil do
-			connection.__public.Signal = nil
-			if type(connection.FunctionOrThread) == "thread" then task.cancel(connection.FunctionOrThread) end
-			connection = connection.Next
-		end
-		if signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
-		signal.__public.Connections, signal.First, signal.Last = 0, nil, nil
-	end,
-}
-
-Signal.__set = {
-	Connections = false,
-}
-
-
-
-
--- Connection
-Connection.__tostring = function(proxy)
-	return "Connection"
-end
-
-Connection.__shared = {
-	Disconnect = function(proxy)
-		local connection = getmetatable(proxy)
-		if type(connection) ~= "table" or connection.__shared ~= Connection.__shared then error("Attempt to Disconnect failed: Passed value is not a Connection", 3) end
-		local signal =  getmetatable(connection.__public.Signal)
-		if signal == nil then return end
-		signal.__public.Connections -= 1
-		connection.__public.Signal = nil
-		if signal.First == connection then signal.First = connection.Next end
-		if signal.Last == connection then signal.Last = connection.Previous end
-		if connection.Previous ~= nil then connection.Previous.Next = connection.Next end
-		if connection.Next ~= nil then connection.Next.Previous = connection.Previous end
-		if type(connection.FunctionOrThread) == "thread" then task.cancel(connection.FunctionOrThread) end
-		if signal.__public.Connections == 0 and signal.__public.Connected ~= nil then task.defer(signal.__public.Connected, false, proxy) end
-	end,
-}
-
-Connection.__set = {
-	Signal = false,
-}
-
-
-
-
--- Functions
-Thread = function()
-	while true do Call(coroutine.yield()) end
-end
-
-Call = function(thread, func, ...)
-	func(...)
-	if #threads >= 16 then return end
-	table.insert(threads, thread)
-end
-
-
-
-
-return table.freeze(Constructor) :: Constructor]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff8</UniqueId>
-				</Properties>
-			</Item>
-			<Item class="ModuleScript" referent="RBXB48D324A4A7E47399B187E14ABFB6278">
-				<Properties>
-					<BinaryString name="AttributesSerialize">AQAAAAcAAABWZXJzaW9uAgMAAAAxLjA=</BinaryString>
-					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-					<bool name="DefinesCapabilities">false</bool>
-					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">SynchronousTaskManager</string>
-					<string name="ScriptGuid">{30CB454B-B536-44CD-BBEB-BAECABBAE0FE}</string>
-					<ProtectedString name="Source"><![CDATA[-- Variables
-local Proxy = require(script.Parent.Proxy)
-local Constructor, TaskManager, SynchronousTask, RunningTask = {}, {}, {}, {}
-local Run
-
-
-
-
--- Types
-export type Constructor = {
-	new: () -> TaskManager,
-}
-
-export type TaskManager = {
-	[any]: any,
-	Enabled: boolean,
-	Tasks: number,
-	Running: SynchronousTask?,
-	InsertFront: (self: TaskManager, func: (RunningTask, ...any) -> (), ...any) -> SynchronousTask,
-	InsertBack: (self: TaskManager, func: (RunningTask, ...any) -> (), ...any) -> SynchronousTask,
-	FindFirst: (self: TaskManager, func: (RunningTask, ...any) -> ()) -> (SynchronousTask?, number?),
-	FindLast: (self: TaskManager, func: (RunningTask, ...any) -> ()) -> (SynchronousTask?, number?),
-	CancelAll: (self: TaskManager, func: (RunningTask, ...any) -> ()?) -> (),
-}
-
-export type SynchronousTask = {
-	[any]: any,
-	TaskManager: TaskManager?,
-	Running: boolean,
-	Wait: (self: SynchronousTask, ...any) -> ...any,
-	Cancel: (self: SynchronousTask) -> (),
-}
-
-export type RunningTask = {
-	Next: (self: RunningTask) -> (thread, ...any),
-	Iterate: (self: RunningTask) -> ((self: RunningTask) -> (thread, ...any), RunningTask),
-	End: (self: RunningTask) -> (),
-}
-
-
-
-
--- Constructor
-Constructor.new = function()
-	local proxy, taskManager = Proxy.new(TaskManager, {Enabled = true, Tasks = 0})
-	taskManager.Active = false
-	return proxy
-end
-
-
-
-
--- TaskManager
-TaskManager.__tostring = function(proxy)
-	return "Task Manager"
-end
-
-TaskManager.__shared = {
-	InsertFront = function(proxy, func, ...)
-		local taskManager = getmetatable(proxy)
-		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to InsertFront failed: Passed value is not a Task Manager", 3) end
-		if type(func) ~= "function" then error("Attempt to InsertFront failed: Passed value is not a function", 3) end
-		taskManager.__public.Tasks += 1
-		local proxy, synchronousTask = Proxy.new(SynchronousTask, {TaskManager = proxy, Running = false})
-		synchronousTask.Active = true
-		synchronousTask.Function = func
-		synchronousTask.Parameters = if ... == nil then nil else {...}
-		if taskManager.First == nil then taskManager.First, taskManager.Last = proxy, proxy else synchronousTask.Next, getmetatable(taskManager.First).Previous, taskManager.First = taskManager.First, proxy, proxy end
-		if taskManager.Active == false and taskManager.__public.Enabled == true then taskManager.Active = true task.defer(Run, taskManager) end
-		return proxy
-	end,
-	InsertBack = function(proxy, func, ...)
-		local taskManager = getmetatable(proxy)
-		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to InsertBack failed: Passed value is not a Task Manager", 3) end
-		if type(func) ~= "function" then error("Attempt to InsertBack failed: Passed value is not a function", 3) end
-		taskManager.__public.Tasks += 1
-		local proxy, synchronousTask = Proxy.new(SynchronousTask, {TaskManager = proxy, Running = false})
-		synchronousTask.Active = true
-		synchronousTask.Function = func
-		synchronousTask.Parameters = if ... == nil then nil else {...}
-		if taskManager.Last == nil then taskManager.First, taskManager.Last = proxy, proxy else synchronousTask.Previous, getmetatable(taskManager.Last).Next, taskManager.Last = taskManager.Last, proxy, proxy end
-		if taskManager.Active == false and taskManager.__public.Enabled == true then taskManager.Active = true task.defer(Run, taskManager) end
-		return proxy
-	end,
-	FindFirst = function(proxy, func)
-		local taskManager = getmetatable(proxy)
-		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindFirst failed: Passed value is not a Task Manager", 3) end
-		if type(func) ~= "function" then error("Attempt to FindFirst failed: Passed value is not a function", 3) end
-		proxy = taskManager.__public.Running
-		if proxy ~= nil then
-			local synchronousTask = getmetatable(proxy)
-			if synchronousTask.Active == true and synchronousTask.Function == func then return proxy, 0 end
-		end
-		local index = 1
-		proxy = taskManager.First
-		while proxy ~= nil do
-			local synchronousTask = getmetatable(proxy)
-			if synchronousTask.Function == func then return proxy, index end
-			proxy = synchronousTask.Next
-			index += 1
-		end
-	end,
-	FindLast = function(proxy, func)
-		local taskManager = getmetatable(proxy)
-		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindLast failed: Passed value is not a Task Manager", 3) end
-		if type(func) ~= "function" then error("Attempt to FindFirst failed: Passed value is not a function", 3) end
-		local index = if taskManager.__public.Running == nil then taskManager.__public.Tasks else taskManager.__public.Tasks - 1
-		proxy = taskManager.Last
-		while proxy ~= nil do
-			local synchronousTask = getmetatable(proxy)
-			if synchronousTask.Function == func then return proxy, index end
-			proxy = synchronousTask.Previous
-			index -= 1
-		end
-		proxy = taskManager.__public.Running
-		if proxy ~= nil then
-			local synchronousTask = getmetatable(proxy)
-			if synchronousTask.Active == true and synchronousTask.Function == func then return proxy, 0 end
-		end
-	end,
-	CancelAll =  function(proxy, func)
-		local taskManager = getmetatable(proxy)
-		if type(taskManager) ~= "table" or taskManager.__shared ~= TaskManager.__shared then error("Attempt to FindLast failed: Passed value is not a Task Manager", 3) end
-		if func == nil then
-			local proxy = taskManager.First
-			taskManager.First = nil
-			taskManager.Last = nil
-			if taskManager.__public.Running == nil then taskManager.__public.Tasks = 0 else taskManager.__public.Tasks = 1 end
-			while proxy ~= nil do
-				local synchronousTask = getmetatable(proxy)
-				proxy, synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = synchronousTask.Next, false, nil, nil, nil
-			end
-		else
-			if type(func) ~= "function" then error("Attempt to CancelAll failed: Passed value is not nil or function", 3) end
-			local proxy = taskManager.First
-			while proxy ~= nil do
-				local synchronousTask = getmetatable(proxy)
-				if synchronousTask.Function == func then
-					taskManager.__public.Tasks -= 1
-					if taskManager.First == proxy then taskManager.First = synchronousTask.Next end
-					if taskManager.Last == proxy then taskManager.Last = synchronousTask.Previous end
-					if synchronousTask.Previous ~= nil then getmetatable(synchronousTask.Previous).Next = synchronousTask.Next end
-					if synchronousTask.Next ~= nil then getmetatable(synchronousTask.Next).Previous = synchronousTask.Previous end
-					proxy, synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = synchronousTask.Next, false, nil, nil, nil
-				else
-					proxy = synchronousTask.Next
-				end
-			end
-		end
-	end,
-}
-
-TaskManager.__set = {
-	Enabled = function(proxy, taskManager, value)
-		if type(value) ~= "boolean" then error("Attempt to set Enabled failed: Passed value is not a boolean", 3) end
-		taskManager.__public.Enabled = value
-		if value == false or taskManager.First == nil or taskManager.Active == true then return end 
-		taskManager.Active = true
-		task.defer(Run, taskManager)
-	end,
-	Tasks = false,
-	Running = false,
-}
-
-
-
-
--- SynchronousTask
-SynchronousTask.__tostring = function(proxy)
-	return "Synchronous Task"
-end
-
-SynchronousTask.__shared = {
-	Wait = function(proxy, ...)
-		local synchronousTask = getmetatable(proxy)
-		if type(synchronousTask) ~= "table" or synchronousTask.__shared ~= SynchronousTask.__shared then error("Attempt to Wait failed: Passed value is not a Synchronous Task", 3) end
-		if synchronousTask.Active == false then return end
-		local waiter = {coroutine.running(), ...}
-		if synchronousTask.Last == nil then synchronousTask.First, synchronousTask.Last = waiter, waiter else synchronousTask.Last.Next, synchronousTask.Last = waiter, waiter end
-		return coroutine.yield()
-	end,
-	Cancel = function(proxy)
-		local synchronousTask = getmetatable(proxy)
-		if type(synchronousTask) ~= "table" or synchronousTask.__shared ~= SynchronousTask.__shared then error("Attempt to Cancel failed: Passed value is not a Synchronous Task", 3) end
-		if synchronousTask.__public.Running == true then return false end
-		local taskManager = synchronousTask.__public.TaskManager
-		if taskManager == nil then return false end
-		taskManager = getmetatable(taskManager)
-		taskManager.__public.Tasks -= 1
-		if taskManager.First == proxy then taskManager.First = synchronousTask.Next end
-		if taskManager.Last == proxy then taskManager.Last = synchronousTask.Previous end
-		if synchronousTask.Previous ~= nil then getmetatable(synchronousTask.Previous).Next = synchronousTask.Next end
-		if synchronousTask.Next ~= nil then getmetatable(synchronousTask.Next).Previous = synchronousTask.Previous end
-		synchronousTask.Active, synchronousTask.__public.TaskManager, synchronousTask.Previous, synchronousTask.Next = false, nil, nil, nil
-		return true
-	end,
-}
-
-SynchronousTask.__set = {
-	TaskManager = false,
-	Running = false,
-}
-
-
-
-
--- RunningTask
-RunningTask.__tostring = function(proxy)
-	return "Running Task"
-end
-
-RunningTask.__shared = {
-	Next = function(proxy)
-		local runningTask = getmetatable(proxy)
-		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to Next failed: Passed value is not a Running Task", 3) end
-		local synchronousTask = runningTask.SynchronousTask
-		local waiter = synchronousTask.First
-		if waiter == nil then return end
-		synchronousTask.First = waiter.Next
-		if synchronousTask.Last == waiter then synchronousTask.Last = nil end
-		return table.unpack(waiter)
-	end,
-	Iterate = function(proxy)
-		local runningTask = getmetatable(proxy)
-		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to Iterate failed: Passed value is not a Running Task", 3) end
-		return runningTask.__shared.Next, proxy
-	end,
-	End = function(proxy)
-		local runningTask = getmetatable(proxy)
-		if type(runningTask) ~= "table" or runningTask.__shared ~= RunningTask.__shared then error("Attempt to End failed: Passed value is not a Running Task", 3) end
-		runningTask.SynchronousTask.Active = false
-	end,
-}
-
-RunningTask.__set = {
-
-}
-
-
-
-
--- Functions
-Run = function(taskManager)
-	if taskManager.__public.Enabled == false then taskManager.Active = false return end
-	local proxy = taskManager.First
-	if proxy == nil then taskManager.Active = false return end
-	local synchronousTask = getmetatable(proxy)
-	taskManager.__public.Running = proxy
-	taskManager.First = synchronousTask.Next
-	synchronousTask.__public.Running = true
-	if synchronousTask.Next == nil then taskManager.Last = nil else getmetatable(synchronousTask.Next).Previous = nil synchronousTask.Next = nil end
-	local proxy, runningTask = Proxy.new(RunningTask)
-	runningTask.SynchronousTask = synchronousTask
-	if synchronousTask.Parameters == nil then synchronousTask.Function(proxy) else synchronousTask.Function(proxy, table.unpack(synchronousTask.Parameters)) end
-	taskManager.__public.Tasks -= 1
-	taskManager.__public.Running = nil
-	synchronousTask.Active = false
-	synchronousTask.__public.TaskManager = nil
-	synchronousTask.__public.Running = false
-	if taskManager.__public.Enabled == false or taskManager.First == nil then taskManager.Active = false else task.defer(Run, taskManager) end 
-end
-
-
-
-
-return table.freeze(Constructor) :: Constructor]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003ff9</UniqueId>
-				</Properties>
-			</Item>
-		</Item>
 		<Item class="ModuleScript" referent="RBX78F9A37887184BA49B7E8B3D3F5B0566">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
@@ -1687,101 +359,6 @@ return table.freeze(Constructor) :: Constructor]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">15fd8e44855dd92905ff700b00003ef2</UniqueId>
-			</Properties>
-		</Item>
-		<Item class="TextLabel" referent="RBXF07A7E75DB374C3CAF80CD731753FB20">
-			<Properties>
-				<bool name="Active">false</bool>
-				<Vector2 name="AnchorPoint">
-					<X>0.5</X>
-					<Y>0.5</Y>
-				</Vector2>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<bool name="AutoLocalize">true</bool>
-				<token name="AutomaticSize">0</token>
-				<Color3 name="BackgroundColor3">
-					<R>1</R>
-					<G>1</G>
-					<B>1</B>
-				</Color3>
-				<float name="BackgroundTransparency">1</float>
-				<Color3 name="BorderColor3">
-					<R>0</R>
-					<G>0</G>
-					<B>0</B>
-				</Color3>
-				<token name="BorderMode">0</token>
-				<int name="BorderSizePixel">0</int>
-				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-				<bool name="ClipsDescendants">false</bool>
-				<bool name="DefinesCapabilities">false</bool>
-				<bool name="Draggable">false</bool>
-				<Font name="FontFace">
-					<Family><url>rbxasset://fonts/families/JosefinSans.json</url></Family>
-					<Weight>400</Weight>
-					<Style>Normal</Style>
-				</Font>
-				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-				<bool name="Interactable">true</bool>
-				<int name="LayoutOrder">0</int>
-				<float name="LineHeight">1</float>
-				<string name="LocalizationMatchIdentifier"></string>
-				<string name="LocalizationMatchedSourceText"></string>
-				<int name="MaxVisibleGraphemes">-1</int>
-				<string name="Name">Title</string>
-				<Ref name="NextSelectionDown">null</Ref>
-				<Ref name="NextSelectionLeft">null</Ref>
-				<Ref name="NextSelectionRight">null</Ref>
-				<Ref name="NextSelectionUp">null</Ref>
-				<UDim2 name="Position">
-					<XS>0.5</XS>
-					<XO>0</XO>
-					<YS>0.5</YS>
-					<YO>0</YO>
-				</UDim2>
-				<bool name="RichText">false</bool>
-				<Ref name="RootLocalizationTable">null</Ref>
-				<float name="Rotation">0</float>
-				<bool name="Selectable">false</bool>
-				<token name="SelectionBehaviorDown">0</token>
-				<token name="SelectionBehaviorLeft">0</token>
-				<token name="SelectionBehaviorRight">0</token>
-				<token name="SelectionBehaviorUp">0</token>
-				<bool name="SelectionGroup">false</bool>
-				<Ref name="SelectionImageObject">null</Ref>
-				<int name="SelectionOrder">0</int>
-				<UDim2 name="Size">
-					<XS>0.349999994</XS>
-					<XO>0</XO>
-					<YS>0.5</YS>
-					<YO>0</YO>
-				</UDim2>
-				<token name="SizeConstraint">0</token>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<string name="Text">SERVER LIST</string>
-				<Color3 name="TextColor3">
-					<R>0.615686297</R>
-					<G>0.615686297</G>
-					<B>0.615686297</B>
-				</Color3>
-				<token name="TextDirection">0</token>
-				<bool name="TextScaled">false</bool>
-				<float name="TextSize">22</float>
-				<Color3 name="TextStrokeColor3">
-					<R>0</R>
-					<G>0</G>
-					<B>0</B>
-				</Color3>
-				<float name="TextStrokeTransparency">1</float>
-				<float name="TextTransparency">0</float>
-				<token name="TextTruncate">0</token>
-				<bool name="TextWrapped">false</bool>
-				<token name="TextXAlignment">2</token>
-				<token name="TextYAlignment">1</token>
-				<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003ee4</UniqueId>
-				<bool name="Visible">true</bool>
-				<int name="ZIndex">1</int>
 			</Properties>
 		</Item>
 	</Item>
@@ -4843,68 +3420,158 @@ return {Open = Open,}]]></ProtectedString>
 					<string name="ScriptGuid">{24DD168D-0763-4A63-8D2D-492BD22556B9}</string>
 					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
-local XThread = require(Services.rs.modules.XThread)
 
-local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
-local JOB_ID = Services.https:GenerateGUID(false)
+export type XThread = {
+	thread: thread,
+	dead:boolean,
+	status: "normal"|"suspended"|"running",
+	await: <T...>(self:XThread,timeout:number?)->T...,
+	andThen: <args...,ret...>(self:XThread,Function:(args...)->ret...)->nil,
+	cancel: (self:XThread,defer:boolean?)->nil,
+	resume: (self:XThread,...any)->nil,
+	pause: (self:XThread,...any)->nil,
+}
 
---// Functions
---/ Local
-local PlayersChanged = false
-local function AddPlayer(player:Player)
-	PlayersChanged = true
-	table.insert(Players,player.UserId)
+local Threads = {Storage = {}}
+local __Thread,__ThreadMeta = {},nil
+local new,wrap,delay
+local Construct,Destruct,default,andThen,await,status,cancel,resume,pause
+
+default = function(f,meta,traceback,...)
+    local ret = {pcall(f,...)}
+    if not ret[1] then task.spawn(error,`\n{traceback}{table.concat(ret,"\n",2)}`) if meta.OnCancel then task.spawn(meta.OnCancel) end end
+    table.remove(ret,1)
+    for i,_ in meta.Listeners do
+        local t = typeof(i)
+        if t == "thread" then
+            coroutine.resume(i,unpack(ret))
+        elseif t == "function" then
+            i(unpack(ret))
+        end
+    end
 end
-local function RemovePlayer(player)
-	PlayersChanged = true
-	table.remove(Players,table.find(Players,player.UserId))
+
+Construct = function(thread)
+    local proxy:XThread,meta
+    proxy,meta = Util.newproxy(__Thread,{
+        __public = {thread = thread,dead = false},
+        __private = {Listeners = {},}
+    })
+    Threads.Storage[proxy] = true
+    proxy:andThen(function()
+        Destruct(proxy)
+    end)
+    return proxy,meta
 end
-local function UploadPlayers()
-	Util.attempt(ServerStore.SetAsync,20,ServerStore,JOB_ID,Players,604800)
+
+new = function(f,onc,...)
+    local proxy:XThread,meta
+    local traceback = debug.traceback("XThread Error",2)
+    proxy,meta = Construct(coroutine.create(default))
+    coroutine.resume(proxy.thread,f,meta,traceback,...)
+    meta.OnCancel = onc
+    return proxy
 end
 
+delay = function(t,f,onc,...)
+    local proxy:XThread,meta
+    local traceback = debug.traceback("XThread Error",2)
+    proxy,meta = Construct(coroutine.create(default))
+    task.delay(t,coroutine.resume,proxy.thread,f,meta,traceback,...)
+    meta.OnCancel = onc
+    return proxy
+end
 
---Initialize self
-for _,v in Services.players:GetPlayers() do AddPlayer(v) end
-Services.players.PlayerAdded:Connect(AddPlayer)
+wrap = function():XThread
+    return select(1,Construct(coroutine.running()))
+end
 
-Services.players.PlayerRemoving:Connect(RemovePlayer)
-game:BindToClose(function() Util.attempt(ServerStore.RemoveAsync,20,ServerStore,JOB_ID) end)
-UploadPlayers()
+Destruct = function(proxy:XThread)
+    proxy.dead = true
+    Threads.Storage[proxy] = nil
+end
 
---[[
-1000+(100*experience players) rpm
-500 player scenario; 5e4 rpm
-50 servers of 10
-1 rps of quota 49 * 50 = 2450 
-1 ups of quota 1 * 50 = 50 
-//
-2500 of 5e4 rpm
-]]
-print(JOB_ID)
-XThread.new(function()
-	while task.wait(1) do
-		local serverCache
-		repeat
-			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
-			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
-		until #rr ~= 200
-		
-		table.sort(serverCache,function(a,b)
-			return #a.value > #b.value
-		end)
-		Servers.Active = serverCache
-		if Servers.Callback then task.spawn(Servers.Callback) end
-		if PlayersChanged then UploadPlayers() PlayersChanged = false end
-	end
-end,function()
-	for _,v in Services.players:GetPlayers() do
-		v:Kick("Error fetching server data, closing server...")
-	end
-end)
+await = function(self,timeout)
+    if self.dead then return 0 end
+    local meta = getmetatable(self)
+    local thread = coroutine.running()
+    local aTimeout
+    if timeout then
+        aTimeout = delay(timeout,function()
+            meta.Listeners[thread] = nil
+        end)
+    end
+    meta.Listeners[thread] = true
+    local pack = {coroutine.yield()}
+    if timeout then aTimeout:cancel() end
+    return unpack(pack)
+end
 
-return Servers]]></ProtectedString>
+andThen = function(self,f)
+    if self.dead then new(f) return end
+    local meta = getmetatable(self)
+    meta.Listeners[f] = true
+end
+
+cancel = function(self,defer)
+    if self.dead then return end
+    local meta = getmetatable(self)
+    task.cancel(self.thread)
+    if meta.OnCancel then if defer then task.defer(meta.OnCancel) else meta.OnCancel() end end
+    Destruct(self)
+end
+
+status = function(self)
+    if self.dead then return "dead" end
+    return coroutine.status(self.thread)
+end
+
+pause = function(_,...)
+    return coroutine.yield(...)
+end
+
+resume = function(self,...)
+    if self.dead then return end
+    return coroutine.resume(self.thread,...)
+end
+
+__Thread = {
+    type = "XThread",
+    __methods = {
+        cancel = cancel,
+        await = await,
+        andThen = andThen,
+        resume = resume,
+        pause = pause,
+    },
+    __indexMethods = {
+        status = status,
+    },
+    __index = function(proxy,index)
+        local meta = getmetatable(proxy)
+        local indexMethod = meta.__indexMethods[index]
+        return  meta.__methods[index] or (indexMethod and indexMethod(proxy)) or meta.__data.__public[index]
+    end,
+    __newindex = function(proxy,index,value)
+        local meta = getmetatable(proxy)
+        meta.__data.__public[index] = value
+    end,
+}
+
+__ThreadMeta = {
+    __newindex = function(meta,index,value)
+        meta.__data.__private[index] = value
+    end,
+    __index = function(meta,index)
+        return meta.__data.__private[index]
+    end,
+}
+
+return {
+    new = new,
+    wrap = wrap,
+    delay = delay,
+}]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">54ae2e42a34dfe8e05ff74b200003eb5</UniqueId>
