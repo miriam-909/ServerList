@@ -68,8 +68,9 @@ Create = function(Namespace,Preferred:string?)
 end
 
 Fire = function(self,To:{Player}|Player,...)
-    local Meta = getmetatable(self)
-    for _,v in if typeof(To) == "Player" then {To} else To do
+	local Meta = getmetatable(self)
+	for _,v in if typeof(To) == "Player" then {To} else To do
+		print(v,...)
         Meta.Instance:FireClient(v,...)
     end
 end
@@ -95,7 +96,9 @@ Connect = function(self,func,pass)
 	})
 	Meta.Listeners.Connected[prox] = true
 	if not Meta.Connection then 
+		print("Connecitng")
 		Meta.Connection = Meta.Event:Connect(function(...)
+			print("recieved",...)
 			local T = os.clock()
 			Meta.Processing = Meta.Processing or T
 			for i,_ in Meta.Listeners.Connected do

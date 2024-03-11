@@ -4,5 +4,5 @@ local XSignal = require(Services.rs.modules.XSignal)
 local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
 
 ServerUpdate.Signal:Connect(function(...)
-    print(...)
+    print(...) --// NOT FIRING WHY
 end)
