@@ -78,18 +78,18 @@
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<CoordinateFrame name="CFrame">
-					<X>0.473138809</X>
-					<Y>67.5787735</Y>
-					<Z>68.4135284</Z>
-					<R00>0.155628696</R00>
-					<R01>0.522840202</R01>
-					<R02>-0.838103771</R02>
+					<X>16.2574692</X>
+					<Y>78.6687622</Y>
+					<Z>75.0007782</Z>
+					<R00>0.699514329</R00>
+					<R01>0.62577635</R01>
+					<R02>-0.345085084</R02>
 					<R10>-0</R10>
-					<R11>0.848441541</R11>
-					<R12>0.529289246</R12>
-					<R20>0.987815678</R20>
-					<R21>-0.0823725984</R21>
-					<R22>0.132041842</R22>
+					<R11>0.482894093</R11>
+					<R12>0.875678837</R12>
+					<R20>0.714618564</R20>
+					<R21>-0.612549901</R21>
+					<R22>0.337791353</R22>
 				</CoordinateFrame>
 				<Ref name="CameraSubject">null</Ref>
 				<token name="CameraType">0</token>
@@ -792,7 +792,7 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800003c34</UniqueId>
 			</Properties>
-			<Item class="LocalScript" referent="RBX85086D1D70374A2E81F103D53556151E">
+			<Item class="LocalScript" referent="RBXC29E4759A7CF4566A22C7DB9A8393C3D">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -800,23 +800,74 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<bool name="Disabled">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">LocalScript</string>
+					<string name="Name">ServerManager</string>
 					<token name="RunContext">0</token>
-					<string name="ScriptGuid">{73ACD5E3-2585-44E1-A226-0E97518E1D33}</string>
-					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+					<string name="ScriptGuid">{EB00C700-4670-4EEB-8A1B-C3B3DFC0152A}</string>
+					<ProtectedString name="Source"><![CDATA[local ServerManager = require(script.Manager)
+ServerManager.init(function(ServerAdded)
+    print(ServerAdded)
+    --ServerManager.addServer(ServerAdded)
+end)
+]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e80</UniqueId>
+				</Properties>
+				<Item class="ModuleScript" referent="RBXB88CFE09104C49C39DBBABF695F4A92B">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">Manager</string>
+						<string name="ScriptGuid">{7593109A-BC5E-4156-9C44-46943A6EE96A}</string>
+						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local XSignal = require(Services.rs.modules.XSignal)
 
 local player = Services.players.LocalPlayer
-local ServerUpdate = XSignal.new("ServerUpdate")
-local GUI = player.PlayerGui:WaitForChild("ServerList")
 
-ServerUpdate.Signal:Connect(function(...)
-    print(GUI,...)
-end)]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">67f445f1841bd6d80600dc71000040ee</UniqueId>
-				</Properties>
+local GUI = player.PlayerGui:WaitForChild("ServerList")
+local Servers = GUI.Canvas.ServerCanvas.Servers
+
+local ServerUpdate = XSignal.new("ServerUpdate")
+local ServerConnection: XSignal.XConnection
+local initialized = false
+
+local module = {}
+
+function module.init(callback:()->())
+    if initialized then return end
+    initialized = true
+    ServerConnection = ServerUpdate.Signal:Connect(callback)
+end
+
+function module.destroy()
+    if not initialized then return end
+
+    ServerConnection:Disconnect()
+    initialized = false
+end
+
+function module.addServer(Server:{
+    id:string,
+    players: {number}
+})
+    if Servers:FindFirstChild(Server.id) then return end
+    local Clone = Servers.Template:Clone()
+    Clone.Visible = true
+    Clone.Name = Server.id
+    Clone.PlayerCount.Text = `<b>PLAYER #:</b>  {#Server.players}/50`
+    Clone.ServerID = `<b>SERVER ID:</b> {Server.id}`
+    Clone.Parent = Servers
+end
+
+return module]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e82</UniqueId>
+					</Properties>
+				</Item>
 			</Item>
 		</Item>
 		<Item class="StarterCharacterScripts" referent="RBX67806A47640E40728A8027EC54FC8AF9">
@@ -1495,7 +1546,7 @@ end)]]></ProtectedString>
 								<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 								<bool name="Interactable">true</bool>
 								<int name="LayoutOrder">0</int>
-								<string name="Name">Server</string>
+								<string name="Name">Template</string>
 								<Ref name="NextSelectionDown">null</Ref>
 								<Ref name="NextSelectionLeft">null</Ref>
 								<Ref name="NextSelectionRight">null</Ref>
@@ -1527,7 +1578,7 @@ end)]]></ProtectedString>
 								<token name="Style">0</token>
 								<BinaryString name="Tags"></BinaryString>
 								<UniqueId name="UniqueId">2ac8fb984a85eb5305ffbd1300003e33</UniqueId>
-								<bool name="Visible">true</bool>
+								<bool name="Visible">false</bool>
 								<int name="ZIndex">1</int>
 							</Properties>
 							<Item class="UICorner" referent="RBXA1F10AACDB9A47FF97BFB52107145BB7">
@@ -1591,9 +1642,9 @@ end)]]></ProtectedString>
 									<Ref name="NextSelectionRight">null</Ref>
 									<Ref name="NextSelectionUp">null</Ref>
 									<UDim2 name="Position">
-										<XS>2.16726221e-07</XS>
+										<XS>1.44484162e-07</XS>
 										<XO>0</XO>
-										<YS>6.90037041e-07</YS>
+										<YS>4.89110334e-07</YS>
 										<YO>0</YO>
 									</UDim2>
 									<bool name="RichText">true</bool>
@@ -1608,15 +1659,15 @@ end)]]></ProtectedString>
 									<Ref name="SelectionImageObject">null</Ref>
 									<int name="SelectionOrder">0</int>
 									<UDim2 name="Size">
-										<XS>0.490921706</XS>
+										<XS>0.564999759</XS>
 										<XO>0</XO>
-										<YS>0.301824391</YS>
+										<YS>0.301824361</YS>
 										<YO>0</YO>
 									</UDim2>
 									<token name="SizeConstraint">0</token>
 									<int64 name="SourceAssetId">-1</int64>
 									<BinaryString name="Tags"></BinaryString>
-									<string name="Text">&lt;b&gt;SERVER ID:&lt;/b&gt; FF9F9B75-7C6F-438B-991E-4514514D9EF5</string>
+									<string name="Text">&lt;b&gt;SERVER ID:&lt;/b&gt; 00000000-0000-0000-0000-000000000000</string>
 									<Color3 name="TextColor3">
 										<R>0.745098054</R>
 										<G>0.745098054</G>
@@ -1711,7 +1762,7 @@ end)]]></ProtectedString>
 									<token name="SizeConstraint">0</token>
 									<int64 name="SourceAssetId">-1</int64>
 									<BinaryString name="Tags"></BinaryString>
-									<string name="Text">&lt;b&gt;PLAYER #:&lt;/b&gt;  50/50</string>
+									<string name="Text">&lt;b&gt;PLAYER #:&lt;/b&gt;  0/0</string>
 									<Color3 name="TextColor3">
 										<R>0.745098054</R>
 										<G>0.745098054</G>
@@ -2313,7 +2364,7 @@ end)]]></ProtectedString>
 			<BinaryString name="Tags"></BinaryString>
 			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034d</UniqueId>
 		</Properties>
-		<Item class="Script" referent="RBX497860A7723541E7B13EFAFDB1F15DB7">
+		<Item class="Script" referent="RBX0AB8D00B47114467A0D0BAF8F3975EC7">
 			<Properties>
 				<BinaryString name="AttributesSerialize"></BinaryString>
 				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
@@ -2321,14 +2372,14 @@ end)]]></ProtectedString>
 				<bool name="Disabled">false</bool>
 				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 				<Content name="LinkedSource"><null></null></Content>
-				<string name="Name">Script</string>
+				<string name="Name">ServerManager</string>
 				<token name="RunContext">0</token>
-				<string name="ScriptGuid">{8CF82FAC-C74E-48FE-B965-A6BEC602DE1D}</string>
+				<string name="ScriptGuid">{DBF49D4F-1D06-4899-8CC1-D99631D501BD}</string>
 				<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
 local XSignal = require(Services.rs.modules.XSignal)
-local ServerManager = require(Services.rs.modules.ServerList)
+local ServerManager = require(script.Manager)
 
 local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
 local LiveServers = {}
@@ -2352,65 +2403,25 @@ ServerManager.Callback = function()
                 end)
             end
         end 
-		if #ChangedPlayers~=0 then UpdateInfo[key] = ChangedPlayers end
+		if #ChangedPlayers~=0 then table.insert(UpdateInfo,{id= key,players= ChangedPlayers})end
     end
-	if ClearServers then
-        for key in LiveServers do
-			ServerInfo[key] = nil
-        end
-    end
+	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
 	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
 	ClearServers = not ClearServers
 end]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">54ae2e42a34dfe8e05ff74b200003de5</UniqueId>
+				<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e79</UniqueId>
 			</Properties>
-		</Item>
-	</Item>
-	<Item class="ServerStorage" referent="RBX76719BE8EBCF4465BF9C328ECE4FB213">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-			<bool name="DefinesCapabilities">false</bool>
-			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-			<string name="Name">ServerStorage</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034e</UniqueId>
-		</Properties>
-	</Item>
-	<Item class="ReplicatedStorage" referent="1">
-		<Properties>
-			<BinaryString name="AttributesSerialize"></BinaryString>
-			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-			<bool name="DefinesCapabilities">false</bool>
-			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-			<string name="Name">ReplicatedStorage</string>
-			<int64 name="SourceAssetId">-1</int64>
-			<BinaryString name="Tags"></BinaryString>
-			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034f</UniqueId>
-		</Properties>
-		<Item class="Folder" referent="RBX737F77A6BDC24883A46B30DAEEAE1D12">
-			<Properties>
-				<BinaryString name="AttributesSerialize"></BinaryString>
-				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-				<bool name="DefinesCapabilities">false</bool>
-				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-				<string name="Name">modules</string>
-				<int64 name="SourceAssetId">-1</int64>
-				<BinaryString name="Tags"></BinaryString>
-				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000404e</UniqueId>
-			</Properties>
-			<Item class="ModuleScript" referent="RBXC2A0EB33339049C2BD69D2C16B88E5BA">
+			<Item class="ModuleScript" referent="RBX955463C00EC54E2E98F6DDA8E7442674">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">ServerList</string>
-					<string name="ScriptGuid">{99B0E10D-C323-486E-8FBC-8820A971F3B3}</string>
+					<string name="Name">Manager</string>
+					<string name="ScriptGuid">{235E1DDC-0ED3-4BE0-AEEA-3E1ABE30C80E}</string>
 					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
@@ -2480,9 +2491,45 @@ end)
 return Servers]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000404f</UniqueId>
+					<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e7b</UniqueId>
 				</Properties>
 			</Item>
+		</Item>
+	</Item>
+	<Item class="ServerStorage" referent="RBX76719BE8EBCF4465BF9C328ECE4FB213">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ServerStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034e</UniqueId>
+		</Properties>
+	</Item>
+	<Item class="ReplicatedStorage" referent="1">
+		<Properties>
+			<BinaryString name="AttributesSerialize"></BinaryString>
+			<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+			<bool name="DefinesCapabilities">false</bool>
+			<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+			<string name="Name">ReplicatedStorage</string>
+			<int64 name="SourceAssetId">-1</int64>
+			<BinaryString name="Tags"></BinaryString>
+			<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000034f</UniqueId>
+		</Properties>
+		<Item class="Folder" referent="RBX737F77A6BDC24883A46B30DAEEAE1D12">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<string name="Name">modules</string>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f980000404e</UniqueId>
+			</Properties>
 			<Item class="ModuleScript" referent="RBXD8783068F0BF40C0A63ACAA42FC80036">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
@@ -3362,100 +3409,6 @@ return {
 						<int64 name="SourceAssetId">-1</int64>
 						<BinaryString name="Tags"></BinaryString>
 						<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800004052</UniqueId>
-					</Properties>
-				</Item>
-				<Item class="ModuleScript" referent="RBX0FE8CF9409ED409FA09B137A075A8E7C">
-					<Properties>
-						<BinaryString name="AttributesSerialize"></BinaryString>
-						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-						<bool name="DefinesCapabilities">false</bool>
-						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-						<Content name="LinkedSource"><null></null></Content>
-						<string name="Name">XStore</string>
-						<string name="ScriptGuid">{40210DAE-A8BA-4DBD-B9E7-177FA745596D}</string>
-						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
-local Util = require(Services.rs.modules.Util)
-local newproxy,typeof,table = Util.newproxy,Util.typeof,Util.table
-
---// Types
-export type XStore = {
-    Value: {},
-    Options: StoreOptions,
-}
-
-type XStoreMeta = {
-    type: "XStore",
-}&StoreOptions&StoreData
-
-type StoreData = {
-    For:  Player,
-    ID: string,
-}
-
-type StoreOptions = {
-    UpdateIncrement: number,
-}
-
---// Vars
-local Open,Close
-
-local ImmutableOptions = {
-    UpdateIncrement = "number",
-}
-
-local DataTemplate = {}
-
---// Functions
-
-Close = function(self:XStore)
-    local meta = getmetatable(self)::XStoreMeta
-
-end
-
---/ Local
-
---// Interface
-
---/ Metadata
-local __StoreMeta = {
-    type = "XStore",
-    __methods = {
-        Close = Close,
-    },
-}
-
-local __InterfaceMetaData = {
-    __newindex = function(self,index,value)
-        local OptionType = ImmutableOptions[index]
-        local ValueType = typeof(value)
-        assert(OptionType,`Invalid index {index} to XStore options}`)
-        assert(ValueType==OptionType,`Invalid type for index {index} of XStore. Expected {OptionType}, got {ValueType}`)
-        rawset(self,index,value)
-    end
-}
-
---/ Functions
-Open = function(For:Player,Options:StoreOptions):XStore
-    local t = {}
-    local proxy:XStore = newproxy(__StoreMeta,{
-        __public = {
-            Value = table.reconcile(t,DataTemplate),
-            Options = setmetatable({},__InterfaceMetaData),
-        },
-        __private = table.combine({
-            For = For,
-            ID = Services.https:GenerateGUID(false)
-        },Options or {}),
-    })
-    return proxy
-end
-
-
-
-return {Open = Open,}]]></ProtectedString>
-						<int64 name="SourceAssetId">-1</int64>
-						<BinaryString name="Tags"></BinaryString>
-						<UniqueId name="UniqueId">185cfb1bfc178bfd05fe6f9800004055</UniqueId>
 					</Properties>
 				</Item>
 			</Item>

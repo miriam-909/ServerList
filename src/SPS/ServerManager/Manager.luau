@@ -29,7 +29,6 @@ function module.addServer(Server:{
     id:string,
     players: {number}
 })
-    
     if Servers:FindFirstChild(Server.id) then return end
     local Clone = Servers.Template:Clone()
     Clone.Visible = true
