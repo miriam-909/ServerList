@@ -806,10 +806,12 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local XSignal = require(Services.rs.modules.XSignal)
 
-local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
+local player = Services.players.LocalPlayer
+local ServerUpdate = XSignal.new("ServerUpdate")
+local GUI = player.PlayerGui:WaitForChild("ServerList")
 
 ServerUpdate.Signal:Connect(function(...)
-    print(...)
+    print(GUI,...)
 end)]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
@@ -2357,9 +2359,7 @@ ServerManager.Callback = function()
 			ServerInfo[key] = nil
         end
     end
-	if next(UpdateInfo) then
-		ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo)
-	end
+	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
 	ClearServers = not ClearServers
 end]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
