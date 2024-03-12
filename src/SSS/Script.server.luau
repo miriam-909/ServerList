@@ -33,6 +33,8 @@ ServerManager.Callback = function()
 			ServerInfo[key] = nil
         end
     end
-	ServerUpdate:Fire(Services.players:GetPlayers(),"ohio")
+	if next(UpdateInfo) then
+		ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo)
+	end
 	ClearServers = not ClearServers
 end

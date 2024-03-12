@@ -1,12 +1,12 @@
 local ts = game:GetService("TweenService")
 local cp = game:GetService("ContentProvider")
 
-local function ExtendGlobal<G,E>(global:G,extends:E):E
+local function ExtendGlobal<G,E>(global:G,extends:E):E&G
 	local copy = table.clone(global)
 	for i,v in extends do
 		copy[i] = v
 	end
-	return extends
+	return copy
 end
 
 local function Recurse(t,f)

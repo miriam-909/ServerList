@@ -7,10 +7,11 @@ local newproxy,table,typeof = Util.newproxy,Util.table,Util.typeof
 
 local IsServer = Services.run:IsServer()
 local folder,Shared,Remote:Configuration,EventNspc
-local Connect,Disconnect,Destroy,Once,Wait,Fire,Create,Clean,Remove,Add
-local new,wrap,group
-local __Signal,__signals,__Event,__events,__Connection,__connections,__Group = {},{},{},{},{},{},{}
+local Connect,Disconnect,Destroy,Once,Wait,Fire,Create --,Clean,Remove,Add
+local new,wrap --,group
+local __Signal,__signals,__Event,__events,__Connection,__connections = {},{},{},{},{},{},{} --__Group
 
+--// Types
 export type XRemote = {
 	Fire: (self:XRemote,...any)->(),
 	Destroy: (self:XRemote)->(),
@@ -46,20 +47,27 @@ export type XConnection = {
 
 type ConnectionMetaData = {
 	type: "XConnection",
-	Event: XSignal,
+	Signal: XSignal,
 	PassSelf: boolean?,
 	Function: (...any)->(),
 }
 
+-- export type XGroup = {
+-- 	type: "XGroup",
+-- 	Clean: (self:XGroup)->(),
+-- 	Remove: (self:XGroup,Connection:CanConnect)->(),
+-- 	Add: <T>(self:XGroup,Connection:CanConnect)->T,
+-- }
+
+-- type XGroupMetaData = {
+-- 	objects: {}
+-- }
+
 type CanConnect = XConnection|XThread.XThread
 
-export type XGroup = {
-	type: "XGroup",
-	Clean: (self:XGroup)->(),
-	Remove: (self:XGroup,Connection:CanConnect)->(),
-	Add: <T>(self:XGroup,Connection:CanConnect)->T,
-}
+--// Functions
 
+--/ Local
 Create = function(Namespace,Preferred:string?)
 	local signal = Instance.new(Preferred or "RemoteEvent")
 	signal.Name = Namespace
@@ -67,10 +75,10 @@ Create = function(Namespace,Preferred:string?)
 	return signal
 end
 
+--/XRemote
 Fire = function(self,To:{Player}|Player,...)
 	local Meta = getmetatable(self)
 	for _,v in if typeof(To) == "Player" then {To} else To do
-		print(v,...)
         Meta.Instance:FireClient(v,...)
     end
 end
@@ -84,6 +92,7 @@ Destroy = function(self)
 	__signals[Meta.Namespace] = nil
 end
 
+--/XSignal
 Connect = function(self,func,pass)
 	local Meta = getmetatable(self)::SignalMetaData
 	local prox = newproxy(__Connection,{
@@ -96,9 +105,7 @@ Connect = function(self,func,pass)
 	})
 	Meta.Listeners.Connected[prox] = true
 	if not Meta.Connection then 
-		print("Connecitng")
 		Meta.Connection = Meta.Event:Connect(function(...)
-			print("recieved",...)
 			local T = os.clock()
 			Meta.Processing = Meta.Processing or T
 			for i,_ in Meta.Listeners.Connected do
@@ -152,6 +159,7 @@ Wait = function(self,Length)
 	end
 end
 
+--/ XConnection
 Disconnect = function(self)
 	local Meta = getmetatable(getmetatable(self).Event)
 	Meta.Listeners.Connected[self] = nil
@@ -160,36 +168,38 @@ Disconnect = function(self)
 	Meta.Connection = nil
 end
 
-Clean = function(self)
-	local Meta = getmetatable(self)
-	Meta.__cleaning = true
-	for i,_ in Meta.__objects do
-		self:Remove(i,true)
-	end
-	Meta.__cleaning = false
-end
+--/XGroup Methods
 
-Remove = function(self,Object,ovr)
-	local OBJ = Object[1]
-	local Meta = getmetatable(self)
-	if Meta.__cleaning and not ovr then return end
-	local t = typeof(OBJ)
-	if t == "XThread" then
-		task.cancel(OBJ)
-	elseif t == "XConnection" then
-		OBJ:Disconnect()
-	elseif t == "XGroup" then
-		OBJ:Clean()
-	else warn(`error type to disconnect, {t}`,OBJ) return end
-	Meta.__objects[OBJ] = nil
-end
+-- Clean = function(self)
+-- 	local Meta:XGroup = getmetatable(self)
+-- 	Meta.cleaning = true
+-- 	for i,_ in Meta.objects do
+-- 		self:Remove(i,true)
+-- 	end
+-- 	Meta.cleaning = false
+-- end
 
-Add = function(self,Object)
-	local Meta = getmetatable(self)
-	if Meta.__cleaning then return Object end
-	Meta.__objects[{Object}] = true	
-	return Object
-end
+-- Remove = function(self,Object,ovr)
+-- 	local OBJ = Object[1]
+-- 	local Meta = getmetatable(self)
+-- 	if Meta.cleaning and not ovr then return end
+-- 	local t = typeof(OBJ)
+-- 	if t == "XThread" then
+-- 		task.cancel(OBJ)
+-- 	elseif t == "XConnection" then
+-- 		OBJ:Disconnect()
+-- 	elseif t == "XGroup" then
+-- 		OBJ:Clean()
+-- 	else warn(`error type to disconnect, {t}`,OBJ) return end
+-- 	Meta.objects[OBJ] = nil
+-- end
+
+-- Add = function(self,Object)
+-- 	local Meta = getmetatable(self)
+-- 	if Meta.__cleaning then return Object end
+-- 	Meta.__objects[{Object}] = true	
+-- 	return Object
+-- end
 
 
 if IsServer then
@@ -250,6 +260,8 @@ __Signal = {
 	},
 }
 
+--// Metadata
+
 __Event = {
 	type = "XEvent",
 	__methods = {
@@ -266,51 +278,59 @@ __Connection = {
 	},
 }
 
-__Group = {
-	type = "XGroup",
-	__methods = {
-		Clean = Clean,
-		Add = Add,
-		Remove = Remove,
-	},
-	__objects = {},
-	__cleaning = false,
-	__mode = "k",
-}
+-- __Group = {
+-- 	type = "XGroup",
+-- 	__methods = {
+-- 		Clean = Clean,
+-- 		Add = Add,
+-- 		Remove = Remove,
+-- 	},
+-- 	objects = {},
+-- 	cleaning = false,
+-- 	__mode = "k",
+-- }
 
 
-group = function(): XGroup
-	return newproxy(__Group)
-end
-
+--// Interface
 new = function(Namespace:string,T:"UnreliableRemoteEvent"?): (XRemote,XSignal)
 	local existing = __signals[Namespace]
 	if existing then return existing,getmetatable(existing).Event end
 	local signal = Create(Namespace,T)
 	local ev = signal[EventNspc]
-	local proxy,meta
-	proxy,meta = newproxy(__Signal)
-	meta.Namespace = Namespace
-	meta.Instance = signal
-	meta.Event = wrap(ev)
+	local proxy:XRemote =newproxy(__Signal,{
+		__private = {
+			Namespace = Namespace,
+			Instance = signal,
+		},
+		__public = {
+			Signal = wrap(ev)
+		},
+	})
 	__signals[Namespace] = proxy
-	return proxy,meta.Event
+	return proxy
 end
 
 wrap = function(Event:RBXScriptSignal):XSignal
 	local existing = __events[EventNspc]
 	if existing then return existing end
-	local proxy,meta
-	proxy,meta = newproxy(__Event)
-	meta.Event = Event
-	meta.Processing = nil
-	meta.Listeners = {Connected = table.newmeta({}),Waiting = table.newmeta({})}
+	local proxy:XSignal = newproxy(__Event,{
+		__private = {
+			Event = Event,
+			Processing = nil,
+			Listeners = {Connected = table.newmeta({}),Waiting = table.newmeta({})}
+		},
+		__public = {},
+	})
 	__events[Event] = proxy
 	return proxy
 end
 
+-- group = function(): XGroup
+-- 	return newproxy(__Group,{__private = {objects = {},cleaning = false}})
+-- end
+
 return {
 	wrap = wrap,
 	new = new,
-	group = group,
+	-- group = group,
 }
