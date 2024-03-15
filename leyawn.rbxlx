@@ -806,7 +806,9 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<ProtectedString name="Source"><![CDATA[local ServerManager = require(script.Manager)
 ServerManager.init(function(ServerAdded)
     print(ServerAdded)
-    --ServerManager.addServer(ServerAdded)
+    for _,v in ServerAdded do
+        ServerManager.addServer(v)
+    end
 end)
 ]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
@@ -827,7 +829,7 @@ local XSignal = require(Services.rs.modules.XSignal)
 
 local player = Services.players.LocalPlayer
 
-local GUI = player.PlayerGui:WaitForChild("ServerList")
+local GUI = player.PlayerGui:WaitForChild("ServerList",9999)
 local Servers = GUI.Canvas.ServerCanvas.Servers
 
 local ServerUpdate = XSignal.new("ServerUpdate")
@@ -844,7 +846,6 @@ end
 
 function module.destroy()
     if not initialized then return end
-
     ServerConnection:Disconnect()
     initialized = false
 end
@@ -853,12 +854,13 @@ function module.addServer(Server:{
     id:string,
     players: {number}
 })
+    print(Server)
     if Servers:FindFirstChild(Server.id) then return end
     local Clone = Servers.Template:Clone()
     Clone.Visible = true
     Clone.Name = Server.id
     Clone.PlayerCount.Text = `<b>PLAYER #:</b>  {#Server.players}/50`
-    Clone.ServerID = `<b>SERVER ID:</b> {Server.id}`
+    Clone.ServerID.Text = `<b>SERVER ID:</b> {Server.id}`
     Clone.Parent = Servers
 end
 
@@ -2396,19 +2398,27 @@ ServerManager.Callback = function()
 		local info = ServerInfo[key]  	
 		if not info then ServerInfo[key] = {} info = ServerInfo[key] end
 		for _,userid in server.value do
-			if not info[userid] then
-                XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
-                    info[userid] = thumbnail
-					table.insert(ChangedPlayers,userid)
-                end)
-            end
-        end 
-		if #ChangedPlayers~=0 then table.insert(UpdateInfo,{id= key,players= ChangedPlayers})end
+			if info[userid] then continue end
+			table.insert(ChangedPlayers,userid)
+			info[userid] = true
+			-- XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
+			-- 	info[userid] = thumbnail
+				
+			-- 	if i==#server.value then thread:resume() end
+			-- end)
+		end
+		if #ChangedPlayers~=0 then table.insert(UpdateInfo,{id= key,players= ChangedPlayers}) end
     end
 	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
 	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
 	ClearServers = not ClearServers
-end]]></ProtectedString>
+end
+
+local plrs={}
+for _,v in Services.players:GetPlayers() do
+	table.insert(plrs,v.UserId)
+end
+ServerUpdate:Fire(Services.players:GetPlayers(),{id=ServerManager.JOB_ID,players=plrs})]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e79</UniqueId>
@@ -2425,10 +2435,10 @@ end]]></ProtectedString>
 					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
+local XSignal = require(Services.rs.modules.XSignal)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
-local JOB_ID = Services.https:GenerateGUID(false)
+local Servers,Players = {Active = {},JOB_ID=Services.https:GenerateGUID(false)},{}
 
 --// Functions
 --/ Local
@@ -2442,17 +2452,10 @@ local function RemovePlayer(player)
 	table.remove(Players,table.find(Players,player.UserId))
 end
 local function UploadPlayers()
-	Util.attempt(ServerStore.SetAsync,20,ServerStore,JOB_ID,Players,604800)
+	print("uploading",Players)
+	PlayersChanged = false
+	Util.attempt(ServerStore.SetAsync,20,ServerStore,Servers.JOB_ID,Players,604800)
 end
-
-
---Initialize self
-for _,v in Services.players:GetPlayers() do AddPlayer(v) end
-Services.players.PlayerAdded:Connect(AddPlayer)
-
-Services.players.PlayerRemoving:Connect(RemovePlayer)
-game:BindToClose(function() Util.attempt(ServerStore.RemoveAsync,20,ServerStore,JOB_ID) end)
-UploadPlayers()
 
 --[[
 1000+(100*experience players) rpm
@@ -2464,31 +2467,40 @@ UploadPlayers()
 2500 of 5e4 rpm
 ]]
 
-print(JOB_ID)
+function Servers.init()
+	for _,v in Services.players:GetPlayers() do AddPlayer(v) end
+	XSignal.wrap(Services.players.PlayerAdded):Connect(AddPlayer)
+	
+	XSignal.wrap(Services.players.PlayerRemoving):Connect(RemovePlayer)
 
-XThread.new(function()
-	while task.wait(1) do
-		local serverCache
-		repeat
-			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
-			--for _,v in rr do Util.attempt(ServerStore.RemoveAsync,5,ServerStore,v.key) end // clear memory store
-			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
-		until #rr ~= 200
-		table.sort(serverCache,function(a,b)
-			return #a.value > #b.value
-		end)
-		Servers.Active = serverCache
-		if Servers.Callback then task.spawn(Servers.Callback) end
-		if PlayersChanged then UploadPlayers() PlayersChanged = false end
-	end
-end,function()
-	for _,v in Services.players:GetPlayers() do
-		v:Kick("Error fetching server data, closing server...")
-	end
-end)
+	game:BindToClose(function() print("ohio") Util.attempt(ServerStore.RemoveAsync,20,ServerStore,Servers.JOB_ID) end)
 
+	XThread.new(function()
+		while task.wait(1) do
+			local serverCache
+			repeat
+				local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+				if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+			until #rr ~= 200
+			table.sort(serverCache,function(a,b)
+				return #a.value > #b.value
+			end)
+			Servers.Active = serverCache
+			if Servers.Callback then task.spawn(Servers.Callback) end
+			if PlayersChanged then UploadPlayers() end
+		end
+	end,function()
+		for _,v in Services.players:GetPlayers() do
+			v:Kick("Error fetching server data, closing server...")
+		end
+	end)
+	
+end
 
-return Servers]]></ProtectedString>
+print(Servers.JOB_ID)
+-- print(game:GetService("MemoryStoreService"):GetSortedMap("Servers"):GetRangeAsync(Enum.SortDirection.Ascending,200))
+
+return Servers::typeof(Servers)&{Callback:()->()}]]></ProtectedString>
 					<int64 name="SourceAssetId">-1</int64>
 					<BinaryString name="Tags"></BinaryString>
 					<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e7b</UniqueId>

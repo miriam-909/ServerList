@@ -1,34 +1,27 @@
 local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
 local XThread = require(Services.rs.modules.XThread)
+local XSignal = require(Services.rs.modules.XSignal)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {Active = {}}::{Active:{},Callback:()->()},{}
-local JOB_ID = Services.https:GenerateGUID(false)
+local Servers = {Active = {},Players = {},JOB_ID=Services.https:GenerateGUID(false)}
 
 --// Functions
 --/ Local
 local PlayersChanged = false
 local function AddPlayer(player:Player)
 	PlayersChanged = true
-	table.insert(Players,player.UserId)
+	table.insert(Servers.Players,player.UserId)
 end
 local function RemovePlayer(player)
 	PlayersChanged = true
-	table.remove(Players,table.find(Players,player.UserId))
+	table.remove(Servers.Players,table.find(Servers.Players,player.UserId))
 end
 local function UploadPlayers()
-	Util.attempt(ServerStore.SetAsync,20,ServerStore,JOB_ID,Players,604800)
+	print("uploading",Servers.Players)
+	PlayersChanged = false
+	Util.attempt(ServerStore.SetAsync,20,ServerStore,Servers.JOB_ID,Servers.Players,604800)
 end
-
-
---Initialize self
-for _,v in Services.players:GetPlayers() do AddPlayer(v) end
-Services.players.PlayerAdded:Connect(AddPlayer)
-
-Services.players.PlayerRemoving:Connect(RemovePlayer)
-game:BindToClose(function() Util.attempt(ServerStore.RemoveAsync,20,ServerStore,JOB_ID) end)
-UploadPlayers()
 
 --[[
 1000+(100*experience players) rpm
@@ -40,28 +33,37 @@ UploadPlayers()
 2500 of 5e4 rpm
 ]]
 
-print(JOB_ID)
+function Servers.init()
+	for _,v in Services.players:GetPlayers() do AddPlayer(v) end
+	XSignal.wrap(Services.players.PlayerAdded):Connect(AddPlayer)
+	
+	XSignal.wrap(Services.players.PlayerRemoving):Connect(RemovePlayer)
 
-XThread.new(function()
-	while task.wait(1) do
-		local serverCache
-		repeat
-			local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
-			--for _,v in rr do Util.attempt(ServerStore.RemoveAsync,5,ServerStore,v.key) end // clear memory store
-			if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
-		until #rr ~= 200
-		table.sort(serverCache,function(a,b)
-			return #a.value > #b.value
-		end)
-		Servers.Active = serverCache
-		if Servers.Callback then task.spawn(Servers.Callback) end
-		if PlayersChanged then UploadPlayers() PlayersChanged = false end
-	end
-end,function()
-	for _,v in Services.players:GetPlayers() do
-		v:Kick("Error fetching server data, closing server...")
-	end
-end)
+	game:BindToClose(function() print("ohio") Util.attempt(ServerStore.RemoveAsync,20,ServerStore,Servers.JOB_ID) end)
 
+	XThread.new(function()
+		while task.wait(1) do
+			local serverCache
+			repeat
+				local _,rr = Util.attempt(ServerStore.GetRangeAsync,20,ServerStore,Enum.SortDirection.Ascending,200)
+				if serverCache then for _,v in rr do table.insert(serverCache,v) end else serverCache = rr end		
+			until #rr ~= 200
+			table.sort(serverCache,function(a,b)
+				return #a.value > #b.value
+			end)
+			Servers.Active = serverCache
+			if Servers.Callback then task.spawn(Servers.Callback) end
+			if PlayersChanged then UploadPlayers() end
+		end
+	end,function()
+		for _,v in Services.players:GetPlayers() do
+			v:Kick("Error fetching server data, closing server...")
+		end
+	end)
+	
+end
 
-return Servers
+print(Servers.JOB_ID)
+-- print(game:GetService("MemoryStoreService"):GetSortedMap("Servers"):GetRangeAsync(Enum.SortDirection.Ascending,200))
+
+return Servers::typeof(Servers)&{Callback:()->()}

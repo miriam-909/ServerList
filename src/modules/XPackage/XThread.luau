@@ -1,16 +1,8 @@
 local Services = require(workspace.Services)
 local Util = require(Services.rs.modules.Util)
+local Types = require(Services.rs.modules.XPackage.__types)
 
-export type XThread = {
-	thread: thread,
-	dead:boolean,
-	status: "normal"|"suspended"|"running",
-	await: <T...>(self:XThread,timeout:number?)->T...,
-	andThen: <args...,ret...>(self:XThread,Function:(args...)->ret...)->nil,
-	cancel: (self:XThread,defer:boolean?)->nil,
-	resume: (self:XThread,...any)->nil,
-	pause: (self:XThread,...any)->nil,
-}
+export type XThread = Types.XThread 
 
 local Threads = {Storage = {}}
 local __Thread,__ThreadMeta = {},nil
