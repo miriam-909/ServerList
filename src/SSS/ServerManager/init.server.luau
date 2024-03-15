@@ -1,46 +1,53 @@
-local ServerScriptService = game:GetService("ServerScriptService")
 local Services = require(workspace.Services)
-local Util = require(Services.rs.modules.Util)
-local XThread = require(Services.rs.modules.XThread)
-local XSignal = require(Services.rs.modules.XSignal)
-local ServerManager = require(script.Manager)
+require(Services.rs.modules.XPackage)
+local XShared = require(Services.rs.modules.XPackage.XShared)
 
-local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
-local LiveServers = {}
-local ServerInfo = {}
 
-local ClearServers = true
+local a = XShared.access("ohio")
 
-local function Serialize(ID,Players)
-	return {id= ID,players= Players}
-end
 
-ServerManager.Callback = function()
-	local UpdateInfo = {}
-	for _,server in ServerManager.Active do
-		local ChangedPlayers = {}
-		local key = server.key
-		LiveServers[key] = if ClearServers then nil else true
-		local info = ServerInfo[key]  	
-		if not info then ServerInfo[key] = {} info = ServerInfo[key] end
-		for _,userid in server.value do
-			if info[userid] then continue end
-			table.insert(ChangedPlayers,userid)
-			info[userid] = true
-			-- XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
-			-- 	info[userid] = thumbnail
+-- local Services = require(workspace.Services)
+-- local XSignal = require(Services.rs.modules.XPackage.XSignal)
+
+-- local ServerManager = require(script.Manager)
+
+-- local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
+-- local LiveServers = {}
+-- local ServerInfo = {}
+
+-- local ClearServers = true
+
+-- local function Serialize(ID,Players)
+-- 	return {id= ID,players= Players}
+-- end
+
+-- ServerManager.Callback = function()
+-- 	local UpdateInfo = {}
+-- 	for _,server in ServerManager.Active do
+-- 		local ChangedPlayers = {}
+-- 		local key = server.key
+-- 		LiveServers[key] = if ClearServers then nil else true
+-- 		local info = ServerInfo[key]  	
+-- 		if not info then ServerInfo[key] = {} info = ServerInfo[key] end
+-- 		for _,userid in server.value do
+-- 			if info[userid] then continue end
+-- 			table.insert(ChangedPlayers,userid)
+-- 			info[userid] = true
+-- 			-- XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
+-- 			-- 	info[userid] = thumbnail
 				
-			-- 	if i==#server.value then thread:resume() end
-			-- end)
-		end
-		if #ChangedPlayers~=0 then table.insert(UpdateInfo,Serialize(key,ChangedPlayers)) end
-    end
-	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
-	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
-	ClearServers = not ClearServers
-end
+-- 			-- 	if i==#server.value then thread:resume() end
+-- 			-- end)
+-- 		end
+-- 		if #ChangedPlayers~=0 then table.insert(UpdateInfo,Serialize(key,ChangedPlayers)) end
+--     end
+-- 	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
+-- 	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
+-- 	ClearServers = not ClearServers
+-- end
 
-ServerUpdate:Fire(Services.players:GetPlayers(),{id=ServerManager.JOB_ID,players=ServerManager.Players})
-Services.players.PlayerAdded:Connect(function(player)
-	ServerUpdate:Fire(player, {id=ServerManager.JOB_ID,players=ServerManager.Players)
-end)
+-- ServerUpdate:Fire(Services.players:GetPlayers(),{id=ServerManager.JOB_ID,players=ServerManager.Players})
+-- Services.players.PlayerAdded:Connect(function(player)
+-- 	ServerUpdate:Fire(player, {id=ServerManager.JOB_ID,players=ServerManager.Players})
+-- end)
+--ServerManager.init()

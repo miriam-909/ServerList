@@ -1,5 +1,5 @@
 local Services = require(workspace.Services)
-local XSignal = require(Services.rs.modules.XSignal)
+local XSignal = require(Services.rs.modules.XPackage.XSignal)
 
 local player = Services.players.LocalPlayer
 

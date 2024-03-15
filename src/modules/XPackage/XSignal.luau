@@ -14,9 +14,9 @@ export type XConnection = Types.XConnection
 export type XGroup = Types.XGroup
 
 local newproxy,table,typeof = Util.newproxy,Util.table,Util.typeof
-local Remote,EventNspc = Services.rs.__comm.Remote,nil
+local Remote,EventNspc = Services.rs.XPackage.XRemote,nil
 
-local new,wrap,access
+local new,wrap
 local Create
 
 --/ Local
@@ -119,7 +119,6 @@ Wait = function(self,Length)
 	local Current = XPackages.XThread.wrap()
 	local waitFor
 	local conn: XConnection
-	local pack
 	if Length then
 		waitFor = task.defer(function()
 			task.wait(5)
@@ -129,12 +128,11 @@ Wait = function(self,Length)
 	end
 	conn = self:Once(function(...)
 		if waitFor then task.cancel(waitFor) end
-		if ... ~=  nil then pack = {...} end
-		Current:resume()
+		Current:resume(... and {...})
 	end)
-	Current:pause()
-	if pack then
-		return unpack(pack)
+	local ret = Current:pause()
+	if ret then
+		return unpack(ret)
 	end
 end
 
@@ -152,8 +150,6 @@ __Event = {
 --/XRemote
 local __Remote,__remotes = {},{}
 local Fire,Destroy
-
-
 
 type RemoteMetaData = {
 	type: "XRemote",
@@ -346,7 +342,6 @@ end
 return {
 	wrap = wrap,
 	new = new,
-	access = access,
 	__packages = XPackages,
 	-- group = group,
 }

@@ -28,9 +28,10 @@ export type XGroup = {
 	Add: <T>(self:XGroup,Connection:XConnection|XThread)->T,
 }
 export type XShared = {
-	Push: (self:XShared)->boolean,
+	Push: (self:XShared,index:any,Value:any)->boolean,
 	Pull: (self:XShared)->...any?,
 	Value: any,
+	Mode: ("strict"|"nonstrict")?,
 }
 
 return nil

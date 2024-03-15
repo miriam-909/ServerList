@@ -803,9 +803,12 @@ gcLgc4RKxr21zq2UlJSM]]></BinaryString>
 					<string name="Name">ServerManager</string>
 					<token name="RunContext">0</token>
 					<string name="ScriptGuid">{EB00C700-4670-4EEB-8A1B-C3B3DFC0152A}</string>
-					<ProtectedString name="Source"><![CDATA[local ServerManager = require(script.Manager)
+					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+require(Services.rs.modules.XPackage)
+local XShared = require(Services.rs.modules.XPackage.XShared)
+
+local ServerManager = require(script.Manager)
 ServerManager.init(function(ServerAdded)
-    print(ServerAdded)
     for _,v in ServerAdded do
         ServerManager.addServer(v)
     end
@@ -825,7 +828,7 @@ end)
 						<string name="Name">Manager</string>
 						<string name="ScriptGuid">{7593109A-BC5E-4156-9C44-46943A6EE96A}</string>
 						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
-local XSignal = require(Services.rs.modules.XSignal)
+local XSignal = require(Services.rs.modules.XPackage.XSignal)
 
 local player = Services.players.LocalPlayer
 
@@ -2378,47 +2381,58 @@ return module]]></ProtectedString>
 				<token name="RunContext">0</token>
 				<string name="ScriptGuid">{DBF49D4F-1D06-4899-8CC1-D99631D501BD}</string>
 				<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
-local Util = require(Services.rs.modules.Util)
-local XThread = require(Services.rs.modules.XThread)
-local XSignal = require(Services.rs.modules.XSignal)
-local ServerManager = require(script.Manager)
+require(Services.rs.modules.XPackage)
+local XShared = require(Services.rs.modules.XPackage.XShared)
 
-local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
-local LiveServers = {}
-local ServerInfo = {}
 
-local ClearServers = true
+local a = XShared.access("ohio")
 
-ServerManager.Callback = function()
-	local UpdateInfo = {}
-	for _,server in ServerManager.Active do
-		local ChangedPlayers = {}
-		local key = server.key
-		LiveServers[key] = if ClearServers then nil else true
-		local info = ServerInfo[key]  	
-		if not info then ServerInfo[key] = {} info = ServerInfo[key] end
-		for _,userid in server.value do
-			if info[userid] then continue end
-			table.insert(ChangedPlayers,userid)
-			info[userid] = true
-			-- XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
-			-- 	info[userid] = thumbnail
+
+-- local Services = require(workspace.Services)
+-- local XSignal = require(Services.rs.modules.XPackage.XSignal)
+
+-- local ServerManager = require(script.Manager)
+
+-- local ServerUpdate = XSignal.new("ServerUpdate","UnreliableRemoteEvent")
+-- local LiveServers = {}
+-- local ServerInfo = {}
+
+-- local ClearServers = true
+
+-- local function Serialize(ID,Players)
+-- 	return {id= ID,players= Players}
+-- end
+
+-- ServerManager.Callback = function()
+-- 	local UpdateInfo = {}
+-- 	for _,server in ServerManager.Active do
+-- 		local ChangedPlayers = {}
+-- 		local key = server.key
+-- 		LiveServers[key] = if ClearServers then nil else true
+-- 		local info = ServerInfo[key]  	
+-- 		if not info then ServerInfo[key] = {} info = ServerInfo[key] end
+-- 		for _,userid in server.value do
+-- 			if info[userid] then continue end
+-- 			table.insert(ChangedPlayers,userid)
+-- 			info[userid] = true
+-- 			-- XThread.new(Util.attempt,nil,Services.players.GetUserThumbnailAsync,2,Services.players,tonumber(userid),Enum.ThumbnailType.HeadShot,Enum.ThumbnailSize.Size60x60):andThen(function(_,thumbnail)
+-- 			-- 	info[userid] = thumbnail
 				
-			-- 	if i==#server.value then thread:resume() end
-			-- end)
-		end
-		if #ChangedPlayers~=0 then table.insert(UpdateInfo,{id= key,players= ChangedPlayers}) end
-    end
-	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
-	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
-	ClearServers = not ClearServers
-end
+-- 			-- 	if i==#server.value then thread:resume() end
+-- 			-- end)
+-- 		end
+-- 		if #ChangedPlayers~=0 then table.insert(UpdateInfo,Serialize(key,ChangedPlayers)) end
+--     end
+-- 	if ClearServers then for key in LiveServers do ServerInfo[key] = nil end end 
+-- 	if next(UpdateInfo) then ServerUpdate:Fire(Services.players:GetPlayers(),UpdateInfo) end
+-- 	ClearServers = not ClearServers
+-- end
 
-local plrs={}
-for _,v in Services.players:GetPlayers() do
-	table.insert(plrs,v.UserId)
-end
-ServerUpdate:Fire(Services.players:GetPlayers(),{id=ServerManager.JOB_ID,players=plrs})]]></ProtectedString>
+-- ServerUpdate:Fire(Services.players:GetPlayers(),{id=ServerManager.JOB_ID,players=ServerManager.Players})
+-- Services.players.PlayerAdded:Connect(function(player)
+-- 	ServerUpdate:Fire(player, {id=ServerManager.JOB_ID,players=ServerManager.Players})
+-- end)
+--ServerManager.init()]]></ProtectedString>
 				<int64 name="SourceAssetId">-1</int64>
 				<BinaryString name="Tags"></BinaryString>
 				<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e79</UniqueId>
@@ -2438,23 +2452,23 @@ local XThread = require(Services.rs.modules.XThread)
 local XSignal = require(Services.rs.modules.XSignal)
 
 local ServerStore = Services.mss:GetSortedMap("Servers")
-local Servers,Players = {Active = {},JOB_ID=Services.https:GenerateGUID(false)},{}
+local Servers = {Active = {},Players = {},JOB_ID=Services.https:GenerateGUID(false)}
 
 --// Functions
 --/ Local
 local PlayersChanged = false
 local function AddPlayer(player:Player)
 	PlayersChanged = true
-	table.insert(Players,player.UserId)
+	table.insert(Servers.Players,player.UserId)
 end
 local function RemovePlayer(player)
 	PlayersChanged = true
-	table.remove(Players,table.find(Players,player.UserId))
+	table.remove(Servers.Players,table.find(Servers.Players,player.UserId))
 end
 local function UploadPlayers()
-	print("uploading",Players)
+	print("uploading",Servers.Players)
 	PlayersChanged = false
-	Util.attempt(ServerStore.SetAsync,20,ServerStore,Servers.JOB_ID,Players,604800)
+	Util.attempt(ServerStore.SetAsync,20,ServerStore,Servers.JOB_ID,Servers.Players,604800)
 end
 
 --[[
@@ -2506,6 +2520,21 @@ return Servers::typeof(Servers)&{Callback:()->()}]]></ProtectedString>
 					<UniqueId name="UniqueId">3a7d184116134b1d0601f9de00003e7b</UniqueId>
 				</Properties>
 			</Item>
+		</Item>
+		<Item class="ModuleScript" referent="RBXE4AB5D8D2BE7409CB3B5D351A841E647">
+			<Properties>
+				<BinaryString name="AttributesSerialize"></BinaryString>
+				<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+				<bool name="DefinesCapabilities">false</bool>
+				<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ServerUtil</string>
+				<string name="ScriptGuid">{BD84A291-5DCD-4B59-941A-2DA9846D53B4}</string>
+				<ProtectedString name="Source"></ProtectedString>
+				<int64 name="SourceAssetId">-1</int64>
+				<BinaryString name="Tags"></BinaryString>
+				<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f1c</UniqueId>
+			</Properties>
 		</Item>
 	</Item>
 	<Item class="ServerStorage" referent="RBX76719BE8EBCF4465BF9C328ECE4FB213">
@@ -3424,28 +3453,538 @@ return {
 					</Properties>
 				</Item>
 			</Item>
-			<Item class="ModuleScript" referent="RBX4E167B53BBB74A899C1B4F679A939090">
+			<Item class="ModuleScript" referent="RBXF328E89D1783466B90C60CA623CB6BA4">
 				<Properties>
 					<BinaryString name="AttributesSerialize"></BinaryString>
 					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
 					<bool name="DefinesCapabilities">false</bool>
 					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
 					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">XThread</string>
-					<string name="ScriptGuid">{24DD168D-0763-4A63-8D2D-492BD22556B9}</string>
+					<string name="Name">XPackage</string>
+					<string name="ScriptGuid">{924F2D5D-60B9-49F8-987C-75B77B60DDBA}</string>
 					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
-local Util = require(Services.rs.modules.Util)
 
-export type XThread = {
-	thread: thread,
-	dead:boolean,
-	status: "normal"|"suspended"|"running",
-	await: <T...>(self:XThread,timeout:number?)->T...,
-	andThen: <args...,ret...>(self:XThread,Function:(args...)->ret...)->nil,
-	cancel: (self:XThread,defer:boolean?)->nil,
-	resume: (self:XThread,...any)->nil,
-	pause: (self:XThread,...any)->nil,
+local EventNamespace
+
+if Services.run:IsServer() then
+	EventNamespace = "OnServerEvent"
+
+	local folder = Instance.new("Folder")
+	folder.Name = "XPackage"
+	folder.Parent = Services.rs
+
+    local XSignal = Instance.new("Configuration")
+	XSignal.Name = "XRemote"
+	XSignal.Parent = folder
+
+    local XShared = Instance.new("Configuration")
+	XShared.Name = "XShared"
+	XShared.Parent = folder
+
+	local Event = Instance.new("RemoteEvent")
+	Event.Name = "ServerClient"
+	Event.Parent = XShared
+else
+	EventNamespace = "OnClientEvent"
+end
+
+local XPackage = {
+   XSignal = require(script.XSignal),
+   XShared = require(script.XShared),
+   XThread = require(script.XThread),
 }
+
+for i,v in XPackage do
+	v.EventNamespace = EventNamespace
+    for i2,v2 in XPackage do
+        if i2 == i or not v.__packages then continue end
+        v.__packages[i2] = v2
+    end
+end
+
+return XPackage
+
+--[[
+
+local XPackages = {}::{
+	XThread: typeof(require(Services.rs.modules.XPackage.XThread)),
+	XShared: typeof(require(Services.rs.modules.XPackage.XShared)),
+	XSignal: typeof(require(Services.rs.modules.XPackage.XSignal)),
+}
+]]]]></ProtectedString>
+					<int64 name="SourceAssetId">-1</int64>
+					<BinaryString name="Tags"></BinaryString>
+					<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f10</UniqueId>
+				</Properties>
+				<Item class="ModuleScript" referent="RBXDF7F66555F2040C2A49D6A7BC173A4B6">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">XShared</string>
+						<string name="ScriptGuid">{AA80FCDF-773D-4056-9EF8-C74C4221DDD8}</string>
+						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local Types = require(Services.rs.modules.XPackage.__types)
+
+local newproxy = Util.newproxy
+
+local XPackages = {}::{
+	XThread: typeof(require(Services.rs.modules.XPackage.XThread)),
+	XShared: typeof(require(Services.rs.modules.XPackage.XShared)),
+	XSignal: typeof(require(Services.rs.modules.XPackage.XSignal)),
+}
+
+export type XShared = Types.XShared
+
+type SharedMetaData = {
+	Remote: Types.XRemote,
+	Connection:  Types.XConnection,
+	Initialized: boolean,
+}
+
+local __SharedData,__Shared = {},{}
+local Push,Pull
+local access
+
+
+Push = function(self:XShared)
+	local meta:SharedMetaData = getmetatable(self)
+	if not meta.Initialized then return end
+	meta.Remote:Fire()
+end
+
+Pull = function(self:XShared)
+	local meta:SharedMetaData = getmetatable(self)
+	if not meta.Initialized then return end
+
+end
+
+__Shared = {
+	type = "XShared",
+	__methods = {
+		Push = Push,
+		Pull = Pull,
+	},
+	__index = function(self:XShared,index)
+		print("balls")
+		local meta = getmetatable(self)
+		return meta.__methods[index] or meta.__data.__public[index]
+	end,
+	__newindex = function(self:XShared,index,value)
+		local meta:SharedMetaData = getmetatable(self)
+		meta.__data.__private[index] = value
+		meta.Remote:Fire(index,value)
+	end,
+}
+
+access = function(Namespace:string):XShared
+	local existing = __SharedData[Namespace]
+	if existing then return existing end
+	local proxy:XShared,meta:SharedMetaData = newproxy(__Shared,{
+		__private = {
+			Initialized = false,
+			Remote = XPackages.XSignal.new(Namespace),
+		},
+		__public = {
+			Value = 500
+		},
+	})
+	--meta.Remote:Fire()
+	meta.Connection = meta.Remote.Signal:Connect(function(Value)
+		
+	end)
+	return proxy
+end
+
+return {
+	access = access,
+	__packages = XPackages,
+}]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f11</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXAD96FAADF62B4361BAC4177578D39D24">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">XSignal</string>
+						<string name="ScriptGuid">{A372EDEE-A088-4CB7-A962-08A794165677}</string>
+						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+
+local Util = require(Services.rs.modules.Util)
+local Types = require(Services.rs.modules.XPackage.__types)
+
+local XPackages = {}::{
+	XThread: typeof(require(Services.rs.modules.XPackage.XThread)),
+	XShared: typeof(require(Services.rs.modules.XPackage.XShared)),
+}
+
+export type XRemote = Types.XRemote
+export type XEvent = Types.XEvent
+export type XConnection = Types.XConnection
+export type XGroup = Types.XGroup
+
+local newproxy,table,typeof = Util.newproxy,Util.table,Util.typeof
+local Remote,EventNspc = Services.rs.XPackage.XRemote,nil
+
+local new,wrap
+local Create
+
+--/ Local
+Create = function(Namespace,Preferred:string?)
+	local signal = Instance.new(Preferred or "RemoteEvent")
+	signal.Name = Namespace
+	signal.Parent = Remote
+	return signal
+end
+
+--/XConnection
+
+local __Connection
+local Disconnect
+
+type ConnectionMetaData = {
+	type: "XConnection",
+	Event: XEvent,
+	PassSelf: boolean?,
+	Function: (...any)->(),
+}
+
+Disconnect = function(self)
+	local Meta = getmetatable(getmetatable(self).Event)
+	Meta.Listeners.Connected[self] = nil
+	if #Meta.Listeners.Connected~=0 or #Meta.Listeners.Waiting~=0 or not Meta.Connection then return end
+	Meta.Connection:Disconnect()
+	Meta.Connection = nil
+end
+
+__Connection = {
+	type = "XConnection",
+	__methods = {
+		Disconnect = Disconnect,
+	},
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+--/XEvent
+
+local __Event,__events = {},{}
+local Connect,Once,Wait
+
+type EventMetaData = {
+	type: "XEvent",
+	Event: RBXScriptSignal,
+	Connection: RBXScriptConnection?,
+	Processing: number?,
+	Listeners: {
+		Connected: {[XConnection]:boolean?},
+		Waiting: {[thread]:boolean?},
+	}
+}
+
+Connect = function(self,func,pass)
+	local Meta = getmetatable(self)::EventMetaData
+	local prox = newproxy(__Connection,{
+		__private = {
+			PassSelf = pass,
+			Function = func,
+			Event = self,
+		},
+		__public = {},
+	})
+	Meta.Listeners.Connected[prox] = true
+	if not Meta.Connection then 
+		Meta.Connection = Meta.Event:Connect(function(...)
+			local T = os.clock()
+			Meta.Processing = Meta.Processing or T
+			for i,_ in Meta.Listeners.Connected do
+				local pack = {nil,...}
+				local M = getmetatable(i)
+				if M.PassSelf then pack[1] = i else table.remove(pack,1) end
+				task.defer(M.Function,unpack(pack))
+			end
+			for i,_ in Meta.Listeners.Waiting do
+				coroutine.resume(i,...)
+				Meta.Listeners.Waiting[i] = nil
+			end
+			Meta.Processing = nil
+		end)
+	end
+	return prox
+end
+
+Once = function(self,func)
+	local Sent = false
+	local conn:XConnection
+	conn = self:Connect(function(...)
+		if Sent then return end
+		Sent = true
+		conn:Disconnect();
+		func(...)
+	end,false)
+	return conn
+end	
+
+Wait = function(self,Length)
+	local Current = XPackages.XThread.wrap()
+	local waitFor
+	local conn: XConnection
+	local pack
+	if Length then
+		waitFor = task.defer(function()
+			task.wait(5)
+			conn:Disconnect()
+			Current:resume()
+		end)
+	end
+	conn = self:Once(function(...)
+		if waitFor then task.cancel(waitFor) end
+		if ... ~=  nil then pack = {...} end
+		Current:resume()
+	end)
+	Current:pause()
+	if pack then
+		return unpack(pack)
+	end
+end
+
+__Event = {
+	type = "XEvent",
+	__methods = {
+		Once = Once,
+		Wait = Wait,
+		Connect = Connect,
+	},
+}
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+--/XRemote
+local __Remote,__remotes = {},{}
+local Fire,Destroy
+
+type RemoteMetaData = {
+	type: "XRemote",
+	Namespace: string,
+	Instance: RemoteEvent,
+}
+
+Fire = function(self,To:{Player}|Player,...)
+	local Meta = getmetatable(self)
+	for _,v in if typeof(To) == "Player" then {To} else To do
+        Meta.Instance:FireClient(v,...)
+    end
+end
+
+Destroy = function(self)
+	local Meta = getmetatable(self)
+	if Meta.Connection then Meta.Connection:Disconnect() end
+	Meta.__metatable = "Destroyed"
+	for _,v in {Meta,self} do table.clear(v) table.freeze(v) end
+	Meta.Instance:Destroy()
+	__remotes[Meta.Namespace] = nil
+end
+
+__Remote = {
+	type = "XRemote",
+	__methods = {
+		Fire = Fire,
+		Connect = Connect,
+		Once = Once,
+		Destroy = Destroy,
+		Wait = Wait,
+	},
+}
+
+new = function(Namespace:string,T:"UnreliableRemoteEvent"?): (XRemote,XEvent)
+	local existing = __remotes[Namespace]
+	if existing then return existing,getmetatable(existing).Event end
+	local signal = Create(Namespace,T)
+	local ev = signal[EventNspc]
+	local proxy:XRemote =newproxy(__Remote,{
+		__private = {
+			Namespace = Namespace,
+			Instance = signal,
+		},
+		__public = {
+			Signal = wrap(ev)
+		},
+	})
+	__remotes[Namespace] = proxy
+	return proxy
+end
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+--[[
+--/XGroup
+
+local __Group = {}
+local Clean,Remove,Add
+
+type XGroupMetaData = {
+	objects: {}
+}
+
+Clean = function(self)
+	local Meta:XGroup = getmetatable(self)
+	Meta.cleaning = true
+	for i,_ in Meta.objects do
+		self:Remove(i,true)
+	end
+	Meta.cleaning = false
+end
+
+Remove = function(self,Object,ovr)
+	local OBJ = Object[1]
+	local Meta = getmetatable(self)
+	if Meta.cleaning and not ovr then return end
+	local t = typeof(OBJ)
+	if t == "XThread" then
+		task.cancel(OBJ)
+	elseif t == "XConnection" then
+		OBJ:Disconnect()
+	elseif t == "XGroup" then
+		OBJ:Clean()
+	else warn(`error type to disconnect, {t}`,OBJ) return end
+	Meta.objects[OBJ] = nil
+end
+
+Add = function(self,Object)
+	local Meta = getmetatable(self)
+	if Meta.__cleaning then return Object end
+	Meta.__objects[{Object}] = true	
+	return Object
+end
+
+
+__Group = {
+	type = "XGroup",
+	__methods = {
+		Clean = Clean,
+		Add = Add,
+		Remove = Remove,
+	},
+	objects = {},
+	cleaning = false,
+	__mode = "k",
+}
+
+
+]]
+
+------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+if Services.run:IsClient() then
+	EventNspc = "OnClientEvent"
+	Fire = function(self,...)
+		local Meta = getmetatable(self)
+		Meta.Instance:FireServer(...)
+	end
+	Destroy = function(self)
+		local Meta = getmetatable(self)
+		if Meta.Connection then Meta.Connection:Disconnect() end
+		Meta.__metatable = "Destroyed"
+		for _,v in {Meta,self} do table.clear(v) table.freeze(v) end
+	end
+	Create = function(Namespace)
+		local signal = Remote:FindFirstChild(Namespace)
+		if not signal then
+			local thread = XPackages.XThread.wrap()
+			local conn = wrap(Remote.ChildAdded):Connect(function(self:XConnection,child)
+				if child.Name == Namespace then
+					thread:resume(child)
+					self:Disconnect()
+				end
+			end,true)
+            task.delay(5,function()
+                conn:Disconnect()
+                thread:resume()
+            end)
+			signal = thread:pause()
+            if not signal then error(`Remote {Namespace} doesnt exist`,2) end		
+		end
+		return signal
+	end
+else
+	EventNspc = "OnServerEvent"
+end
+
+
+--// Interface
+new = function(Namespace:string,T:"UnreliableRemoteEvent"?): (XRemote,XEvent)
+	local existing = __remotes[Namespace]
+	if existing then return existing,getmetatable(existing).Event end
+	local signal = Create(Namespace,T)
+	local ev = signal[EventNspc]
+	local proxy:XRemote =newproxy(__Remote,{
+		__private = {
+			Namespace = Namespace,
+			Instance = signal,
+		},
+		__public = {
+			Signal = wrap(ev)
+		},
+	})
+	__remotes[Namespace] = proxy
+	return proxy
+end
+
+wrap = function(Event:RBXScriptSignal):XEvent
+	local existing = __events[EventNspc]
+	if existing then return existing end
+	local proxy:XEvent = newproxy(__Event,{
+		__private = {
+			Event = Event,
+			Processing = nil,
+			Listeners = {Connected = table.newmeta({}),Waiting = table.newmeta({})}
+		},
+		__public = {},
+	})
+	__events[Event] = proxy
+	return proxy
+end
+
+-- group = function(): XGroup
+-- 	return newproxy(__Group,{__private = {objects = {},cleaning = false}})
+-- end
+
+return {
+	wrap = wrap,
+	new = new,
+	__packages = XPackages,
+	-- group = group,
+}]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f12</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBX2543CB67A951412B84C345158137C369">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">XThread</string>
+						<string name="ScriptGuid">{5F3A38E8-4908-49DC-A066-61DACBE0CBD6}</string>
+						<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
+local Util = require(Services.rs.modules.Util)
+local Types = require(Services.rs.modules.XPackage.__types)
+
+export type XThread = Types.XThread 
 
 local Threads = {Storage = {}}
 local __Thread,__ThreadMeta = {},nil
@@ -3587,360 +4126,61 @@ return {
     wrap = wrap,
     delay = delay,
 }]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">54ae2e42a34dfe8e05ff74b200003eb5</UniqueId>
-				</Properties>
-			</Item>
-			<Item class="ModuleScript" referent="RBXB6B262CD83D54B3BB4168D269F6818E4">
-				<Properties>
-					<BinaryString name="AttributesSerialize"></BinaryString>
-					<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
-					<bool name="DefinesCapabilities">false</bool>
-					<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
-					<Content name="LinkedSource"><null></null></Content>
-					<string name="Name">XSignal</string>
-					<string name="ScriptGuid">{56CFE2DA-CB3C-4A10-BF49-5C04D7EDD86F}</string>
-					<ProtectedString name="Source"><![CDATA[local Services = require(workspace.Services)
-
-local Util = require(Services.rs.modules.Util)
-local XThread = require(Services.rs.modules.XThread)
-
-local newproxy,table,typeof = Util.newproxy,Util.table,Util.typeof
-
-local IsServer = Services.run:IsServer()
-local folder,Shared,Remote:Configuration,EventNspc
-local Connect,Disconnect,Destroy,Once,Wait,Fire,Create --,Clean,Remove,Add
-local new,wrap --,group
-local __Signal,__signals,__Event,__events,__Connection,__connections = {},{},{},{},{},{},{} --__Group
-
---// Types
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f13</UniqueId>
+					</Properties>
+				</Item>
+				<Item class="ModuleScript" referent="RBXD55DDA1C509342A98CEDDA549D2B8370">
+					<Properties>
+						<BinaryString name="AttributesSerialize"></BinaryString>
+						<SecurityCapabilities name="Capabilities">0</SecurityCapabilities>
+						<bool name="DefinesCapabilities">false</bool>
+						<UniqueId name="HistoryId">00000000000000000000000000000000</UniqueId>
+						<Content name="LinkedSource"><null></null></Content>
+						<string name="Name">__types</string>
+						<string name="ScriptGuid">{2178DF3D-56AC-4C3E-948F-489A7C960B20}</string>
+						<ProtectedString name="Source"><![CDATA[export type XThread = {
+	thread: thread,
+	dead:boolean,
+	status: "normal"|"suspended"|"running",
+	await: <T...>(self:XThread,timeout:number?)->T...,
+	andThen: <args...,ret...>(self:XThread,Function:(args...)->ret...)->nil,
+	cancel: (self:XThread,defer:boolean?)->nil,
+	resume: (self:XThread,...any)->nil,
+	pause: (self:XThread,...any)->nil,
+}
 export type XRemote = {
 	Fire: (self:XRemote,...any)->(),
 	Destroy: (self:XRemote)->(),
-	Signal: XSignal,
+	Signal: XEvent,
 }
-
-type RemoteMetaData = {
-	type: "XRemote",
-	Namespace: string,
-	Instance: RemoteEvent,
+export type XEvent = {
+	Connect: (self:XEvent,func:(...any)->...any,PassConnection:boolean?)->XConnection,
+	Wait: (self:XEvent,Length:number?)->(),
+	Once: (self:XEvent,func:(...any)->())->XConnection,
 }
-
-export type XSignal = {
-	Connect: (self:XSignal,func:(...any)->...any,PassConnection:boolean?)->XConnection,
-	Wait: (self:XSignal,Length:number?)->(),
-	Once: (self:XSignal,func:(...any)->())->XConnection,
-}
-
-type SignalMetaData = {
-	type: "XEvent",
-	Event: RBXScriptSignal,
-	Connection: RBXScriptConnection?,
-	Processing: number?,
-	Listeners: {
-		Connected: {[XConnection]:boolean?},
-		Waiting: {[thread]:boolean?},
-	}
-}
-
 export type XConnection = {
 	Disconnect: (self:XConnection)->(),
 }
-
-type ConnectionMetaData = {
-	type: "XConnection",
-	Signal: XSignal,
-	PassSelf: boolean?,
-	Function: (...any)->(),
+export type XGroup = {
+	type: "XGroup",
+	Clean: (self:XGroup)->(),
+	Remove: (self:XGroup,Connection:XConnection|XThread)->(),
+	Add: <T>(self:XGroup,Connection:XConnection|XThread)->T,
+}
+export type XShared = {
+	Push: (self:XShared)->boolean,
+	Pull: (self:XShared)->...any?,
+	Value: any,
 }
 
--- export type XGroup = {
--- 	type: "XGroup",
--- 	Clean: (self:XGroup)->(),
--- 	Remove: (self:XGroup,Connection:CanConnect)->(),
--- 	Add: <T>(self:XGroup,Connection:CanConnect)->T,
--- }
-
--- type XGroupMetaData = {
--- 	objects: {}
--- }
-
-type CanConnect = XConnection|XThread.XThread
-
---// Functions
-
---/ Local
-Create = function(Namespace,Preferred:string?)
-	local signal = Instance.new(Preferred or "RemoteEvent")
-	signal.Name = Namespace
-	signal.Parent = Remote
-	return signal
-end
-
---/XRemote
-Fire = function(self,To:{Player}|Player,...)
-	local Meta = getmetatable(self)
-	for _,v in if typeof(To) == "Player" then {To} else To do
-        Meta.Instance:FireClient(v,...)
-    end
-end
-
-Destroy = function(self)
-	local Meta = getmetatable(self)
-	if Meta.Connection then Meta.Connection:Disconnect() end
-	Meta.__metatable = "Destroyed"
-	for _,v in {Meta,self} do table.clear(v) table.freeze(v) end
-	Meta.Instance:Destroy()
-	__signals[Meta.Namespace] = nil
-end
-
---/XSignal
-Connect = function(self,func,pass)
-	local Meta = getmetatable(self)::SignalMetaData
-	local prox = newproxy(__Connection,{
-		__private = {
-			PassSelf = pass,
-			Function = func,
-			Event = self,
-		},
-		__public = {},
-	})
-	Meta.Listeners.Connected[prox] = true
-	if not Meta.Connection then 
-		Meta.Connection = Meta.Event:Connect(function(...)
-			local T = os.clock()
-			Meta.Processing = Meta.Processing or T
-			for i,_ in Meta.Listeners.Connected do
-				local pack = {nil,...}
-				local M = getmetatable(i)
-				if M.PassSelf then pack[1] = i else table.remove(pack,1) end
-				task.defer(M.Function,unpack(pack))
-			end
-			for i,_ in Meta.Listeners.Waiting do
-				coroutine.resume(i,...)
-				Meta.Listeners.Waiting[i] = nil
-			end
-			Meta.Processing = nil
-		end)
-	end
-	return prox
-end
-
-Once = function(self,func)
-	local Sent = false
-	local conn:XConnection
-	conn = self:Connect(function(...)
-		if Sent then return end
-		Sent = true
-		conn:Disconnect();
-		func(...)
-	end,false)
-	return conn
-end	
-
-Wait = function(self,Length)
-	local Current = XThread.wrap()
-	local waitFor
-	local conn: XConnection
-	local pack
-	if Length then
-		waitFor = task.defer(function()
-			task.wait(5)
-			conn:Disconnect()
-			Current:resume()
-		end)
-	end
-	conn = self:Once(function(...)
-		if waitFor then task.cancel(waitFor) end
-		if ... ~=  nil then pack = {...} end
-		Current:resume()
-	end)
-	Current:pause()
-	if pack then
-		return unpack(pack)
-	end
-end
-
---/ XConnection
-Disconnect = function(self)
-	local Meta = getmetatable(getmetatable(self).Event)
-	Meta.Listeners.Connected[self] = nil
-	if #Meta.Listeners.Connected~=0 or #Meta.Listeners.Waiting~=0 or not Meta.Connection then return end
-	Meta.Connection:Disconnect()
-	Meta.Connection = nil
-end
-
---/XGroup Methods
-
--- Clean = function(self)
--- 	local Meta:XGroup = getmetatable(self)
--- 	Meta.cleaning = true
--- 	for i,_ in Meta.objects do
--- 		self:Remove(i,true)
--- 	end
--- 	Meta.cleaning = false
--- end
-
--- Remove = function(self,Object,ovr)
--- 	local OBJ = Object[1]
--- 	local Meta = getmetatable(self)
--- 	if Meta.cleaning and not ovr then return end
--- 	local t = typeof(OBJ)
--- 	if t == "XThread" then
--- 		task.cancel(OBJ)
--- 	elseif t == "XConnection" then
--- 		OBJ:Disconnect()
--- 	elseif t == "XGroup" then
--- 		OBJ:Clean()
--- 	else warn(`error type to disconnect, {t}`,OBJ) return end
--- 	Meta.objects[OBJ] = nil
--- end
-
--- Add = function(self,Object)
--- 	local Meta = getmetatable(self)
--- 	if Meta.__cleaning then return Object end
--- 	Meta.__objects[{Object}] = true	
--- 	return Object
--- end
-
-
-if IsServer then
-	EventNspc = "OnServerEvent"
-	folder = Instance.new("Folder")
-	folder.Name = "__comm"
-	folder.Parent = Services.rs
-	Shared = Instance.new("Configuration")
-	Shared.Name = "Shared"
-	Shared.Parent = folder
-	Remote = Instance.new("Configuration")
-	Remote.Name = "Remote"
-	Remote.Parent = folder
-else
-	EventNspc = "OnClientEvent"
-	folder = Services.rs:WaitForChild("__comm")
-	Shared = folder:FindFirstChild("Shared")
-	Remote = folder:FindFirstChild("Remote")
-	Fire = function(self,...)
-		local Meta = getmetatable(self)
-		Meta.Instance:FireServer(...)
-	end
-	Destroy = function(self)
-		local Meta = getmetatable(self)
-		if Meta.Connection then Meta.Connection:Disconnect() end
-		Meta.__metatable = "Destroyed"
-		for _,v in {Meta,self} do table.clear(v) table.freeze(v) end
-	end
-	Create = function(Namespace)
-		local signal = Remote:FindFirstChild(Namespace)
-		if not signal then
-			local thread = XThread.wrap()
-			local conn = wrap(Remote.ChildAdded):Connect(function(self:XConnection,child)
-				if child.Name == Namespace then
-					thread:resume(child)
-					self:Disconnect()
-				end
-			end,true)
-            task.delay(5,function()
-                conn:Disconnect()
-                thread:resume()
-            end)
-			signal = thread:pause()
-            if not signal then error(`Remote {Namespace} doesnt exist`,2) end		
-		end
-		return signal
-	end
-end
-
-__Signal = {
-	type = "XSignal",
-	__methods = {
-		Fire = Fire,
-		Connect = Connect,
-		Once = Once,
-		Destroy = Destroy,
-		Wait = Wait,
-	},
-}
-
---// Metadata
-
-__Event = {
-	type = "XEvent",
-	__methods = {
-		Once = Once,
-		Wait = Wait,
-		Connect = Connect,
-	},
-}
-
-__Connection = {
-	type = "XConnection",
-	__methods = {
-		Disconnect = Disconnect,
-	},
-}
-
--- __Group = {
--- 	type = "XGroup",
--- 	__methods = {
--- 		Clean = Clean,
--- 		Add = Add,
--- 		Remove = Remove,
--- 	},
--- 	objects = {},
--- 	cleaning = false,
--- 	__mode = "k",
--- }
-
-
---// Interface
-new = function(Namespace:string,T:"UnreliableRemoteEvent"?): (XRemote,XSignal)
-	local existing = __signals[Namespace]
-	if existing then return existing,getmetatable(existing).Event end
-	local signal = Create(Namespace,T)
-	local ev = signal[EventNspc]
-	local proxy:XRemote =newproxy(__Signal,{
-		__private = {
-			Namespace = Namespace,
-			Instance = signal,
-		},
-		__public = {
-			Signal = wrap(ev)
-		},
-	})
-	__signals[Namespace] = proxy
-	return proxy
-end
-
-wrap = function(Event:RBXScriptSignal):XSignal
-	local existing = __events[EventNspc]
-	if existing then return existing end
-	local proxy:XSignal = newproxy(__Event,{
-		__private = {
-			Event = Event,
-			Processing = nil,
-			Listeners = {Connected = table.newmeta({}),Waiting = table.newmeta({})}
-		},
-		__public = {},
-	})
-	__events[Event] = proxy
-	return proxy
-end
-
--- group = function(): XGroup
--- 	return newproxy(__Group,{__private = {objects = {},cleaning = false}})
--- end
-
-return {
-	wrap = wrap,
-	new = new,
-	-- group = group,
-}]]></ProtectedString>
-					<int64 name="SourceAssetId">-1</int64>
-					<BinaryString name="Tags"></BinaryString>
-					<UniqueId name="UniqueId">67f445f1841bd6d80600dc71000040f1</UniqueId>
-				</Properties>
+return nil]]></ProtectedString>
+						<int64 name="SourceAssetId">-1</int64>
+						<BinaryString name="Tags"></BinaryString>
+						<UniqueId name="UniqueId">2a3fefc7f8dcd6c706062ed800003f14</UniqueId>
+					</Properties>
+				</Item>
 			</Item>
 		</Item>
 	</Item>
